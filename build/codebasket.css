@@ -1,0 +1,301 @@
+.console-container {
+  width: 100%;
+  position: relative;
+  min-height: 250px;
+  font-family: 'PT Sans', Helvetica Neue, Arial, sans-serif;
+  border: 1px solid #dadada;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column wrap;
+  -moz-flex-flow: column wrap;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+  box-sizing: border-box; }
+  .console-container * {
+    box-sizing: border-box; }
+  .console-container .console-modal-overlay {
+    display: none; }
+  .console-container .console-container-button {
+    display: inline-block;
+    height: 33px;
+    line-height: 33px;
+    padding: 0 12px;
+    text-decoration: none;
+    color: #867F7F;
+    font-size: 13px; }
+    .console-container .console-container-button.with-border {
+      border-right: 1px solid #dadada; }
+    .console-container .console-container-button.with-plus:after {
+      content: "\f067";
+      position: absolute;
+      bottom: 8px;
+      right: 2px;
+      width: 8px;
+      height: 8px;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: 10px;
+      font-weight: bold;
+      color: #000000; }
+    .console-container .console-container-button.with-caret.active {
+      height: 34px;
+      line-height: 34px; }
+    .console-container .console-container-button.with-caret:after {
+      content: "\f0d7";
+      font: normal normal normal 14px/1 FontAwesome;
+      margin-left: 5px;
+      color: #333333;
+      font-size: 0.95em; }
+    .console-container .console-container-button:hover {
+      background: #e3e3e3; }
+  .console-container .console-wrapper {
+    width: 100%;
+    -webkit-box-flex: 1 100%;
+    -webkit-flex: 1 100%;
+    -moz-box-flex: 1 100%;
+    -moz-flex: 1 100%;
+    -ms-flex: 1 100%;
+    flex: 1 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    -moz-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap; }
+  .console-container .console-sidebar-container,
+  .console-container .console-tabs-container {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: column wrap;
+    -moz-flex-flow: column wrap;
+    -ms-flex-flow: column wrap;
+    flex-flow: column wrap; }
+  .console-container .console-sidebar-container {
+    min-width: 0;
+    max-width: 0;
+    background: #ffffff;
+    overflow: hidden;
+    margin: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none; }
+    .console-container .console-sidebar-container.visible {
+      min-width: 200px;
+      max-width: 200px;
+      border-right: 1px solid #dadada; }
+  .console-container .console-sidebar-actions {
+    display: block;
+    color: #ffffff;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: #f7f7f7;
+    border-bottom: 1px solid #dadada;
+    height: 34px; }
+  .console-container .console-tabs {
+    font-size: 11px;
+    background: #f7f7f7;
+    border-bottom: solid 1px #dadada;
+    overflow: visible !important;
+    text-align: left;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 34px; }
+    .console-container .console-tabs .console-container-button:hover,
+    .console-container .console-tabs .console-container-button.active {
+      color: #000000;
+      background: #ffffff; }
+  .console-container .console-options {
+    display: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    list-style: none;
+    font-size: 14px;
+    position: absolute;
+    z-index: 616;
+    right: 0;
+    top: 34px;
+    background: #fff;
+    text-align: left;
+    border-left: 1px solid #dadada;
+    border-bottom: 1px solid #dadada; }
+    .console-container .console-options a {
+      text-decoration: none;
+      color: #000000; }
+    .console-container .console-options.visible {
+      display: block; }
+    .console-container .console-options li {
+      font-size: 14px;
+      line-height: 15px; }
+      .console-container .console-options li:hover {
+        background: #a29c9c;
+        color: #ffffff; }
+      .console-container .console-options li a {
+        padding: 8px 15px;
+        display: block; }
+  .console-container .console-tabs-left {
+    min-width: 50%;
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    -ms-flex-grow: 1;
+    flex-grow: 1;
+    -ms-flex-positive: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row;
+    -moz-flex-flow: row;
+    -ms-flex-flow: row;
+    flex-flow: row;
+    overflow: auto;
+    border-right: solid 1px #dadada; }
+  .console-container .console-tabs-right {
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    -ms-flex-grow: 1;
+    flex-grow: 1;
+    -ms-flex-positive: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row;
+    -moz-flex-flow: row;
+    -ms-flex-flow: row;
+    flex-flow: row;
+    margin-left: 20px; }
+  .console-container .console-tab {
+    display: inline-block;
+    min-width: 110px;
+    max-width: 110px;
+    height: 34px;
+    line-height: 34px;
+    padding: 0px 15px;
+    border-right: solid 1px #dadada;
+    outline: none;
+    text-decoration: none;
+    color: #111111;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1; }
+    .console-container .console-tab.active, .console-container .console-tab:hover {
+      background: #ffffff;
+      color: #222524;
+      position: relative; }
+      .console-container .console-tab.active:after, .console-container .console-tab:hover:after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: rgba(39, 112, 174, 0.81);
+        z-index: 101; }
+    .console-container .console-tab .console-tab-text {
+      display: inline-block;
+      width: 60px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      vertical-align: middle;
+      text-align: center;
+      white-space: nowrap; }
+    .console-container .console-tab .console-tab-close {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      line-height: 17px;
+      text-align: center;
+      vertical-align: baseline;
+      color: #d3d3d3;
+      margin: 0;
+      opacity: 1; }
+  .console-container .console-tabpages {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1 100%;
+    -webkit-flex: 1 100%;
+    -moz-box-flex: 1 100%;
+    -moz-flex: 1 100%;
+    -ms-flex: 1 100%;
+    flex: 1 100%;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+  .console-container .console-tabpage {
+    display: none;
+    width: 100%;
+    height: 100%;
+    border: none;
+    -webkit-box-flex: 1 100%;
+    -webkit-flex: 1 100%;
+    -moz-box-flex: 1 100%;
+    -moz-flex: 1 100%;
+    -ms-flex: 1 100%;
+    flex: 1 100%; }
+    .console-container .console-tabpage.active {
+      display: block; }
+  .console-container .console-footer {
+    background: #ffffff;
+    border-top: solid 1px #dadada;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    overflow: visible; }
+    .console-container .console-footer > * {
+      display: inline-block;
+      height: 28px;
+      line-height: 28px;
+      vertical-align: middle; }
+    .console-container .console-footer .console-brand img {
+      height: 100%;
+      padding: 4px; }
+    .console-container .console-footer .console-footer-permanent-status {
+      font-weight: bold; }
+    .console-container .console-footer .console-footer-status {
+      max-width: 30%; }
+    .console-container .console-footer .console-footer-progress {
+      display: none;
+      width: 30%;
+      max-width: 200px;
+      float: right; }
+      .console-container .console-footer .console-footer-progress.visible {
+        display: block; }
