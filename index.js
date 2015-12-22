@@ -10,6 +10,7 @@ CodeBasket.create = function(options) {
   var items = options.items || [],
       libraries = options.libraries || [],
       optionsList = options.options || [],
+      toolbarOptions = options.toolbarOptions || [],
       filesFromDOM,
       newCodeBasket;
 
@@ -21,7 +22,8 @@ CodeBasket.create = function(options) {
     element: internalMethods.getElement(options.element),
     libraries: libraries,
     items: items,
-    options: optionsList
+    options: optionsList,
+    toolbarOptions: toolbarOptions
   };
 
   filesFromDOM = internalMethods.extractFilesFromDOM(newCodeBasket.element);

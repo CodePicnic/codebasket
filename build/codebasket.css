@@ -1,7 +1,7 @@
 .console-container {
   width: 100%;
   position: relative;
-  min-height: 250px;
+  min-height: 300px;
   font-family: 'PT Sans', Helvetica Neue, Arial, sans-serif;
   border: 1px solid #dadada;
   display: -webkit-box;
@@ -17,6 +17,8 @@
   box-sizing: border-box; }
   .console-container * {
     box-sizing: border-box; }
+  .console-container .hidden {
+    display: none; }
   .console-container .console-modal-overlay {
     display: none; }
   .console-container .console-container-button {
@@ -33,7 +35,7 @@
       content: "\f067";
       position: absolute;
       bottom: 8px;
-      right: 2px;
+      right: 3px;
       width: 8px;
       height: 8px;
       font: normal normal normal 14px/1 FontAwesome;
@@ -192,11 +194,16 @@
     -moz-flex-flow: row;
     -ms-flex-flow: row;
     flex-flow: row;
-    margin-left: 20px; }
+    margin-left: 30px;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    -webkit-justify-content: flex-end;
+    -moz-justify-content: flex-end;
+    justify-content: flex-end; }
   .console-container .console-tab {
     display: inline-block;
-    min-width: 110px;
-    max-width: 110px;
+    min-width: 90px;
+    max-width: 90px;
     height: 34px;
     line-height: 34px;
     padding: 0px 15px;
@@ -210,6 +217,9 @@
     -moz-flex: 1;
     -ms-flex: 1;
     flex: 1; }
+    .console-container .console-tab.closeable {
+      min-width: 110px;
+      max-width: 110px; }
     .console-container .console-tab.active, .console-container .console-tab:hover {
       background: #ffffff;
       color: #222524;
@@ -240,7 +250,10 @@
       vertical-align: baseline;
       color: #d3d3d3;
       margin: 0;
-      opacity: 1; }
+      opacity: 1;
+      border-radius: 16px; }
+    .console-container .console-tab:hover .console-tab-close {
+      color: #111111; }
   .console-container .console-tabpages {
     display: -webkit-box;
     display: -webkit-flex;
@@ -273,6 +286,56 @@
     flex: 1 100%; }
     .console-container .console-tabpage.active {
       display: block; }
+    .console-container .console-tabpage.active.console-browser {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-flex: 1 100%;
+      -webkit-flex: 1 100%;
+      -moz-box-flex: 1 100%;
+      -moz-flex: 1 100%;
+      -ms-flex: 1 100%;
+      flex: 1 100%;
+      -webkit-box-direction: normal;
+      -webkit-box-orient: vertical;
+      -webkit-flex-direction: column;
+      -moz-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      .console-container .console-tabpage.active.console-browser iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        -webkit-box-flex: 1 100%;
+        -webkit-flex: 1 100%;
+        -moz-box-flex: 1 100%;
+        -moz-flex: 1 100%;
+        -ms-flex: 1 100%;
+        flex: 1 100%; }
+    .console-container .console-tabpage.console-browser .console-browser-location-bar-container {
+      -webkit-flex-grow: 1;
+      -moz-flex-grow: 1;
+      -ms-flex-grow: 1;
+      flex-grow: 1;
+      -ms-flex-positive: 1;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-flow: row;
+      -moz-flex-flow: row;
+      -ms-flex-flow: row;
+      flex-flow: row; }
+    .console-container .console-tabpage.console-browser .console-browser-location-bar {
+      width: 100%;
+      border: none; }
+    .console-container .console-tabpage.console-editor {
+      position: relative; }
   .console-container .console-footer {
     background: #ffffff;
     border-top: solid 1px #dadada;
@@ -282,8 +345,9 @@
     overflow: visible; }
     .console-container .console-footer > * {
       display: inline-block;
-      height: 28px;
-      line-height: 28px;
+      height: 29px;
+      line-height: 29px;
+      margin-top: -1px;
       vertical-align: middle; }
     .console-container .console-footer .console-brand img {
       height: 100%;

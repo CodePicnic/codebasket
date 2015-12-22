@@ -39,6 +39,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "brace": "^0.7.0",
     "lodash": "^3.10.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
