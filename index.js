@@ -7,9 +7,7 @@ var mixin = require('lodash/utility/mixin'),
     CodeBasket = {};
 
 CodeBasket.create = function(options) {
-  var items = options.items || [],
-      libraries = options.libraries || [],
-      optionsList = options.options || [],
+  var optionsList = options.options || [],
       toolbarOptions = options.toolbarOptions || [],
       filesFromDOM,
       newCodeBasket;
@@ -20,8 +18,8 @@ CodeBasket.create = function(options) {
 
   newCodeBasket = {
     element: internalMethods.getElement(options.element),
-    libraries: libraries,
-    items: items,
+    libraries: [],
+    items: [],
     options: optionsList,
     toolbarOptions: toolbarOptions
   };
@@ -29,7 +27,9 @@ CodeBasket.create = function(options) {
   filesFromDOM = internalMethods.extractFilesFromDOM(newCodeBasket.element);
 
   mixin(newCodeBasket, instanceMethods);
-  forEach(filesFromDOM, newCodeBasket.addItem, newCodeBasket);
+  forEach(options.items, newCodeBasket.addItem, newCodeBasket);
+  forEach(options.libraries, newCodeBasket.addLibrary, newCodeBasket);
+  forEach(filesFromDOM, newCodeBasket.addFile, newCodeBasket);
 
   var readyEvent = new global.CustomEvent('codebasket:ready', {
     detail: {

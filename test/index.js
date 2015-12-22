@@ -1,6 +1,20 @@
 var codeBasket;
 
 describe('Creating a CodeBasket', function() {
+  var options = [{
+    title: 'Edit',
+    icon: 'fa-pencil',
+    href: '#'
+  },
+  {
+    title: 'Fork',
+    icon: 'fa-code-fork'
+  },
+  {
+    title: 'Share',
+    icon: 'fa-share-alt'
+  }];
+
   it('should throw an error if element is not defined', function() {
     expect(function() {
       CodeBasket.create({});
@@ -20,49 +34,47 @@ describe('Creating a CodeBasket', function() {
   it('should create an options list', function() {
     codeBasket = CodeBasket.create({
       element: '#codebasket-test',
-      options: [{
-        title: 'Edit',
-        icon: 'fa-pencil',
-        href: '#'
-      },
-      {
-        title: 'Fork',
-        icon: 'fa-code-fork'
-      },
-      {
-        title: 'Share',
-        icon: 'fa-share-alt'
-      }]
+      options: options
     });
 
     codeBasket.render();
 
-    expect(codeBasket.element.querySelectorAll('.console-options > *').length).toEqual(3);
+    expect(codeBasket.element.querySelectorAll('.console-options > *').length).toEqual(options.length);
   });
 
   it('should create tabs', function() {
+    var items = [{
+          location: 'http://jsfiddle.net/EVAXW/embedded/result/',
+          title: 'JSFiddle',
+          name: 'JSFiddle',
+          isActive: true
+        },
+        {
+          type: 'file',
+          language: 'js',
+          name: 'index.js',
+          title: 'index.js',
+          content: 'var content = {};'
+        },
+        {
+          type: 'file',
+          language: 'sass',
+          name: 'index.scss',
+          title: 'index.scss',
+          content: 'body { background-color: $grey200; }'
+        },
+        {
+          type: 'browser',
+          location: 'http://jsfiddle.net/EVAXW/embedded/result/',
+          title: 'JSFiddle',
+          name: 'JSFiddle',
+          isCloseable: true,
+          isVisible: false
+        }];
+
     codeBasket = CodeBasket.create({
       element: '#codebasket-test',
-      items: [{
-        location: 'http://jsfiddle.net/EVAXW/embedded/result/',
-        title: 'JSFiddle',
-        name: 'JSFiddle',
-        isActive: true
-      },
-      {
-        type: 'file',
-        language: 'js',
-        name: 'index.js',
-        title: 'index.js',
-        content: 'var content = {};'
-      },
-      {
-        type: 'browser',
-        location: 'http://jsfiddle.net/EVAXW/embedded/result/',
-        title: 'JSFiddle',
-        name: 'JSFiddle',
-        isCloseable: true
-      }],
+      items: items,
       toolbarOptions: [{
         title: 'Full Screen View',
         icon: 'fa-expand',
@@ -70,26 +82,19 @@ describe('Creating a CodeBasket', function() {
       },{
         title: 'Browser',
         icon: 'fa-globe',
-        href: '#'
+        href: '#',
+        action: function() {
+          var browser = codeBasket.items.find(function(item) { return item.type === 'browser' });
+
+          codeBasket.selectItem(browser);
+        }
       }],
-      options: [{
-        title: 'Edit',
-        icon: 'fa-pencil',
-        href: '#'
-      },
-      {
-        title: 'Fork',
-        icon: 'fa-code-fork'
-      },
-      {
-        title: 'Share',
-        icon: 'fa-share-alt'
-      }]
+      options: options
     });
 
     codeBasket.render();
 
-    expect(codeBasket.element.querySelectorAll('.console-tabs .console-tab').length).toEqual(3);
+    expect(codeBasket.element.querySelectorAll('.console-tabs .console-tab').length).toEqual(codeBasket.items.filter(function(item) { return item.isVisible === true }).length);
   });
   //   it('should respond to click event', function() {
   //     google.maps.event.trigger(mapWithEvents.map, 'click', {

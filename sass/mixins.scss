@@ -176,3 +176,21 @@
     }
   }
 }
+
+@mixin scrolling-shadows($background-color: rgb(255, 255, 255), $shadow-intensity: 0.2, $shadow-color: rgba(0,0,0, .2), $cover-size: 40px, $shadow-size: 14px) {
+  background:
+    -webkit-linear-gradient(0deg,  $background-color 20%, rgba($background-color, $shadow-intensity)),
+    -webkit-linear-gradient(180deg, $background-color 20%, rgba($background-color, $shadow-intensity)) 100% 0,
+    -webkit-linear-gradient(0deg,  $shadow-color  10%, rgba($background-color, $shadow-intensity)),
+    -webkit-linear-gradient(180deg, $shadow-color  10%, rgba($background-color, $shadow-intensity)) 100% 0;
+
+  background:
+    linear-gradient(90deg,  $background-color 20%, rgba($background-color, $shadow-intensity)),
+    linear-gradient(270deg, $background-color 20%, rgba($background-color, $shadow-intensity)) 100% 0,
+    linear-gradient(90deg,  $shadow-color  10%, rgba($background-color, $shadow-intensity)),
+    linear-gradient(270deg, $shadow-color  10%, rgba($background-color, $shadow-intensity)) 100% 0;
+
+  background-repeat: no-repeat;
+  background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+  background-attachment: local, local, scroll, scroll;
+}
