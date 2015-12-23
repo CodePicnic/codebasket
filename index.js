@@ -2,6 +2,7 @@
 
 var mixin = require('lodash/utility/mixin'),
     forEach = require('lodash/collection/forEach'),
+    merge = require('lodash/object/merge'),
     internalMethods = require('./lib/internal_methods'),
     instanceMethods = require('./lib/instance_methods'),
     CodeBasket = {};
@@ -9,6 +10,11 @@ var mixin = require('lodash/utility/mixin'),
 CodeBasket.create = function(options) {
   var optionsList = options.options || [],
       toolbarOptions = options.toolbarOptions || [],
+      uiOptionsList = options.ui || {},
+      uiOptions = merge({}, uiOptionsList, {
+        isSidebarVisible: true,
+        isProgressBarVisible: false
+      }),
       filesFromDOM,
       newCodeBasket;
 
@@ -22,7 +28,8 @@ CodeBasket.create = function(options) {
     items: [],
     sidebarItems: {},
     options: optionsList,
-    toolbarOptions: toolbarOptions
+    toolbarOptions: toolbarOptions,
+    uiOptions: uiOptions
   };
 
   filesFromDOM = internalMethods.extractFilesFromDOM(newCodeBasket.element);

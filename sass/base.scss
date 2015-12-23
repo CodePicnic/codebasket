@@ -179,23 +179,13 @@
     dt:hover::after,
     .active::after {
       content: "";
-      /*background-color: rgba(44, 62, 80, 0.2);*/
+      background-color: rgba(160, 230, 213, 0.25);
       position: absolute;
       left: -100px;
       right: 0;
       top: 0;
       bottom: 0;
       z-index: 0;
-    }
-
-    dd:hover::after,
-    dt:hover::after,
-    .active::after {
-      background-color: rgba(160, 230, 213, 0.25);
-    }
-
-    .active::after {
-      /*background-color: rgba(41, 128, 185, 0.2);*/
     }
 
     .entry-text {
@@ -394,24 +384,26 @@
       @include display-flex();
       @include flex(1 100%);
       @include flex-direction(column);
+    }
+
+    &.console-browser {
+      .console-browser-location-bar-container {
+        @include display-flex();
+        @include flex-flow(row);
+        max-height: 33px;
+      }
 
       iframe {
         width: 100%;
         height: 100%;
         border: none;
         @include flex(1 100%);
-      }
-    }
-
-    &.console-browser {
-      .console-browser-location-bar-container {
         @include flex-grow(1);
-        @include display-flex();
-        @include flex-flow(row);
       }
 
       .console-browser-location-bar {
         width: 100%;
+        height: 33px;
         border: none;
       }
     }

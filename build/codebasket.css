@@ -158,19 +158,13 @@
     .console-container .console-sidebar dt:hover::after,
     .console-container .console-sidebar .active::after {
       content: "";
-      /*background-color: rgba(44, 62, 80, 0.2);*/
+      background-color: rgba(160, 230, 213, 0.25);
       position: absolute;
       left: -100px;
       right: 0;
       top: 0;
       bottom: 0;
       z-index: 0; }
-    .console-container .console-sidebar dd:hover::after,
-    .console-container .console-sidebar dt:hover::after,
-    .console-container .console-sidebar .active::after {
-      background-color: rgba(160, 230, 213, 0.25); }
-    .console-container .console-sidebar .active::after {
-      /*background-color: rgba(41, 128, 185, 0.2);*/ }
     .console-container .console-sidebar .entry-text {
       display: inline-block;
       width: calc(100% - 35px);
@@ -387,22 +381,7 @@
       -moz-flex-direction: column;
       -ms-flex-direction: column;
       flex-direction: column; }
-      .console-container .console-tabpage.active.console-browser iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        -webkit-box-flex: 1 100%;
-        -webkit-flex: 1 100%;
-        -moz-box-flex: 1 100%;
-        -moz-flex: 1 100%;
-        -ms-flex: 1 100%;
-        flex: 1 100%; }
     .console-container .console-tabpage.console-browser .console-browser-location-bar-container {
-      -webkit-flex-grow: 1;
-      -moz-flex-grow: 1;
-      -ms-flex-grow: 1;
-      flex-grow: 1;
-      -ms-flex-positive: 1;
       display: -webkit-box;
       display: -webkit-flex;
       display: -moz-box;
@@ -412,9 +391,26 @@
       -webkit-flex-flow: row;
       -moz-flex-flow: row;
       -ms-flex-flow: row;
-      flex-flow: row; }
+      flex-flow: row;
+      max-height: 33px; }
+    .console-container .console-tabpage.console-browser iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      -webkit-box-flex: 1 100%;
+      -webkit-flex: 1 100%;
+      -moz-box-flex: 1 100%;
+      -moz-flex: 1 100%;
+      -ms-flex: 1 100%;
+      flex: 1 100%;
+      -webkit-flex-grow: 1;
+      -moz-flex-grow: 1;
+      -ms-flex-grow: 1;
+      flex-grow: 1;
+      -ms-flex-positive: 1; }
     .console-container .console-tabpage.console-browser .console-browser-location-bar {
       width: 100%;
+      height: 33px;
       border: none; }
     .console-container .console-tabpage.console-editor {
       position: relative; }
