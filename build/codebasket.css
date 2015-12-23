@@ -112,6 +112,84 @@
     background: #f7f7f7;
     border-bottom: 1px solid #dadada;
     height: 34px; }
+  .console-container .console-sidebar {
+    margin: 0;
+    padding-top: 10px;
+    position: relative;
+    overflow: auto; }
+    .console-container .console-sidebar * {
+      position: relative; }
+    .console-container .console-sidebar > *,
+    .console-container .console-sidebar dl {
+      margin: 2px 0 2px 15px; }
+    .console-container .console-sidebar dl > dd {
+      margin: 2px 0 2px 30px; }
+    .console-container .console-sidebar dt,
+    .console-container .console-sidebar dd {
+      cursor: default; }
+    .console-container .console-sidebar dd.file {
+      cursor: pointer; }
+    .console-container .console-sidebar dl > dt {
+      margin: 0; }
+    .console-container .console-sidebar dd.active {
+      font-weight: bold; }
+    .console-container .console-sidebar dl.collapsed > *:not(dt) {
+      display: none; }
+    .console-container .console-sidebar dl.collapsed dt:before {
+      /*color: #a6aeb4;*/
+      font-family: "FontAwesome";
+      font-style: normal;
+      font-size: 14px;
+      content: "\f0da";
+      margin-right: 5px;
+      vertical-align: middle; }
+    .console-container .console-sidebar dl dt:before {
+      /*color: #a6aeb4;*/
+      font-family: "FontAwesome";
+      font-style: normal;
+      font-size: 14px;
+      content: "\f0d7";
+      margin-right: 5px;
+      vertical-align: middle; }
+    .console-container .console-sidebar dd:hover,
+    .console-container .console-sidebar dt:hover {
+      /*text-shadow: 1px 1px 0 #a6aeb4;*/ }
+    .console-container .console-sidebar dd:hover::after,
+    .console-container .console-sidebar dt:hover::after,
+    .console-container .console-sidebar .active::after {
+      content: "";
+      /*background-color: rgba(44, 62, 80, 0.2);*/
+      position: absolute;
+      left: -100px;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 0; }
+    .console-container .console-sidebar dd:hover::after,
+    .console-container .console-sidebar dt:hover::after,
+    .console-container .console-sidebar .active::after {
+      background-color: rgba(160, 230, 213, 0.25); }
+    .console-container .console-sidebar .active::after {
+      /*background-color: rgba(41, 128, 185, 0.2);*/ }
+    .console-container .console-sidebar .entry-text {
+      display: inline-block;
+      width: calc(100% - 35px);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      vertical-align: middle;
+      color: #4e4e4e; }
+    .console-container .console-sidebar .remove-entry {
+      display: none;
+      position: absolute;
+      right: 10px;
+      vertical-align: middle;
+      top: 0px;
+      height: 100%;
+      color: #c0392b;
+      z-index: 101; }
+    .console-container .console-sidebar dt:hover .remove-entry,
+    .console-container .console-sidebar dd:hover .remove-entry {
+      display: inline-block; }
   .console-container .console-tabs {
     font-size: 11px;
     background: #f7f7f7;
@@ -203,6 +281,8 @@
     -webkit-justify-content: flex-end;
     -moz-justify-content: flex-end;
     justify-content: flex-end; }
+    .console-container .console-tabs-right > * {
+      border-left: solid 1px #dadada; }
   .console-container .console-tab {
     display: inline-block;
     min-width: 90px;

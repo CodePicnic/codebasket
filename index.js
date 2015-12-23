@@ -20,6 +20,7 @@ CodeBasket.create = function(options) {
     element: internalMethods.getElement(options.element),
     libraries: [],
     items: [],
+    sidebarItems: {},
     options: optionsList,
     toolbarOptions: toolbarOptions
   };
