@@ -9,8 +9,10 @@ var mixin = require('lodash/utility/mixin'),
 
 CodeBasket.create = function(options) {
   var optionsList = options.options || [],
+      brand = options.brand,
       toolbarOptions = options.toolbarOptions || [],
       uiOptionsList = options.ui || {},
+      sidebarActions = options.sidebarActions || [],
       uiOptions = merge({}, uiOptionsList, {
         isSidebarVisible: true,
         isProgressBarVisible: false
@@ -24,12 +26,18 @@ CodeBasket.create = function(options) {
 
   newCodeBasket = {
     element: internalMethods.getElement(options.element),
+    brand: brand,
     libraries: [],
     items: [],
     sidebarItems: {},
+    sidebarActions: sidebarActions,
     options: optionsList,
     toolbarOptions: toolbarOptions,
-    uiOptions: uiOptions
+    uiOptions: uiOptions,
+    users: [{
+      color: '#336699',
+      name: 'Gustavo Leon'
+    }]
   };
 
   filesFromDOM = internalMethods.extractFilesFromDOM(newCodeBasket.element);

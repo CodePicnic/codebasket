@@ -1,0 +1,99 @@
+.console-container {
+  .console-footer {
+    background: #ffffff;
+    border-top: solid 1px #dadada;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    overflow: visible;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      vertical-align: middle;
+    }
+
+    > * {
+      display: inline-block;
+      height: 29px;
+      line-height: 29px;
+      margin-top: -3px;
+      vertical-align: middle;
+    }
+
+    .console-brand {
+      img {
+        height: 100%;
+        padding: 5px;
+      }
+    }
+
+    .console-footer-permanent-status {
+      font-weight: bold;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .console-footer-users-label {
+      margin-right: 10px;
+    }
+
+    .console-footer-users-wrapper {
+      position: relative;
+      cursor: pointer;
+
+      > * {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .user-color {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+    }
+
+    .console-footer-user {
+      padding: 0 10px;
+    }
+
+    .console-footer-users-list {
+      display: none;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      bottom: 28px;
+      z-index: 101;
+      background: #ffffff;
+      border: solid 1px rgba(218, 218, 218, .6);
+      border-bottom: solid 1px #ffffff;
+      width: 50%;
+      text-align: right;
+
+      &.visible {
+        display: block;
+      }
+    }
+
+    .console-footer-status {
+      max-width: 30%;
+    }
+
+    .console-footer-progress {
+      display: none;
+      width: 30%;
+      max-width: 200px;
+      float: right;
+
+      &.visible {
+        display: block;
+      }
+    }
+  }
+}

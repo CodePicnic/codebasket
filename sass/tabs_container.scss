@@ -1,0 +1,200 @@
+.console-container {
+  .console-tabs-container {
+  }
+
+  .console-tabs {
+    // font-family: 'latolight';
+    font-size: 11px;
+    background: #f7f7f7;
+    border-bottom: solid 1px #dadada;
+    overflow: visible !important;
+    text-align: left;
+    @include display-flex();
+    // height: 34px;
+
+    .console-container-button:hover,
+    .console-container-button.active {
+      color: #000000;
+      background: #ffffff;
+    }
+  }
+
+  .console-options {
+    display: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    // padding-top: 1px;
+    list-style: none;
+    font-size: 14px;
+    position: absolute;
+    z-index: 616;
+    right: 0;
+    top: 34px;
+    background: #fff;
+    text-align: left;
+    border-left: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+
+    a {
+      text-decoration: none;
+      color: #333333;
+    }
+
+    &.visible {
+      display: block;
+    }
+
+    li {
+      font-size: 14px;
+      line-height: 15px;
+
+      &:hover {
+        background: #a29c9c;
+        color: #ffffff;
+      }
+
+      a {
+        padding: 8px 15px;
+        display: block;
+      }
+    }
+  }
+
+  .console-tabs-left {
+    min-width: 50%;
+    @include flex-grow(0);
+    @include display-flex();
+    @include flex-flow(row);
+    overflow: auto;
+    border-right: solid 1px #dadada;
+    @include scrolling-shadows($background-color: #f7f7f7);
+  }
+
+  .console-tabs-right {
+    @include flex-grow(1);
+    @include display-flex();
+    @include flex-flow(row);
+    margin-left: 20px;
+    @include justify-content(flex-end);
+
+    > * {
+      border-left: solid 1px #dadada;
+    }
+  }
+
+  .console-tab {
+    display: inline-block;
+    min-width: 90px;
+    max-width: 90px;
+    // height: 34px;
+    line-height: 32px;
+    padding: 0px 15px;
+    border-right: solid 1px #dadada;
+    outline: none;
+    text-decoration: none;
+    color: #111111;
+    @include flex(1);
+
+    &.closeable {
+      min-width: 110px;
+      max-width: 110px;
+    }
+
+    &.active,
+    &:hover {
+      background: #ffffff;
+      color: #222524;
+      position: relative;
+
+      &:after {
+        content: "";
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: rgba(39, 112, 174, .81);
+        z-index: 101;
+      }
+    }
+
+    .console-tab-text {
+      display: inline-block;
+      width: 60px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      vertical-align: middle;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .console-tab-close {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      line-height: 17px;
+      text-align: center;
+      vertical-align: baseline;
+      color: #d3d3d3;
+      margin: 0;
+      opacity: 1;
+      border-radius: 16px;
+    }
+
+    &:hover .console-tab-close {
+      color: #111111;
+      // background: #d3d3d3;
+    }
+  }
+
+  .console-tabpages {
+    @include display-flex();
+    @include flex(1 100%);
+    @include flex-direction(column);
+  }
+
+  .console-tabpage {
+    display: none;
+    width: 100%;
+    height: 100%;
+    border: none;
+    @include flex(1 100%);
+
+    &.active {
+      display: block;
+    }
+
+    &.active.console-browser {
+      @include display-flex();
+      @include flex(1 100%);
+      @include flex-direction(column);
+    }
+
+    &.console-browser {
+      .console-browser-location-bar-container {
+        @include display-flex();
+        @include flex-flow(row);
+        max-height: 33px;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        @include flex(1 100%);
+        @include flex-grow(1);
+      }
+
+      .console-browser-location-bar {
+        width: 100%;
+        height: 33px;
+        border: none;
+      }
+    }
+
+    &.console-editor {
+      position: relative;
+    }
+  }
+}

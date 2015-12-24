@@ -1,0 +1,135 @@
+.console-container {
+  .console-sidebar-container {
+    min-width: 0;
+    max-width: 0;
+    background: #ffffff;
+    overflow: hidden;
+    margin: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+
+    &.visible {
+      min-width: 200px;
+      max-width: 200px;
+      border-right: 1px solid #dadada;
+    }
+  }
+
+  .console-sidebar-actions {
+    display: block;
+    color: #ffffff;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: #f7f7f7;
+    border-bottom: 1px solid #dadada;
+    height: 34px;
+  }
+
+  .console-sidebar {
+    margin: 0;
+    padding-top: 10px;
+    position: relative;
+    overflow: auto;
+
+    * {
+      position: relative;
+    }
+
+    > *,
+    dl {
+      margin: 2px 0 2px 15px;
+    }
+
+    dl > dd {
+      margin: 2px 0 2px 30px;
+    }
+
+    dt,
+    dd {
+      cursor: default;
+    }
+
+    dd.file {
+      cursor: pointer;
+    }
+
+    dl > dt {
+      margin: 0;
+    }
+
+    dd.active {
+      font-weight: bold;
+    }
+
+    dl.collapsed > *:not(dt) {
+      display: none;
+    }
+
+    dl.collapsed dt:before {
+      /*color: #a6aeb4;*/
+      font-family: "FontAwesome";
+      font-style: normal;
+      font-size: 14px;
+      content: "\f0da";
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    dl dt:before {
+      /*color: #a6aeb4;*/
+      font-family: "FontAwesome";
+      font-style: normal;
+      font-size: 14px;
+      content: "\f0d7";
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    dd:hover,
+    dt:hover {
+      /*text-shadow: 1px 1px 0 #a6aeb4;*/
+    }
+
+    dd:hover::after,
+    dt:hover::after,
+    .active::after {
+      content: "";
+      background-color: rgba(160, 230, 213, 0.25);
+      position: absolute;
+      left: -100px;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 0;
+    }
+
+    .entry-text {
+      display: inline-block;
+      width: calc(100% - 35px);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      vertical-align: middle;
+      color: rgb(78, 78, 78);
+    }
+
+    .remove-entry {
+      display: none;
+      position: absolute;
+      right: 10px;
+      vertical-align: middle;
+      top: 0px;
+      height: 100%;
+      color: #c0392b;
+      z-index: 101;
+    }
+
+    dt:hover .remove-entry,
+    dd:hover .remove-entry {
+      display: inline-block;
+    }
+  }
+}
