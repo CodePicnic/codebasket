@@ -31,7 +31,8 @@
     "jshint": "^2.8.0",
     "mocha": "^2.3.4",
     "reactify": "^1.1.1",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "yargs": "^3.31.0"
   },
   "dependencies": {
     "lodash": "^3.10.1",

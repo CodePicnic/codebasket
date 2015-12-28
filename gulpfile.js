@@ -50,7 +50,19 @@ gulp.task('test', function() {
     .pipe(mochaPhantomJS());
 });
 
-gulp.task('build', [ 'lint', 'jscs', 'browserify', 'sass' ]);
+gulp.task('build', [ 'lint', 'jscs', 'browserify', 'sass' ], function() {
+  var argv = require('yargs').argv;
+
+  if (argv['copy-js']) {
+    gulp.src(buildDir + '/codebasket.js')
+      .pipe(gulp.dest(argv['copy-js']));
+  }
+
+  if (argv['copy-css']) {
+    gulp.src(buildDir + '/codebasket.css')
+      .pipe(gulp.dest(argv['copy-css']));
+  }
+});
 
 gulp.task('watch', function() {
   gulp.watch(files.concat('./sass/*.scss'), [ 'build' ]);
