@@ -18,6 +18,7 @@ CodeBasket.create = function(options) {
         isProgressBarVisible: false
       }),
       filesFromDOM,
+      librariesFromDOM,
       newCodeBasket;
 
   if (!options.element) {
@@ -41,11 +42,13 @@ CodeBasket.create = function(options) {
   };
 
   filesFromDOM = internalMethods.extractFilesFromDOM(newCodeBasket.element);
+  librariesFromDOM = internalMethods.extractLibrariesFromDOM(newCodeBasket.element);
 
   mixin(newCodeBasket, instanceMethods);
   forEach(options.items, newCodeBasket.addItem, newCodeBasket);
   forEach(options.libraries, newCodeBasket.addLibrary, newCodeBasket);
   forEach(filesFromDOM, newCodeBasket.addFile, newCodeBasket);
+  forEach(librariesFromDOM, newCodeBasket.toggleLibrary, newCodeBasket);
 
   var readyEvent = new global.CustomEvent('codebasket:ready', {
     detail: {
