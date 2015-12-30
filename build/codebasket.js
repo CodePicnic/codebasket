@@ -125,7 +125,7 @@ App = React.createClass({displayName: "App",
           brand, 
           React.createElement("span", {className: "console-footer-permanent-status"}, registerLink), 
           connectedUsersList, 
-          React.createElement("span", {className: "console-footer-status"}), 
+          React.createElement("span", {className: "console-footer-status"}, codeBasket.status), 
           React.createElement("progress", {className: 'console-footer-progress' + (this.state.isProgressBarVisible ? ' visible' : ''), max: "100"})
         )
       )
@@ -213,6 +213,7 @@ module.exports = Browser;
 'use strict';
 
 var React = require('react'),
+    find = require('lodash/collection/find'),
     ace = global.ace,
     CodeEditor;
 
@@ -221,15 +222,48 @@ CodeEditor = React.createClass({displayName: "CodeEditor",
     return { initialized: false };
   },
   componentDidMount: function() {
-    var UndoManager = ace.UndoManager;
+    var UndoManager = ace.UndoManager,
+        app = this.props.app;
 
-    this.editor = ace.edit(this.refs.editor);
-    this.editor.setTheme('ace/theme/tomorrow');
-    this.editor.setOptions({ enableBasicAutocompletion: true });
-    this.editor.setShowPrintMargin(false);
-    this.editor.resize();
+    var editor = ace.edit(this.refs.editor);
+    editor.setTheme('ace/theme/tomorrow');
+    editor.setOptions({ enableBasicAutocompletion: true });
+    editor.setShowPrintMargin(false);
+    editor.resize();
 
-    this.editor.on('change', function() {});
+    editor.on('change', function() {
+      var item = find(app.items, function(item) {
+        return item.type === 'file' && item.session === editor.session;
+      });
+
+      var changeEvent = new global.CustomEvent('codebasket:change', {
+        detail: {
+          codeBasket: app,
+          item: item
+        }
+      });
+
+      global.dispatchEvent(changeEvent);
+    });
+
+    editor.on('changeSession', function(changeSession) {
+      var item = find(app.items, function(item) {
+        return item.type === 'file' && item.session === changeSession.session;
+      });
+
+      var changeSessionEvent = new global.CustomEvent('codebasket:changesession', {
+        detail: {
+          codeBasket: app,
+          item: item,
+          session: changeSession.session,
+          oldSession: changeSession.oldSession
+        }
+      });
+
+      global.dispatchEvent(changeSessionEvent);
+    });
+
+    this.editor = editor;
   },
   componentDidUpdate: function() {
     if (this.editor && this.props.isActive) {
@@ -252,7 +286,7 @@ CodeEditor = React.createClass({displayName: "CodeEditor",
 module.exports = CodeEditor;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"react":251}],6:[function(require,module,exports){
+},{"lodash/collection/find":18,"react":251}],6:[function(require,module,exports){
 'use strict';
 
 var React = require('react'),
@@ -336,11 +370,10 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
   componentDidMount: function() {
     // console.log(this.refs.editor.getDOMNode());
   },
-  onTabClick: function(item, index, event) {
+  onClickTab: function(item, index, event) {
     event.preventDefault();
 
     var codeBasket = this.props.app;
-
     codeBasket.selectItem(item);
 
     var tabSelectedEvent = new global.CustomEvent('codebasket:tabselected', {
@@ -352,6 +385,18 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     });
 
     global.dispatchEvent(tabSelectedEvent);
+  },
+  onDoubleClickTab: function(item, index, event) {
+    event.preventDefault();
+
+    var codeBasket = this.props.app,
+        newName = prompt('Enter the new name', item.name);
+
+    if (newName !== '') {
+      codeBasket.renameItem(item, newName);
+    }
+    // codeBasket.enableEditMode(item);
+    // this.refs.editText.focus();
   },
   toggleOptions: function() {
     this.setState({ isOptionsListVisible: !this.state.isOptionsListVisible });
@@ -366,8 +411,18 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
 
     this.setState({ libraries: codeBasket.libraries });
   },
+  onChangeEditText: function(item, event) {
+    item.name = event.target.value;
+  },
   renderTab: function(item, index) {
-    var closeButton;
+    var closeButton,
+        editText,
+        onClick = this.onClickTab.bind(null, item, index),
+        onDoubleClick = this.onDoubleClickTab.bind(null, item, index),
+        closeableTabClass = (item.isCloseable ? ' closeable' : ''),
+        activeTabClass = (item.isActive ? ' active' : ''),
+        editModeTabClass = (item.isEditing ? ' edit-mode' : ''),
+        tabClasses = 'console-tab' + closeableTabClass + activeTabClass + editModeTabClass;
 
     if (item.isCloseable) {
       closeButton = (
@@ -375,9 +430,16 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
       );
     }
 
+    if (item.type === 'file') {
+      editText = (
+        React.createElement("input", {ref: "editText", type: "text", className: "console-tab-text", value: item.name, onChange: this.onChangeEditText.bind(null, item)})
+      );
+    }
+
     return (
-      React.createElement("a", {href: "#", className: 'console-tab' + (item.isCloseable ? ' closeable' : '') + (item.isActive ? ' active' : ''), onClick: this.onTabClick.bind(null, item, index), key: index}, 
-        React.createElement("span", {className: "console-tab-text", title: item.title}, item.name), 
+      React.createElement("a", {href: "#", className: tabClasses, onClick: onClick, onDoubleClick: onDoubleClick, key: index}, 
+        editText, 
+        React.createElement("span", {className: "console-tab-text", title: item.title}, item.name.split('/').pop()), 
         closeButton
       )
     );
@@ -691,6 +753,26 @@ function selectItem(item) {
   this.render();
 }
 
+function renameItem(item, newName) {
+  item.title = item.name = newName;
+
+  this.render();
+}
+
+function enableEditMode(item) {
+  var otherItems = filter(this.items, function(itemInArray) { return itemInArray.isEditing; });
+  forEach(otherItems, function(itemInArray) { itemInArray.isEditing = false; });
+  item.isEditing = true;
+
+  this.render();
+}
+
+function disableEditMode(item) {
+  item.isEditing = false;
+
+  this.render();
+}
+
 function addSidebarItems(paths, types, rootPath) {
   var sidebarItems = this.sidebarItems;
 
@@ -718,6 +800,12 @@ function addSidebarItems(paths, types, rootPath) {
       sidebarItems[fileName] = fileInfo;
     }
   });
+
+  this.render();
+}
+
+function setStatus(status) {
+  this.status = status;
 
   this.render();
 }
@@ -762,8 +850,13 @@ module.exports = {
   findItem: findItem,
   findFile: findFile,
   selectItem: selectItem,
+  renameItem: renameItem,
+  enableEditMode: enableEditMode,
+  disableEditMode: disableEditMode,
   addSidebarItems: addSidebarItems,
-  render: render
+  render: render,
+  setStatus: setStatus,
+  toString: toString
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})

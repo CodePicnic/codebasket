@@ -96,9 +96,23 @@
     color: #111111;
     @include flex(1);
 
+    input.console-tab-text {
+      display: none;
+    }
+
     &.closeable {
       min-width: 110px;
       max-width: 110px;
+    }
+
+    &.edit-mode {
+      input.console-tab-text {
+        display: inline-block;
+      }
+
+      span.console-tab-text {
+        display: none;
+      }
     }
 
     &.active,

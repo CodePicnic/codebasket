@@ -210,9 +210,15 @@
   -moz-flex: 1;
   -ms-flex: 1;
   flex: 1; }
+  .console-container .console-tab input.console-tab-text {
+    display: none; }
   .console-container .console-tab.closeable {
     min-width: 110px;
     max-width: 110px; }
+  .console-container .console-tab.edit-mode input.console-tab-text {
+    display: inline-block; }
+  .console-container .console-tab.edit-mode span.console-tab-text {
+    display: none; }
   .console-container .console-tab.active, .console-container .console-tab:hover {
     background: #ffffff;
     color: #222524;
