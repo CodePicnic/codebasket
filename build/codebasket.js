@@ -374,7 +374,14 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     event.preventDefault();
 
     var codeBasket = this.props.app;
-    codeBasket.selectItem(item);
+    codeBasket.selectItem(item, index);
+
+    if (item.type === 'file' && item.session && codeBasket.editor) {
+      codeBasket.editor.focus();
+    }
+    else {
+      this.refs['tabpage-' + index].focus();
+    }
 
     var tabSelectedEvent = new global.CustomEvent('codebasket:tabselected', {
       detail: {
@@ -395,8 +402,6 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     if (newName !== '') {
       codeBasket.renameItem(item, newName);
     }
-    // codeBasket.enableEditMode(item);
-    // this.refs.editText.focus();
   },
   toggleOptions: function() {
     this.setState({ isOptionsListVisible: !this.state.isOptionsListVisible });
@@ -453,12 +458,12 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     }
     else if (item.type === 'terminal') {
       return (
-        React.createElement("iframe", {className: 'console-tabpage' + (item.isActive ? ' active' : ''), "data-identifier": item.id, title: "Press enter to submit commands", src: item.location + '?id=' + item.id + '&console_id=' + item.consoleId, key: index})
+        React.createElement("iframe", {ref: 'terminal-' + index, className: 'console-tabpage' + (item.isActive ? ' active' : ''), "data-identifier": item.id, title: "Press enter to submit commands", src: item.location + '?id=' + item.id + '&console_id=' + item.consoleId, key: index})
       );
     }
     else {
       return (
-        React.createElement("iframe", {className: 'console-tabpage' + (item.isActive ? ' active' : ''), src: item.location, key: index})
+        React.createElement("iframe", {ref: 'tabpage-' + index, className: 'console-tabpage' + (item.isActive ? ' active' : ''), src: item.location, key: index})
       );
     }
    },
@@ -739,7 +744,7 @@ function toggleLibrary(library) {
   }
 }
 
-function selectItem(item) {
+function selectItem(item, index) {
   var activeItem = find(this.items, function(item) { return item.isActive });
 
   activeItem.isActive = false;
@@ -747,7 +752,6 @@ function selectItem(item) {
 
   if (item.type === 'file' && item.session && this.editor) {
     this.editor.setSession(item.session);
-    this.editor.focus();
   }
 
   this.render();
