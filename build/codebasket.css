@@ -134,15 +134,14 @@
     color: #333333; }
   .console-container .console-options.visible {
     display: block; }
-  .console-container .console-options li {
+  .console-container .console-options > * {
     font-size: 14px;
-    line-height: 15px; }
-    .console-container .console-options li:hover {
+    line-height: 15px;
+    padding: 8px 15px;
+    display: block; }
+    .console-container .console-options > *:hover {
       background: #a29c9c;
       color: #ffffff; }
-    .console-container .console-options li a {
-      padding: 8px 15px;
-      display: block; }
 
 .console-container .console-tabs-left {
   min-width: 50%;

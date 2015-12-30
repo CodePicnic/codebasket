@@ -100,7 +100,7 @@ App = React.createClass({displayName: "App",
       brand = (React.createElement(Brand, {brand: codeBasket.brand}));
     }
 
-    if (!codeBasket.currentUser) {
+    if (!codeBasket.currentUser || (codeBasket.currentUser && codeBasket.currentUser.isTemporary)) {
       registerLink = (
         React.createElement("a", {href: "#", className: "md-trigger", "data-modal": "modal-9"}, "Register now to save your changes")
       );
@@ -475,11 +475,11 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
           );
         }),
         optionsList = codeBasket.options.map(function(optionItem, index) {
+          var optionIdentifier = optionItem.title.toLowerCase().replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '-');
+
           return (
-            React.createElement("li", {key: index}, 
-              React.createElement("a", {target: optionItem.target, href: optionItem.href}, 
-                React.createElement("i", {className: 'fa ' + optionItem.icon}), " ", optionItem.title
-              )
+            React.createElement("a", {key: index, className: 'console-option-' + optionIdentifier, target: optionItem.target, href: optionItem.href, onClick: optionItem.action}, 
+              React.createElement("i", {className: 'fa ' + optionItem.icon}), " ", optionItem.title
             )
           );
         });
@@ -519,7 +519,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
             ), 
             toolbarOptions, 
             React.createElement(ToolBarButton, {onClick: this.toggleOptions, title: "Options", className: 'with-caret fa-cog' + (this.state.isOptionsListVisible ? ' active' : '')}), 
-            React.createElement("ul", {className: 'console-options' + (this.state.isOptionsListVisible ? ' visible' : '')}, optionsList)
+            React.createElement("aside", {className: 'console-options' + (this.state.isOptionsListVisible ? ' visible' : '')}, optionsList)
           )
         ), 
         React.createElement("section", {className: "console-tabpages"}, 

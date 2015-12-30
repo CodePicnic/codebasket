@@ -45,18 +45,15 @@
       display: block;
     }
 
-    li {
+    > * {
       font-size: 14px;
       line-height: 15px;
+      padding: 8px 15px;
+      display: block;
 
       &:hover {
         background: #a29c9c;
         color: #ffffff;
-      }
-
-      a {
-        padding: 8px 15px;
-        display: block;
       }
     }
   }
