@@ -44,6 +44,10 @@ CodeBasket.create = function(options) {
   filesFromDOM = internalMethods.extractFilesFromDOM(newCodeBasket.element);
   librariesFromDOM = internalMethods.extractLibrariesFromDOM(newCodeBasket.element);
 
+  if (filesFromDOM.length > 0) {
+    filesFromDOM[0].isActive = true;
+  }
+
   mixin(newCodeBasket, instanceMethods);
   forEach(options.items, newCodeBasket.addItem, newCodeBasket);
   forEach(options.libraries, newCodeBasket.addLibrary, newCodeBasket);

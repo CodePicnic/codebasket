@@ -28,7 +28,20 @@
   margin: 0;
   padding-top: 10px;
   position: relative;
-  overflow: auto; }
+  overflow: auto;
+  -webkit-box-flex: 1 100%;
+  -webkit-flex: 1 100%;
+  -moz-box-flex: 1 100%;
+  -moz-flex: 1 100%;
+  -ms-flex: 1 100%;
+  flex: 1 100%; }
+  .console-container .console-sidebar.sidebar-empty:before {
+    content: "Create your files and folders or drop them here from your local machine";
+    position: absolute;
+    top: calc(50% - 40px);
+    text-align: center;
+    padding: 20px;
+    color: #ababab; }
   .console-container .console-sidebar * {
     position: relative; }
   .console-container .console-sidebar > *,
@@ -402,12 +415,15 @@
     display: none;
     width: 30%;
     max-width: 200px;
-    float: right; }
+    float: right;
+    margin-top: 0;
+    margin-right: 5px; }
     .console-container .console-footer .console-footer-progress.visible {
       display: block; }
 
 .console-container {
   width: 100%;
+  height: 100%;
   position: relative;
   min-height: 300px;
   font-family: 'PT Sans', Helvetica Neue, Arial, sans-serif;
@@ -418,10 +434,10 @@
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-flow: column wrap;
-  -moz-flex-flow: column wrap;
-  -ms-flex-flow: column wrap;
-  flex-flow: column wrap;
+  -webkit-flex-flow: column;
+  -moz-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
   box-sizing: border-box;
   background: #ffffff; }
   .console-container * {

@@ -5,12 +5,13 @@
 
 .console-container {
   width: 100%;
+  height: 100%;
   position: relative;
   min-height: 300px;
   font-family: 'PT Sans', Helvetica Neue, Arial, sans-serif;
   border: 1px solid #dadada;
   @include display-flex();
-  @include flex-flow(column wrap);
+  @include flex-flow(column);
   box-sizing: border-box;
   background: #ffffff;
 

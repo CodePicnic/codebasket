@@ -34,6 +34,16 @@
     padding-top: 10px;
     position: relative;
     overflow: auto;
+    @include flex(1 100%);
+
+    &.sidebar-empty:before {
+      content: "Create your files and folders or drop them here from your local machine";
+      position: absolute;
+      top: calc(50% - 40px);
+      text-align: center;
+      padding: 20px;
+      color: #ababab;
+    }
 
     * {
       position: relative;

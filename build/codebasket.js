@@ -46,6 +46,10 @@ CodeBasket.create = function(options) {
   filesFromDOM = internalMethods.extractFilesFromDOM(newCodeBasket.element);
   librariesFromDOM = internalMethods.extractLibrariesFromDOM(newCodeBasket.element);
 
+  if (filesFromDOM.length > 0) {
+    filesFromDOM[0].isActive = true;
+  }
+
   mixin(newCodeBasket, instanceMethods);
   forEach(options.items, newCodeBasket.addItem, newCodeBasket);
   forEach(options.libraries, newCodeBasket.addLibrary, newCodeBasket);
@@ -113,7 +117,7 @@ App = React.createClass({displayName: "App",
     return (
       React.createElement("main", {className: "console-container"}, 
         React.createElement("section", {className: "console-wrapper"}, 
-          React.createElement("aside", {className: 'console-sidebar-container' + (this.state.isSidebarVisible ? ' visible' : '')}, 
+          React.createElement("aside", {className: 'console-sidebar-container' + (this.state.isSidebarVisible ? ' visible' : '') + (this.state.isSidebarLoading ? ' loading' : '')}, 
             React.createElement("nav", {className: "console-sidebar-actions"}, 
               sidebarActions
             ), 
@@ -235,6 +239,8 @@ CodeEditor = React.createClass({displayName: "CodeEditor",
       var item = find(app.items, function(item) {
         return item.type === 'file' && item.session === editor.session;
       });
+
+      item.hasChanged = true;
 
       var changeEvent = new global.CustomEvent('codebasket:change', {
         detail: {
@@ -427,6 +433,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
         closeableTabClass = (item.isCloseable ? ' closeable' : ''),
         activeTabClass = (item.isActive ? ' active' : ''),
         editModeTabClass = (item.isEditing ? ' edit-mode' : ''),
+        changedTabClass = (item.hasChanged ? ' changed' : ''),
         tabClasses = 'console-tab' + closeableTabClass + activeTabClass + editModeTabClass;
 
     if (item.isCloseable) {
@@ -479,6 +486,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
             React.createElement(ToolBarButton, {onClick: toolbarOption.action, title: toolbarOption.title, className: toolbarOption.icon, key: index})
           );
         }),
+        optionsButton,
         optionsList = codeBasket.options.map(function(optionItem, index) {
           var optionIdentifier = optionItem.title.toLowerCase().replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '-');
 
@@ -509,6 +517,10 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
       );
     }, this);
 
+    if (optionsList.length > 0) {
+      optionsButton = React.createElement(ToolBarButton, {onClick: this.toggleOptions, title: "Options", className: 'with-caret fa-cog' + (this.state.isOptionsListVisible ? ' active' : '')});
+    }
+
     return (
       React.createElement("aside", {className: "console-tabs-container"}, 
         React.createElement("nav", {className: "console-tabs"}, 
@@ -523,7 +535,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
               "Live preview?"
             ), 
             toolbarOptions, 
-            React.createElement(ToolBarButton, {onClick: this.toggleOptions, title: "Options", className: 'with-caret fa-cog' + (this.state.isOptionsListVisible ? ' active' : '')}), 
+            optionsButton, 
             React.createElement("aside", {className: 'console-options' + (this.state.isOptionsListVisible ? ' visible' : '')}, optionsList)
           )
         ), 
@@ -687,6 +699,15 @@ function createFileSession(item) {
       session.setValue(item.content || '');
       session.setUseWrapMode(true);
 
+      var addSessionEvent = new global.CustomEvent('codebasket:addsession', {
+        detail: {
+          codeBasket: this,
+          item: item
+        }
+      });
+
+      window.dispatchEvent(addSessionEvent);
+
       return session;
     }
   }
@@ -814,6 +835,22 @@ function setStatus(status) {
   this.render();
 }
 
+function showProgress() {
+  this.view.setState({ isProgressBarVisible: true });
+}
+
+function hideProgress() {
+  this.view.setState({ isProgressBarVisible: false });
+}
+
+function showSidebarProgress() {
+  this.view.setState({ isSidebarLoading: true });
+};
+
+function hideSidebarProgress() {
+  this.view.setState({ isSidebarLoading: false });
+};
+
 function render() {
   if (this.element) {
     this.view = ReactDOM.render(React.createElement(App, { codeBasket: this }), this.element);
@@ -860,6 +897,10 @@ module.exports = {
   addSidebarItems: addSidebarItems,
   render: render,
   setStatus: setStatus,
+  showProgress: showProgress,
+  hideProgress: hideProgress,
+  showSidebarProgress: showSidebarProgress,
+  hideSidebarProgress: hideSidebarProgress,
   toString: toString
 };
 
@@ -907,9 +948,11 @@ function extractLibrariesFromDOM(element) {
       libraries = [];
 
   forEach(preElements, function(preElement, index) {
-    var elementLibraries = preElement.dataset['libs'].split(';');
+    if (preElement.dataset['libs']) {
+      var elementLibraries = preElement.dataset['libs'].split(';');
 
-    libraries = libraries.concat(elementLibraries);
+      libraries = libraries.concat(elementLibraries);
+    }
   });
 
   return libraries;
