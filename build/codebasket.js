@@ -797,6 +797,7 @@ function selectItem(item, index) {
 
   if (item.type === 'file' && item.session && this.editor) {
     this.editor.setSession(item.session);
+    this.editor.focus();
   }
 
   this.render();
@@ -962,7 +963,8 @@ function extractFilesFromDOM(element) {
       language: itemLanguage,
       name: itemName,
       title: itemName,
-      content: itemContent
+      content: itemContent,
+      isCloseable: true
     };
   });
 }
