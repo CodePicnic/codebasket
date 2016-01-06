@@ -46,10 +46,6 @@ CodeBasket.create = function(options) {
   filesFromDOM = internalMethods.extractFilesFromDOM(newCodeBasket.element);
   librariesFromDOM = internalMethods.extractLibrariesFromDOM(newCodeBasket.element);
 
-  if (filesFromDOM.length > 0) {
-    filesFromDOM[0].isActive = true;
-  }
-
   mixin(newCodeBasket, instanceMethods);
   forEach(options.items, newCodeBasket.addItem, newCodeBasket);
   forEach(options.libraries, newCodeBasket.addLibrary, newCodeBasket);
@@ -180,6 +176,7 @@ Browser = React.createClass({displayName: "Browser",
     // console.log(arguments);
   },
   componentDidMount: function() {
+    this.props.item.tabPage = this.props.item.tabPage || this;
     this.refs.browser.src = this.state.location;
   },
   componentDidUpdate: function() {
@@ -293,6 +290,7 @@ module.exports = CodeEditor;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"lodash/collection/find":18,"react":251}],6:[function(require,module,exports){
+(function (global){
 'use strict';
 
 var React = require('react'),
@@ -312,6 +310,17 @@ Sidebar = React.createClass({displayName: "Sidebar",
 
     this.setState(newState);
   },
+  onClickFile: function(fileName, fileInfo) {
+    var openFileEvent = new global.CustomEvent('codebasket:openfile', {
+      detail: {
+        codeBasket: codeBasket,
+        fileName: fileName,
+        fileInfo: fileInfo
+      }
+    });
+
+    global.dispatchEvent(openFileEvent);
+  },
   renderFolder: function(fileName, fileInfo) {
     var elementState = this.state[fileInfo.path],
         isCollapsed = (elementState && elementState.isCollapsed);
@@ -326,9 +335,9 @@ Sidebar = React.createClass({displayName: "Sidebar",
       )
     );
   },
-  renderFile: function(fileName) {
+  renderFile: function(fileName, fileInfo) {
     return (
-      React.createElement("dd", {className: "file", title: fileName, key: fileName}, 
+      React.createElement("dd", {className: "file", title: fileName, key: fileName, onClick: this.onClickFile.bind(null, fileName, fileInfo)}, 
         React.createElement("span", {className: "entry-text"}, fileName), 
         React.createElement("a", {href: "#", className: "remove-entry"}, React.createElement("i", {className: "fa fa-times"}))
       )
@@ -349,13 +358,14 @@ Sidebar = React.createClass({displayName: "Sidebar",
         items = map(sidebarItems, this.renderFileOrFolder, this);
 
     return (
-      React.createElement("dl", {className: 'console-sidebar sidebar-empty'}, items)
+      React.createElement("dl", {className: 'console-sidebar' + (sidebarItems.length === 0 ? ' sidebar-empty' : '')}, items)
     );
   }
 });
 
 module.exports = Sidebar;
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"lodash/collection/map":21,"react":251}],7:[function(require,module,exports){
 (function (global){
 'use strict';
@@ -374,7 +384,16 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     return { isOptionsListVisible: false, isModalVisible: false };
   },
   componentDidMount: function() {
-    // console.log(this.refs.editor.getDOMNode());
+    var codeBasket = this.props.app;
+    codeBasket.editor = this.refs.editor.editor;
+
+    var editorReadyEvent = new global.CustomEvent('codebasket:editorready', {
+      detail: {
+        codeBasket: codeBasket
+      }
+    });
+
+    global.dispatchEvent(editorReadyEvent);
   },
   onClickTab: function(item, index, event) {
     event.preventDefault();
@@ -382,8 +401,10 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     var codeBasket = this.props.app;
     codeBasket.selectItem(item, index);
 
-    if (item.type === 'file' && item.session && codeBasket.editor) {
-      codeBasket.editor.focus();
+    if (item.type === 'file') {
+      if (item.session && codeBasket.editor) {
+        codeBasket.editor.focus();
+      }
     }
     else {
       this.refs['tabpage-' + index].focus();
@@ -434,7 +455,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
         activeTabClass = (item.isActive ? ' active' : ''),
         editModeTabClass = (item.isEditing ? ' edit-mode' : ''),
         changedTabClass = (item.hasChanged ? ' changed' : ''),
-        tabClasses = 'console-tab' + closeableTabClass + activeTabClass + editModeTabClass;
+        tabClasses = 'console-tab' + closeableTabClass + activeTabClass + editModeTabClass + changedTabClass;
 
     if (item.isCloseable) {
       closeButton = (
@@ -768,7 +789,10 @@ function toggleLibrary(library) {
 function selectItem(item, index) {
   var activeItem = find(this.items, function(item) { return item.isActive });
 
-  activeItem.isActive = false;
+  if (activeItem) {
+    activeItem.isActive = false;
+  }
+
   item.isActive = true;
 
   if (item.type === 'file' && item.session && this.editor) {
@@ -870,14 +894,14 @@ function toString() {
 
       element.textContent = item.session.getValue();
 
-      return element.outerHTML;
+      return element;
     });
 
     if (preElements.length > 0) {
       preElements[0].dataset['libs'] = this.libraries.join(';');
     }
 
-    return preElements.join('\n');
+    return preElements.map(function(element) { return element.outerHTML }).join('\n');
   }
 }
 

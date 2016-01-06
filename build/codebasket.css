@@ -475,6 +475,8 @@
         font-weight: bold; }
       .console-container .console-modal-overlay .console-libraries-list .console-libraries-list-value {
         margin-left: 15px; }
+      .console-container .console-modal-overlay .console-libraries-list input[type="checkbox"] {
+        margin-right: 5px; }
   .console-container .console-container-button {
     display: inline-block;
     height: 33px;
