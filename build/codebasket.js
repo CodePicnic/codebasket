@@ -36,11 +36,7 @@ CodeBasket.create = function(options) {
     sidebarActions: sidebarActions,
     options: optionsList,
     toolbarOptions: toolbarOptions,
-    uiOptions: uiOptions,
-    users: [{
-      color: '#336699',
-      name: 'Gustavo Leon'
-    }]
+    uiOptions: uiOptions
   };
 
   filesFromDOM = internalMethods.extractFilesFromDOM(newCodeBasket.element);
@@ -454,6 +450,11 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
 
     this.setState({ libraries: codeBasket.libraries });
   },
+  closeTab: function(item) {
+    item.isVisible = false;
+
+    this.render();
+  },
   onChangeEditText: function(item, event) {
     item.name = event.target.value;
   },
@@ -470,7 +471,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
 
     if (item.isCloseable) {
       closeButton = (
-        React.createElement("small", {className: "console-tab-close", title: "Close"}, React.createElement("i", {className: "fa fa-times"}))
+        React.createElement("small", {className: "console-tab-close", title: "Close", onClick: this.closeTab.bind(null, item)}, React.createElement("i", {className: "fa fa-times"}))
       );
     }
 
@@ -700,11 +701,12 @@ var find = require('lodash/collection/find'),
     pull = require('lodash/array/pull'),
     remove = require('lodash/array/remove'),
     includes = require('lodash/collection/includes'),
-    ace = global.ace,
-    React = require('react'),
+    constants = require('./constants'),
+    ace = global.ace;
+
+var React = require('react'),
     ReactDOM = require('react-dom'),
-    App = require('./components/app'),
-    constants = require('./constants');
+    App = require('./components/app');
 
 function createFileSession(item) {
   if (item.type === 'file') {

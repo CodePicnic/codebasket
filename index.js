@@ -34,11 +34,7 @@ CodeBasket.create = function(options) {
     sidebarActions: sidebarActions,
     options: optionsList,
     toolbarOptions: toolbarOptions,
-    uiOptions: uiOptions,
-    users: [{
-      color: '#336699',
-      name: 'Gustavo Leon'
-    }]
+    uiOptions: uiOptions
   };
 
   filesFromDOM = internalMethods.extractFilesFromDOM(newCodeBasket.element);
