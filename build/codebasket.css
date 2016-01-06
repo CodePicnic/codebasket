@@ -90,13 +90,18 @@
     top: 0;
     bottom: 0;
     z-index: 0; }
+  .console-container .console-sidebar dd:hover .entry-text,
+  .console-container .console-sidebar dt:hover .entry-text,
+  .console-container .console-sidebar .active .entry-text {
+    z-index: 2; }
   .console-container .console-sidebar .entry-text {
     display: inline-block;
     width: calc(100% - 35px);
     text-overflow: ellipsis;
     overflow: hidden;
     vertical-align: middle;
-    color: #4e4e4e; }
+    color: #4e4e4e;
+    cursor: pointer; }
   .console-container .console-sidebar .remove-entry {
     display: none;
     position: absolute;
@@ -105,7 +110,8 @@
     top: 0px;
     height: 100%;
     color: #c0392b;
-    z-index: 101; }
+    z-index: 101;
+    cursor: pointer; }
   .console-container .console-sidebar dt:hover .remove-entry,
   .console-container .console-sidebar dd:hover .remove-entry {
     display: inline-block; }

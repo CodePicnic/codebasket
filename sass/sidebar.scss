@@ -117,6 +117,14 @@
       z-index: 0;
     }
 
+    dd:hover,
+    dt:hover,
+    .active {
+      .entry-text {
+        z-index: 2;
+      }
+    }
+
     .entry-text {
       display: inline-block;
       width: calc(100% - 35px);
@@ -124,6 +132,7 @@
       overflow: hidden;
       vertical-align: middle;
       color: rgb(78, 78, 78);
+      cursor: pointer;
     }
 
     .remove-entry {
@@ -135,6 +144,7 @@
       height: 100%;
       color: #c0392b;
       z-index: 101;
+      cursor: pointer;
     }
 
     dt:hover .remove-entry,
