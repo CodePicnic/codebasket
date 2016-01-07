@@ -193,6 +193,7 @@
         width: 100%;
         height: 100%;
         border: none;
+        box-shadow: none;
         @include flex(1 100%);
         @include flex-grow(1);
       }
