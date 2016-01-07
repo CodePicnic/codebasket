@@ -379,6 +379,7 @@ module.exports = Sidebar;
 
 var React = require('react'),
     map = require('lodash/collection/map'),
+    filter = require('lodash/collection/filter'),
     find = require('lodash/collection/find'),
     ToolBarButton = require('./toolbar_button'),
     CodeEditor = require('./code_editor'),
@@ -437,6 +438,19 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
       codeBasket.renameItem(item, newName);
     }
   },
+  closeTab: function(item, index) {
+    var codeBasket = this.props.app,
+        visibleItems = filter(this.props.items, function(item) { return item.isVisible; });
+
+    item.isVisible = false;
+
+    if (visibleItems.length > 0 && visibleItems[index - 1]) {
+      codeBasket.selectItem(visibleItems[index - 1]);
+    }
+    else {
+      this.render();
+    }
+  },
   toggleOptions: function() {
     this.setState({ isOptionsListVisible: !this.state.isOptionsListVisible });
   },
@@ -449,11 +463,6 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     codeBasket.toggleLibrary(library);
 
     this.setState({ libraries: codeBasket.libraries });
-  },
-  closeTab: function(item) {
-    item.isVisible = false;
-
-    this.render();
   },
   onChangeEditText: function(item, event) {
     item.name = event.target.value;
@@ -471,7 +480,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
 
     if (item.isCloseable) {
       closeButton = (
-        React.createElement("small", {className: "console-tab-close", title: "Close", onClick: this.closeTab.bind(null, item)}, React.createElement("i", {className: "fa fa-times"}))
+        React.createElement("small", {className: "console-tab-close", title: "Close", onClick: this.closeTab.bind(null, item, index)}, React.createElement("i", {className: "fa fa-times"}))
       );
     }
 
@@ -508,7 +517,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     }
    },
   render: function() {
-    var visibleItems = this.props.items.filter(function(item) { return item.isVisible; }),
+    var visibleItems = filter(this.props.items, function(item) { return item.isVisible; }),
         activeItem = find(this.props.items, function(item) { return item.isActive; }),
         isActiveItemAFile = activeItem && (activeItem.type === 'file');
 
@@ -589,7 +598,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
 module.exports = TabsContainer;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../libraries":13,"./browser":4,"./code_editor":5,"./toolbar_button":8,"lodash/collection/find":18,"lodash/collection/map":21,"react":250}],8:[function(require,module,exports){
+},{"../libraries":13,"./browser":4,"./code_editor":5,"./toolbar_button":8,"lodash/collection/filter":17,"lodash/collection/find":18,"lodash/collection/map":21,"react":250}],8:[function(require,module,exports){
 'use strict';
 
 var React = require('react'),
@@ -770,16 +779,23 @@ function addFile(newFile) {
   this.addItem(newFile);
 }
 
+function addFileAndOpen(newFile) {
+  newFile.isVisible = true;
+
+  this.addFile(newFile);
+}
+
 function addLibrary(newLibrary) {
   this.libraries.push(newLibrary);
-}
 
-function findItem(name) {
-  return find(this.items, function(item) { return item.name === name; });
-}
+  var addLibraryEvent = new global.CustomEvent('codebasket:addlibrary', {
+    detail: {
+      codeBasket: this,
+      library: newLibrary
+    }
+  });
 
-function findFile(name) {
-  return find(this.items, function(item) { return item.type === 'file' && item.name === name; });
+  global.dispatchEvent(addLibraryEvent);
 }
 
 function hasLibrary(library) {
@@ -788,6 +804,15 @@ function hasLibrary(library) {
 
 function removeLibrary(library) {
   pull(this.libraries, library);
+
+  var removeLibraryEvent = new global.CustomEvent('codebasket:removelibrary', {
+    detail: {
+      codeBasket: this,
+      library: library
+    }
+  });
+
+  global.dispatchEvent(removeLibraryEvent);
 }
 
 function toggleLibrary(library) {
@@ -797,6 +822,14 @@ function toggleLibrary(library) {
   else {
     this.addLibrary(library);
   }
+}
+
+function findItem(name) {
+  return find(this.items, function(item) { return item.name === name; });
+}
+
+function findFile(name) {
+  return find(this.items, function(item) { return item.type === 'file' && item.name === name; });
 }
 
 function selectItem(item, index) {
@@ -956,6 +989,7 @@ function toString() {
 module.exports = {
   addItem: addItem,
   addFile: addFile,
+  addFileAndOpen: addFileAndOpen,
   addLibrary: addLibrary,
   removeLibrary: removeLibrary,
   hasLibrary: hasLibrary,
