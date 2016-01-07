@@ -158,18 +158,20 @@ var React = require('react'),
 
 Browser = React.createClass({displayName: "Browser",
   getInitialState: function() {
-    return { location: this.props.item.location }
+    return { locationText: this.props.item.location, location: this.props.item.location, loaded: false };
   },
   onKeyUpLocation: function(event) {
     if (event.keyCode === 13) {
-      this.setState({ location: event.target.value });
+      if (this.refs.browser.src !== this.state.locationText) {
+        this.setState({ location: this.state.locationText, loaded: false });
+      }
     }
   },
   onChangeLocation: function(event) {
-    this.setState({ location: event.target.value });
+    this.setState({ locationText: event.target.value });
   },
   onLoadBrowser: function() {
-    // console.log(arguments);
+    this.setState({ loaded: true })
   },
   componentDidMount: function() {
     this.props.item.tabPage = this.props.item.tabPage || this;
@@ -182,20 +184,23 @@ Browser = React.createClass({displayName: "Browser",
   },
   reloadBrowser: function() {
     this.refs.browser.src = this.state.location;
+    this.setState({ loaded: false });
   },
   render: function() {
     var item = this.props.item,
-        location = this.state.location;
+        locationText = this.state.locationText,
+        location = this.state.location,
+        loadedClass = this.state.loaded ? '' : ' loading';
 
     return (
       React.createElement("div", {className: 'console-tabpage console-browser' + (item.isActive ? ' active' : '')}, 
         React.createElement("div", {className: "console-browser-location-bar-container"}, 
-          React.createElement("input", {ref: "location", className: "console-browser-location-bar", onChange: this.onChangeLocation, onKeyUp: this.onKeyUpLocation, type: "url", value: location}), 
+          React.createElement("input", {ref: "location", className: "console-browser-location-bar", onChange: this.onChangeLocation, onKeyUp: this.onKeyUpLocation, type: "url", value: locationText}), 
           React.createElement("nav", {className: "console-browser-buttons"}, 
             React.createElement(ToolBarButton, {onClick: this.reloadBrowser, title: "Reload", className: "fa-repeat"})
           )
         ), 
-        React.createElement("iframe", {ref: "browser", className: "console-browser", onLoad: this.onLoadBrowser}), 
+        React.createElement("iframe", {ref: "browser", className: 'console-browser' + loadedClass, onLoad: this.onLoadBrowser}), 
         React.createElement(ToolBarButton, {onClick: this.clearLog, title: "Clear", className: "fa-ban"}), 
         React.createElement("ul", {className: "console-container-log hidden"})
       )
@@ -333,9 +338,9 @@ Sidebar = React.createClass({displayName: "Sidebar",
         isCollapsed = (elementState && elementState.isCollapsed);
 
     return (
-      React.createElement("dl", {className: isCollapsed ? 'collapsed' : '', key: fileName}, 
-        React.createElement("dt", {className: "directory", title: fileName, onClick: this.toggleFolder.bind(null, fileInfo.path)}, 
-          React.createElement("span", {className: "entry-text"}, fileName), 
+      React.createElement("dl", {className: isCollapsed ? 'collapsed' : '', key: fileInfo.name}, 
+        React.createElement("dt", {className: "directory", title: fileInfo.path, onClick: this.toggleFolder.bind(null, fileInfo.path)}, 
+          React.createElement("span", {className: "entry-text"}, fileInfo.name), 
           React.createElement("a", {href: "#", className: "remove-entry"}, React.createElement("i", {className: "fa fa-times"}))
         ), 
         map(fileInfo.files, this.renderFileOrFolder, this)
@@ -344,8 +349,8 @@ Sidebar = React.createClass({displayName: "Sidebar",
   },
   renderFile: function(fileName, fileInfo) {
     return (
-      React.createElement("dd", {className: "file", title: fileName, key: fileName}, 
-        React.createElement("span", {className: "entry-text", onClick: this.onClickFile.bind(null, fileName, fileInfo)}, fileName), 
+      React.createElement("dd", {className: "file", title: fileInfo.path, key: fileName}, 
+        React.createElement("span", {className: "entry-text", onClick: this.onClickFile.bind(null, fileName, fileInfo)}, fileInfo.name), 
         React.createElement("span", {className: "remove-entry", onClick: this.removeFile.bind(null, fileName, fileInfo)}, React.createElement("i", {className: "fa fa-times"}))
       )
     );
@@ -850,6 +855,19 @@ function selectItem(item, index) {
 }
 
 function renameItem(item, newName) {
+  var directory = item.name.split('/'),
+      newDirectory = newName.split('/'),
+      fileName = directory.pop(),
+      newFileName = newDirectory.pop(),
+      sidebarItems = this.findInSidebar(directory.join('/')),
+      sidebarItem = sidebarItems[item.name];
+
+  sidebarItem.name = newFileName;
+  sidebarItem.path = newName;
+
+  sidebarItems[newFileName] = sidebarItem;
+  delete sidebarItems[item.name];
+
   item.title = item.name = newName;
 
   this.render();
