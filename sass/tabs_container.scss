@@ -163,6 +163,7 @@
     @include display-flex();
     @include flex(1 100%);
     @include flex-direction(column);
+    height: 100%;
   }
 
   .console-tabpage {
@@ -202,6 +203,25 @@
         width: 100%;
         height: 33px;
         border: none;
+      }
+
+      .console-browser-logs {
+        width: 100%;
+        height: 100%;
+        max-height: 100px;
+        border: none;
+        @include flex(1 auto);
+        @include flex-grow(1);
+        overflow: auto;
+
+        > li {
+          list-style: none;
+          margin: 0;
+          padding: 2px 5px;
+          font-size: 12px;
+          font-family: 'Menlo', 'Monaco';
+          border-bottom: solid 1px #999999;
+        }
       }
     }
 

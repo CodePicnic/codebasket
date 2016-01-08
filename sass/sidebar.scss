@@ -10,6 +10,7 @@
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+    transition: all 0.7s ease;
 
     &.visible {
       min-width: 200px;

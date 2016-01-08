@@ -158,7 +158,12 @@ var React = require('react'),
 
 Browser = React.createClass({displayName: "Browser",
   getInitialState: function() {
-    return { locationText: this.props.item.location, location: this.props.item.location, loaded: false };
+    return {
+      locationText: this.props.item.location,
+      location: this.props.item.location,
+      loaded: false,
+      logs: []
+    };
   },
   onKeyUpLocation: function(event) {
     if (event.keyCode === 13) {
@@ -171,7 +176,7 @@ Browser = React.createClass({displayName: "Browser",
     this.setState({ locationText: event.target.value });
   },
   onLoadBrowser: function() {
-    this.setState({ loaded: true })
+    this.setState({ loaded: true });
   },
   componentDidMount: function() {
     this.props.item.tabPage = this.props.item.tabPage || this;
@@ -186,11 +191,19 @@ Browser = React.createClass({displayName: "Browser",
     this.refs.browser.src = this.state.location;
     this.setState({ loaded: false });
   },
+  renderLog: function(log, index) {
+    return React.createElement("li", {key: index}, log);
+  },
+  clearLog: function() {
+    this.state.logs.length = 0;
+    this.setState({ logs: this.state.logs });
+  },
   render: function() {
     var item = this.props.item,
         locationText = this.state.locationText,
         location = this.state.location,
-        loadedClass = this.state.loaded ? '' : ' loading';
+        loadedClass = this.state.loaded ? '' : ' loading',
+        hiddenClass = (this.state.logs.length === 0) ? ' hidden' : '';
 
     return (
       React.createElement("div", {className: 'console-tabpage console-browser' + (item.isActive ? ' active' : '')}, 
@@ -202,7 +215,7 @@ Browser = React.createClass({displayName: "Browser",
         ), 
         React.createElement("iframe", {ref: "browser", className: 'console-browser' + loadedClass, onLoad: this.onLoadBrowser}), 
         React.createElement(ToolBarButton, {onClick: this.clearLog, title: "Clear", className: "fa-ban"}), 
-        React.createElement("ul", {className: "console-container-log hidden"})
+        React.createElement("ul", {className: 'console-browser-logs' + hiddenClass}, this.state.logs.map(this.renderLog))
       )
     );
   }
@@ -225,7 +238,8 @@ CodeEditor = React.createClass({displayName: "CodeEditor",
   },
   componentDidMount: function() {
     var UndoManager = ace.UndoManager,
-        app = this.props.app;
+        app = this.props.app,
+        self = this;
 
     var editor = ace.edit(this.refs.editor);
     editor.setTheme('ace/theme/tomorrow');
