@@ -385,6 +385,132 @@
   .console-container .console-tabpage.console-editor {
     position: relative; }
 
+.console-browser-logs > * {
+  padding: 10px 20px;
+  border-bottom: solid 1px #dadada; }
+
+.console-browser-logs > :nth-child(even) {
+  background: #fafafa; }
+
+.console-browser-logs .message {
+  list-style: none;
+  margin: 0;
+  font-size: 14px; }
+  .console-browser-logs .message pre, .console-browser-logs .message code {
+    font-size: inherit; }
+  .console-browser-logs .message .hidden {
+    width: calc(100% - 165px);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; }
+  .console-browser-logs .message .message {
+    margin: 0; }
+  .console-browser-logs .message .message.message-object {
+    margin-top: 20px; }
+
+.console-browser-logs .message.message-array .message-key,
+.console-browser-logs .message.message-object .message-key {
+  font-family: 'Menlo', 'Monaco';
+  font-size: inherit; }
+
+.console-browser-logs .message.message-array .message-value,
+.console-browser-logs .message.message-object .message-value {
+  width: calc(100% - 165px); }
+  .console-browser-logs .message.message-array .message-value.message-string,
+  .console-browser-logs .message.message-object .message-value.message-string {
+    width: auto; }
+
+.console-browser-logs .message.message-array :last-child,
+.console-browser-logs .message.message-object :last-child {
+  margin: 0; }
+
+.console-browser-logs .message.message-array:before {
+  content: "[";
+  font-family: 'Menlo', 'Monaco';
+  font-size: inherit; }
+
+.console-browser-logs .message.message-array:after {
+  content: "]";
+  font-family: 'Menlo', 'Monaco';
+  font-size: inherit; }
+
+.console-browser-logs .message.message-array > li {
+  display: inline-block; }
+  .console-browser-logs .message.message-array > li:after {
+    content: ",";
+    font-family: 'Menlo', 'Monaco';
+    font-size: inherit;
+    margin-right: 10px; }
+  .console-browser-logs .message.message-array > li:last-child:after {
+    content: "";
+    margin: 0; }
+  .console-browser-logs .message.message-array > li > .message-object {
+    padding: 0; }
+
+.console-browser-logs .message-object-item pre {
+  padding: 0;
+  background: none; }
+
+.console-browser-logs .message-object-item.message-object-item-collapsed > .message-key:before {
+  color: #424242;
+  content: "\f0da";
+  font: normal normal normal 14px/1 FontAwesome;
+  vertical-align: baseline;
+  margin-right: 5px; }
+
+.console-browser-logs .message-object-item.message-object-item-collapsed > .message-value {
+  display: none; }
+
+.console-browser-logs .message-object-item.message-object-item-extended > .message-key:before {
+  color: #424242;
+  content: "\f0d7";
+  font: normal normal normal 14px/1 FontAwesome;
+  vertical-align: baseline;
+  margin-right: 5px; }
+
+.console-browser-logs .message-object-item.message-object-item-extended > .message-value {
+  display: inline-block; }
+
+.console-browser-logs .message-object-item > .message-array {
+  padding: 0; }
+
+.console-browser-logs .message.message-object.message-object-hidden {
+  display: none; }
+
+.console-browser-logs .message.message-array li,
+.console-browser-logs .message.message-object li {
+  margin-bottom: 5px; }
+
+.console-browser-logs .message.message-array li > *,
+.console-browser-logs .message.message-object li > * {
+  display: inline-block;
+  vertical-align: top; }
+
+.console-browser-logs .message.message-array li > strong,
+.console-browser-logs .message.message-object li > strong {
+  min-width: 100px;
+  margin-right: 10px; }
+
+.console-browser-logs .message.message-error {
+  font-family: Monaco, Menlo, Consolas, monospace;
+  color: #c62828;
+  white-space: pre-wrap;
+  background: rgba(239, 83, 80, 0.25); }
+  .console-browser-logs .message.message-error .message-value {
+    margin-left: 20px; }
+
+.console-browser-logs .message.message-string,
+.console-browser-logs .message.message-regexp {
+  color: #c41a16; }
+
+.console-browser-logs .message.message-number,
+.console-browser-logs .message.message-boolean {
+  color: #1c00cf; }
+
+.console-browser-logs .message.message-null,
+.console-browser-logs .message.message-undefined {
+  color: #808080; }
+
 .console-container .console-footer {
   background: #ffffff;
   border-top: solid 1px #dadada;
