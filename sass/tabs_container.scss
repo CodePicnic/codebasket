@@ -60,12 +60,24 @@
 
   .console-tabs-left {
     min-width: 50%;
-    @include flex-grow(0);
-    @include display-flex();
-    @include flex-flow(row);
-    overflow: auto;
-    border-right: solid 1px #dadada;
-    @include scrolling-shadows($background-color: #f7f7f7);
+
+    .viewport,
+    .overview {
+      min-width: 100%;
+      @include flex-grow(0);
+      @include display-flex();
+      @include flex-flow(row);
+      overflow: auto;
+      border-right: solid 1px #dadada;
+      @include scrolling-shadows($background-color: #f7f7f7);
+    }
+
+    // .scrollable-tabs {
+    //   height: auto;
+    //   max-height: 33px;
+    //   width: 100%;
+    // 	overflow: auto;
+    // }
   }
 
   .console-tabs-right {
