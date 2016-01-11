@@ -117,62 +117,125 @@
   .console-container .console-sidebar dd:hover .remove-entry {
     display: inline-block; }
 
-.console-container .console-tabs {
-  font-size: 11px;
-  background: #f7f7f7;
-  border-bottom: solid 1px #dadada;
-  overflow: visible !important;
-  text-align: left;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex; }
-  .console-container .console-tabs .console-container-button:hover,
-  .console-container .console-tabs .console-container-button.active {
-    color: #000000;
-    background: #ffffff; }
-
-.console-container .console-options {
-  display: none;
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  list-style: none;
-  font-size: 14px;
-  position: absolute;
-  z-index: 616;
-  right: 0;
-  top: 34px;
-  background: #fff;
-  text-align: left;
-  border-left: 1px solid #dadada;
-  border-bottom: 1px solid #dadada; }
-  .console-container .console-options a {
-    text-decoration: none;
-    color: #333333; }
-  .console-container .console-options.visible {
-    display: block; }
-  .console-container .console-options > * {
+.console-container {
+  /* Tiny Scrollbar */ }
+  .console-container .console-tabs {
+    font-size: 11px;
+    background: #f7f7f7;
+    border-bottom: solid 1px #dadada;
+    overflow: visible !important;
+    text-align: left;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex; }
+    .console-container .console-tabs .console-container-button:hover,
+    .console-container .console-tabs .console-container-button.active {
+      color: #000000;
+      background: #ffffff; }
+  .console-container .console-options {
+    display: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    list-style: none;
     font-size: 14px;
-    line-height: 15px;
-    padding: 8px 15px;
-    display: block; }
-    .console-container .console-options > *:hover {
-      background: #a29c9c;
-      color: #ffffff; }
-
-.console-container .console-tabs-left {
-  min-width: 50%; }
-  .console-container .console-tabs-left .viewport,
+    position: absolute;
+    z-index: 616;
+    right: 0;
+    top: 34px;
+    background: #fff;
+    text-align: left;
+    border-left: 1px solid #dadada;
+    border-bottom: 1px solid #dadada; }
+    .console-container .console-options a {
+      text-decoration: none;
+      color: #333333; }
+    .console-container .console-options.visible {
+      display: block; }
+    .console-container .console-options > * {
+      font-size: 14px;
+      line-height: 15px;
+      padding: 8px 15px;
+      display: block; }
+      .console-container .console-options > *:hover {
+        background: #a29c9c;
+        color: #ffffff; }
+  .console-container .console-tabs-left {
+    min-width: 50%; }
+    .console-container .console-tabs-left .viewport,
+    .console-container .console-tabs-left .overview {
+      min-width: 100%;
+      -webkit-flex-grow: 0;
+      -moz-flex-grow: 0;
+      -ms-flex-grow: 0;
+      flex-grow: 0;
+      -ms-flex-positive: 0;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-flow: row;
+      -moz-flex-flow: row;
+      -ms-flex-flow: row;
+      flex-flow: row;
+      overflow: auto;
+      border-right: solid 1px #dadada;
+      background: -webkit-linear-gradient(0deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)), -webkit-linear-gradient(180deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)) 100% 0, -webkit-linear-gradient(0deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)), -webkit-linear-gradient(180deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)) 100% 0;
+      background: linear-gradient(90deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)), linear-gradient(270deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)) 100% 0, linear-gradient(90deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)), linear-gradient(270deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)) 100% 0;
+      background-repeat: no-repeat;
+      background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+      background-attachment: local, local, scroll, scroll; }
+  .console-container .console-tabs-left .viewport {
+    height: 33px;
+    overflow: hidden;
+    position: relative; }
   .console-container .console-tabs-left .overview {
-    min-width: 100%;
-    -webkit-flex-grow: 0;
-    -moz-flex-grow: 0;
-    -ms-flex-grow: 0;
-    flex-grow: 0;
-    -ms-flex-positive: 0;
+    list-style: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0;
+    margin: 0; }
+  .console-container .console-tabs-left .scrollbar {
+    background: transparent;
+    position: relative;
+    background-position: 0 0;
+    float: right;
+    width: 0;
+    height: 2px;
+    position: absolute;
+    z-index: 101; }
+  .console-container .console-tabs-left .track {
+    background: #dadada;
+    height: 100%;
+    width: 0;
+    position: relative;
+    padding: 0 1px; }
+  .console-container .console-tabs-left .thumb {
+    background: #000000;
+    height: 4px;
+    width: 0;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: -5px;
+    border-radius: 4px; }
+  .console-container .console-tabs-left .thumb .end {
+    display: none; }
+  .console-container .console-tabs-left .disable {
+    display: none; }
+  .console-container .console-tabs-right {
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    -ms-flex-grow: 1;
+    flex-grow: 1;
+    -ms-flex-positive: 1;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -183,134 +246,74 @@
     -moz-flex-flow: row;
     -ms-flex-flow: row;
     flex-flow: row;
-    overflow: auto;
+    margin-left: 20px;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    -webkit-justify-content: flex-end;
+    -moz-justify-content: flex-end;
+    justify-content: flex-end; }
+    .console-container .console-tabs-right > * {
+      border-left: solid 1px #dadada; }
+  .console-container .console-tab {
+    display: inline-block;
+    min-width: 90px;
+    max-width: 90px;
+    line-height: 32px;
+    padding: 0px 15px;
     border-right: solid 1px #dadada;
-    background: -webkit-linear-gradient(0deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)), -webkit-linear-gradient(180deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)) 100% 0, -webkit-linear-gradient(0deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)), -webkit-linear-gradient(180deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)) 100% 0;
-    background: linear-gradient(90deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)), linear-gradient(270deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)) 100% 0, linear-gradient(90deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)), linear-gradient(270deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)) 100% 0;
-    background-repeat: no-repeat;
-    background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
-    background-attachment: local, local, scroll, scroll; }
-
-.console-container .console-tabs-right {
-  -webkit-flex-grow: 1;
-  -moz-flex-grow: 1;
-  -ms-flex-grow: 1;
-  flex-grow: 1;
-  -ms-flex-positive: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: row;
-  -moz-flex-flow: row;
-  -ms-flex-flow: row;
-  flex-flow: row;
-  margin-left: 20px;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  -webkit-justify-content: flex-end;
-  -moz-justify-content: flex-end;
-  justify-content: flex-end; }
-  .console-container .console-tabs-right > * {
-    border-left: solid 1px #dadada; }
-
-.console-container .console-tab {
-  display: inline-block;
-  min-width: 90px;
-  max-width: 90px;
-  line-height: 32px;
-  padding: 0px 15px;
-  border-right: solid 1px #dadada;
-  outline: none;
-  text-decoration: none;
-  color: #111111;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -moz-box-flex: 1;
-  -moz-flex: 1;
-  -ms-flex: 1;
-  flex: 1; }
-  .console-container .console-tab input.console-tab-text {
-    display: none; }
-  .console-container .console-tab.closeable {
-    min-width: 110px;
-    max-width: 110px; }
-  .console-container .console-tab.edit-mode input.console-tab-text {
-    display: inline-block; }
-  .console-container .console-tab.edit-mode span.console-tab-text {
-    display: none; }
-  .console-container .console-tab.active, .console-container .console-tab:hover {
-    background: #ffffff;
-    color: #222524;
-    position: relative; }
-    .console-container .console-tab.active:after, .console-container .console-tab:hover:after {
-      content: "";
-      width: 100%;
-      height: 2px;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      background: rgba(39, 112, 174, 0.81);
-      z-index: 101; }
-  .console-container .console-tab .console-tab-text {
-    display: inline-block;
-    width: 60px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    vertical-align: middle;
-    text-align: center;
-    white-space: nowrap; }
-  .console-container .console-tab .console-tab-close {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    line-height: 17px;
-    text-align: center;
-    vertical-align: baseline;
-    color: #d3d3d3;
-    margin: 0;
-    opacity: 1;
-    border-radius: 16px; }
-  .console-container .console-tab:hover .console-tab-close {
-    color: #111111; }
-
-.console-container .console-tabpages {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1 100%;
-  -webkit-flex: 1 100%;
-  -moz-box-flex: 1 100%;
-  -moz-flex: 1 100%;
-  -ms-flex: 1 100%;
-  flex: 1 100%;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: vertical;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 100%; }
-
-.console-container .console-tabpage {
-  display: none;
-  width: 100%;
-  height: 100%;
-  border: none;
-  -webkit-box-flex: 1 100%;
-  -webkit-flex: 1 100%;
-  -moz-box-flex: 1 100%;
-  -moz-flex: 1 100%;
-  -ms-flex: 1 100%;
-  flex: 1 100%; }
-  .console-container .console-tabpage.active {
-    display: block; }
-  .console-container .console-tabpage.active.console-browser {
+    outline: none;
+    text-decoration: none;
+    color: #111111;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1; }
+    .console-container .console-tab input.console-tab-text {
+      display: none; }
+    .console-container .console-tab.closeable {
+      min-width: 110px;
+      max-width: 110px; }
+    .console-container .console-tab.edit-mode input.console-tab-text {
+      display: inline-block; }
+    .console-container .console-tab.edit-mode span.console-tab-text {
+      display: none; }
+    .console-container .console-tab.active, .console-container .console-tab:hover {
+      background: #ffffff;
+      color: #222524;
+      position: relative; }
+      .console-container .console-tab.active:after, .console-container .console-tab:hover:after {
+        content: "";
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: rgba(39, 112, 174, 0.81);
+        z-index: 101; }
+    .console-container .console-tab .console-tab-text {
+      display: inline-block;
+      width: 60px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      vertical-align: middle;
+      text-align: center;
+      white-space: nowrap; }
+    .console-container .console-tab .console-tab-close {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      line-height: 17px;
+      text-align: center;
+      vertical-align: baseline;
+      color: #d3d3d3;
+      margin: 0;
+      opacity: 1;
+      border-radius: 16px; }
+    .console-container .console-tab:hover .console-tab-close {
+      color: #111111; }
+  .console-container .console-tabpages {
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -328,65 +331,98 @@
     -webkit-flex-direction: column;
     -moz-flex-direction: column;
     -ms-flex-direction: column;
-    flex-direction: column; }
-  .console-container .console-tabpage.console-browser .console-browser-location-bar-container {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-flow: row;
-    -moz-flex-flow: row;
-    -ms-flex-flow: row;
-    flex-flow: row;
-    max-height: 33px; }
-  .console-container .console-tabpage.console-browser iframe {
+    flex-direction: column;
+    height: 100%; }
+  .console-container .console-tabpage {
+    display: none;
     width: 100%;
     height: 100%;
     border: none;
-    box-shadow: none;
     -webkit-box-flex: 1 100%;
     -webkit-flex: 1 100%;
     -moz-box-flex: 1 100%;
     -moz-flex: 1 100%;
     -ms-flex: 1 100%;
-    flex: 1 100%;
-    -webkit-flex-grow: 1;
-    -moz-flex-grow: 1;
-    -ms-flex-grow: 1;
-    flex-grow: 1;
-    -ms-flex-positive: 1; }
-  .console-container .console-tabpage.console-browser .console-browser-location-bar {
-    width: 100%;
-    height: 33px;
-    border: none; }
-  .console-container .console-tabpage.console-browser .console-browser-logs {
-    width: 100%;
-    height: 100%;
-    max-height: 100px;
-    border: none;
-    -webkit-box-flex: 1 auto;
-    -webkit-flex: 1 auto;
-    -moz-box-flex: 1 auto;
-    -moz-flex: 1 auto;
-    -ms-flex: 1 auto;
-    flex: 1 auto;
-    -webkit-flex-grow: 1;
-    -moz-flex-grow: 1;
-    -ms-flex-grow: 1;
-    flex-grow: 1;
-    -ms-flex-positive: 1;
-    overflow: auto; }
-    .console-container .console-tabpage.console-browser .console-browser-logs > li {
-      list-style: none;
-      margin: 0;
-      padding: 2px 5px;
-      font-size: 12px;
-      font-family: 'Menlo', 'Monaco';
-      border-bottom: solid 1px #999999; }
-  .console-container .console-tabpage.console-editor {
-    position: relative; }
+    flex: 1 100%; }
+    .console-container .console-tabpage.active {
+      display: block; }
+    .console-container .console-tabpage.active.console-browser {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-flex: 1 100%;
+      -webkit-flex: 1 100%;
+      -moz-box-flex: 1 100%;
+      -moz-flex: 1 100%;
+      -ms-flex: 1 100%;
+      flex: 1 100%;
+      -webkit-box-direction: normal;
+      -webkit-box-orient: vertical;
+      -webkit-flex-direction: column;
+      -moz-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+    .console-container .console-tabpage.console-browser .console-browser-location-bar-container {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-flow: row;
+      -moz-flex-flow: row;
+      -ms-flex-flow: row;
+      flex-flow: row;
+      max-height: 33px; }
+    .console-container .console-tabpage.console-browser iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      box-shadow: none;
+      -webkit-box-flex: 1 100%;
+      -webkit-flex: 1 100%;
+      -moz-box-flex: 1 100%;
+      -moz-flex: 1 100%;
+      -ms-flex: 1 100%;
+      flex: 1 100%;
+      -webkit-flex-grow: 1;
+      -moz-flex-grow: 1;
+      -ms-flex-grow: 1;
+      flex-grow: 1;
+      -ms-flex-positive: 1; }
+    .console-container .console-tabpage.console-browser .console-browser-location-bar {
+      width: 100%;
+      height: 33px;
+      border: none; }
+    .console-container .console-tabpage.console-browser .console-browser-logs {
+      width: 100%;
+      height: 100%;
+      max-height: 100px;
+      border: none;
+      -webkit-box-flex: 1 auto;
+      -webkit-flex: 1 auto;
+      -moz-box-flex: 1 auto;
+      -moz-flex: 1 auto;
+      -ms-flex: 1 auto;
+      flex: 1 auto;
+      -webkit-flex-grow: 1;
+      -moz-flex-grow: 1;
+      -ms-flex-grow: 1;
+      flex-grow: 1;
+      -ms-flex-positive: 1;
+      overflow: auto; }
+      .console-container .console-tabpage.console-browser .console-browser-logs > li {
+        list-style: none;
+        margin: 0;
+        padding: 2px 5px;
+        font-size: 12px;
+        font-family: 'Menlo', 'Monaco';
+        border-bottom: solid 1px #999999; }
+    .console-container .console-tabpage.console-editor {
+      position: relative; }
 
 .console-browser-logs > * {
   padding: 10px 20px;
