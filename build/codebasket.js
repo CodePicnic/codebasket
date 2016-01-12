@@ -90,7 +90,7 @@ App = React.createClass({displayName: "App",
         brand,
         hasUsersList = (codeBasket.users !== undefined),
         registerLink,
-        connectedUsersList;
+        usersList;
 
     if (codeBasket.brand) {
       brand = (React.createElement(Brand, {brand: codeBasket.brand}));
@@ -103,7 +103,7 @@ App = React.createClass({displayName: "App",
     }
 
     if (hasUsersList) {
-      connectedUsersList = React.createElement(UsersList, {currentUser: codeBasket.currentUser, users: codeBasket.users});
+      usersList = React.createElement(UsersList, {currentUser: codeBasket.currentUser, users: codeBasket.users});
     }
 
     return (
@@ -120,7 +120,7 @@ App = React.createClass({displayName: "App",
         React.createElement("footer", {className: "console-footer"}, 
           brand, 
           React.createElement("span", {className: "console-footer-permanent-status"}, registerLink), 
-          connectedUsersList, 
+          usersList, 
           React.createElement("span", {className: "console-footer-status"}, codeBasket.status), 
           React.createElement("progress", {className: 'console-footer-progress' + (this.state.isProgressBarVisible ? ' visible' : ''), max: "100"})
         )
@@ -652,10 +652,22 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     event.preventDefault();
 
     var codeBasket = this.props.app,
+        oldName = item.name,
         newName = prompt('Enter the new name', item.name);
 
     if (newName && newName !== '') {
       codeBasket.renameItem(item, newName);
+
+      var renameItemEvent = new global.CustomEvent('codebasket:renameitem', {
+        detail: {
+          codeBasket: codeBasket,
+          item: item,
+          oldName: oldName,
+          newName: newName
+        }
+      });
+
+      global.dispatchEvent(renameItemEvent);
     }
   },
   closeTab: function(item, index) {
@@ -670,6 +682,15 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     else {
       this.render();
     }
+
+    var closeItemEvent = new global.CustomEvent('codebasket:closeitem', {
+      detail: {
+        codeBasket: codeBasket,
+        item: item
+      }
+    });
+
+    global.dispatchEvent(closeItemEvent);
   },
   toggleOptions: function() {
     this.setState({ isOptionsListVisible: !this.state.isOptionsListVisible });
@@ -981,7 +1002,8 @@ function createFileSession(item) {
       var addSessionEvent = new global.CustomEvent('codebasket:addsession', {
         detail: {
           codeBasket: this,
-          item: item
+          item: item,
+          session: session
         }
       });
 
@@ -1006,13 +1028,15 @@ function addItem(newItem) {
   }
 
   this.items.push(newItem);
+
+  return newItem;
 }
 
 function addFile(newFile) {
   newFile.type = 'file';
   newFile.session = createFileSession(newFile);
 
-  this.addItem(newFile);
+  return this.addItem(newFile);
 }
 
 function addFileAndOpen(newFile) {
@@ -1083,6 +1107,16 @@ function selectItem(item) {
   }
 
   this.render();
+
+  var changeSessionEvent = new global.CustomEvent('codebasket:changesession', {
+    detail: {
+      codeBasket: this,
+      oldSession: activeItem.session,
+      newSession: item.session
+    }
+  });
+
+  global.dispatchEvent(changeSessionEvent);
 }
 
 function renameItem(item, newName) {
