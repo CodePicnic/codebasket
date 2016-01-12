@@ -460,16 +460,21 @@ var React = require('react'),
 
 Sidebar = React.createClass({displayName: "Sidebar",
   getInitialState: function() {
+    return { currentPath: '' };
+  },
+  getDefaultProps: function() {
     return {};
   },
   toggleFolder: function(path) {
-    var elementState = this.state[path] || { isCollapsed: false },
-        newState = {};
+    var elementProperties = this.props[path] || { isCollapsed: false },
+        newState = { currentPath: path },
+        newProps = {};
 
-    elementState.isCollapsed = !elementState.isCollapsed;
-    newState[path] = elementState;
+    elementProperties.isCollapsed = !elementProperties.isCollapsed;
+    newProps[path] = elementProperties;
 
     this.setState(newState);
+    this.setProps(newProps);
   },
   onClickFile: function(fileName, fileInfo) {
     var openFileEvent = new global.CustomEvent('codebasket:openfile', {
@@ -493,8 +498,50 @@ Sidebar = React.createClass({displayName: "Sidebar",
 
     global.dispatchEvent(removeFileEvent);
   },
+  onDragOver: function(event) {
+    if (event.preventDefault) {
+      event.preventDefault();
+    }
+
+    event.dataTransfer.dropEffect = 'copy';
+
+    this.setState({ dragState: 'dragover' });
+  },
+  onDragEnter: function(event) {
+    if (event.preventDefault) {
+      event.preventDefault();
+    }
+
+    this.setState({ dragState: 'dragover' });
+  },
+  onDragLeave: function(event) {
+    if (event.preventDefault) {
+      event.preventDefault();
+    }
+
+    this.setState({ dragState: null });
+  },
+  onDrop: function(event) {
+    if (event.preventDefault) {
+      event.preventDefault();
+    }
+
+    this.setState({ dragState: null });
+    var codeBasket = this.props.app;
+
+    codeBasket.readFiles(event.dataTransfer.files, this.state.currentPath, function(files) {
+      var removeFileEvent = new global.CustomEvent('codebasket:dropfiles', {
+        detail: {
+          codeBasket: codeBasket,
+          files: files
+        }
+      });
+
+      global.dispatchEvent(removeFileEvent);
+    });
+  },
   renderFolder: function(fileName, fileInfo) {
-    var elementState = this.state[fileInfo.path],
+    var elementState = this.props[fileInfo.path],
         isCollapsed = (elementState && elementState.isCollapsed);
 
     return (
@@ -527,10 +574,12 @@ Sidebar = React.createClass({displayName: "Sidebar",
   },
   render: function() {
     var sidebarItems = this.props.app.sidebarItems,
+        emptyClass = (sidebarItems.length === 0 ? ' sidebar-empty' : ''),
+        dragClass = (this.state.dragState === 'dragover' ? ' on-dragover' : ''),
         items = map(sidebarItems, this.renderFileOrFolder, this);
 
     return (
-      React.createElement("dl", {className: 'console-sidebar' + (sidebarItems.length === 0 ? ' sidebar-empty' : '')}, items)
+      React.createElement("dl", {className: 'console-sidebar' + emptyClass + dragClass, onDragOver: this.onDragOver, onDragEnter: this.onDragEnter, onDragLeave: this.onDragLeave, onDrop: this.onDrop}, items)
     );
   }
 });
@@ -761,7 +810,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
         React.createElement("nav", {className: "console-tabs"}, 
           React.createElement(ToolBarButton, {onClick: this.props.parentView.toggleSidebar, title: "Toggle sidebar", className: 'with-border ' + (isSidebarVisible ? 'fa-caret-left' : 'fa-caret-right')}), 
           tabsList, 
-          React.createElement(ToolBarButton, {onClick: this.toggleModal, id: "add-tab", title: "Add tab", className: "fa-plus"}), 
+          React.createElement(ToolBarButton, {onClick: this.toggleModal, id: "add-tab", title: "Add tab", className: 'fa-plus' + (this.state.isModalVisible ? ' active' : '')}), 
           React.createElement("article", {className: "console-tabs-right"}, 
             toolbarOptions, 
             optionsButton, 
@@ -1134,6 +1183,39 @@ function removeItemFromSidebar(path) {
   delete sidebarItems[fileName];
 }
 
+function readFiles(files, path, callback) {
+  var filesToUpload = {};
+
+  forEach(files, function(file, index) {
+    var reader = new FileReader();
+
+    reader.addEventListener('load', function(loadEvent) {
+      var fileName = file.name,
+          fullName;
+
+      if (path) {
+        fullName = path + '/' + fileName;
+      }
+      else {
+        fullName = fileName;
+      }
+
+      filesToUpload[fullName] = loadEvent.target.result;
+
+      if (index === files.length - 1) {
+        callback(filesToUpload);
+      }
+    });
+
+    if (file.type.indexOf('text') > -1) {
+      reader.readAsText(file, 'UTF-8');
+    }
+    else {
+      reader.readAsBinaryString(file, 'UTF-8');
+    }
+  });
+}
+
 function setStatus(status) {
   this.status = status;
 
@@ -1204,6 +1286,7 @@ module.exports = {
   addSidebarItems: addSidebarItems,
   findInSidebar: findInSidebar,
   removeItemFromSidebar: removeItemFromSidebar,
+  readFiles: readFiles,
   render: render,
   setStatus: setStatus,
   showProgress: showProgress,
@@ -1406,6 +1489,8 @@ var libraries = {
 module.exports = libraries;
 
 },{}],18:[function(require,module,exports){
+/*eslint-disable */
+
 ;(function(window, undefined) {
     "use strict";
 

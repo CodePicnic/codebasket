@@ -9,7 +9,7 @@
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  transition: all 0.7s ease; }
+  transition: all .7s ease; }
   .console-container .console-sidebar-container.visible {
     min-width: 200px;
     max-width: 200px;
@@ -35,7 +35,11 @@
   -moz-box-flex: 1 100%;
   -moz-flex: 1 100%;
   -ms-flex: 1 100%;
-  flex: 1 100%; }
+  flex: 1 100%;
+  transition: all .7s ease; }
+  .console-container .console-sidebar.on-dragover {
+    cursor: copy;
+    background: #c0cad7; }
   .console-container .console-sidebar.sidebar-empty:before {
     content: "Create your files and folders or drop them here from your local machine";
     position: absolute;
@@ -405,7 +409,8 @@
       -moz-flex-flow: row;
       -ms-flex-flow: row;
       flex-flow: row;
-      max-height: 33px; }
+      max-height: 33px;
+      border-bottom: solid 1px #dadada; }
     .console-container .console-tabpage.console-browser iframe {
       width: 100%;
       height: 100%;

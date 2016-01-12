@@ -269,6 +269,7 @@
         @include display-flex();
         @include flex-flow(row);
         max-height: 33px;
+        border-bottom: solid 1px #dadada;
       }
 
       iframe {

@@ -10,7 +10,7 @@
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-    transition: all 0.7s ease;
+    transition: all .7s ease;
 
     &.visible {
       min-width: 200px;
@@ -36,6 +36,12 @@
     position: relative;
     overflow: auto;
     @include flex(1 100%);
+    transition: all .7s ease;
+
+    &.on-dragover {
+      cursor: copy;
+      background: #c0cad7;
+    }
 
     &.sidebar-empty:before {
       content: "Create your files and folders or drop them here from your local machine";
@@ -109,7 +115,7 @@
     dt:hover::after,
     .active::after {
       content: "";
-      background-color: rgba(160, 230, 213, 0.25);
+      background-color: rgba(160, 230, 213, .25);
       position: absolute;
       left: -100px;
       right: 0;
