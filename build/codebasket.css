@@ -190,6 +190,33 @@
       background-repeat: no-repeat;
       background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
       background-attachment: local, local, scroll, scroll; }
+    .console-container .console-tabs-left.scrollable {
+      -webkit-flex-grow: 0;
+      -moz-flex-grow: 0;
+      -ms-flex-grow: 0;
+      flex-grow: 0;
+      -ms-flex-positive: 0;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-flow: row;
+      -moz-flex-flow: row;
+      -ms-flex-flow: row;
+      flex-flow: row;
+      overflow: auto;
+      border-right: solid 1px #dadada;
+      background: -webkit-linear-gradient(0deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)), -webkit-linear-gradient(180deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)) 100% 0, -webkit-linear-gradient(0deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)), -webkit-linear-gradient(180deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)) 100% 0;
+      background: linear-gradient(90deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)), linear-gradient(270deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)) 100% 0, linear-gradient(90deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)), linear-gradient(270deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)) 100% 0;
+      background-repeat: no-repeat;
+      background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+      background-attachment: local, local, scroll, scroll; }
+  .console-container .console-tabs-left {
+    position: relative; }
+    .console-container .console-tabs-left:hover .scrollbar {
+      opacity: 1; }
   .console-container .console-tabs-left .viewport {
     height: 33px;
     overflow: hidden;
@@ -203,13 +230,15 @@
     margin: 0; }
   .console-container .console-tabs-left .scrollbar {
     background: transparent;
-    position: relative;
+    position: absolute;
     background-position: 0 0;
     float: right;
     width: 0;
     height: 2px;
-    position: absolute;
-    z-index: 101; }
+    z-index: 101;
+    bottom: 0;
+    opacity: 0;
+    transition: all .5s; }
   .console-container .console-tabs-left .track {
     background: #dadada;
     height: 100%;
@@ -217,7 +246,7 @@
     position: relative;
     padding: 0 1px; }
   .console-container .console-tabs-left .thumb {
-    background: #000000;
+    background: #424242;
     height: 4px;
     width: 0;
     cursor: pointer;

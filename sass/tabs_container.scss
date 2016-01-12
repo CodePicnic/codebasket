@@ -71,14 +71,34 @@
       border-right: solid 1px #dadada;
       @include scrolling-shadows($background-color: #f7f7f7);
     }
+
+    &.scrollable {
+      @include flex-grow(0);
+      @include display-flex();
+      @include flex-flow(row);
+      overflow: auto;
+      border-right: solid 1px #dadada;
+      @include scrolling-shadows($background-color: #f7f7f7);
+    }
   }
 
   /* Tiny Scrollbar */
+  .console-tabs-left {
+    position: relative;
+
+    &:hover {
+      .scrollbar {
+        opacity: 1;
+      }
+    }
+  }
+
   .console-tabs-left .viewport {
     height: 33px;
     overflow: hidden;
     position: relative;
   }
+
   .console-tabs-left .overview {
     list-style: none;
     position: absolute;
@@ -87,16 +107,20 @@
     padding: 0;
     margin: 0;
   }
-  .console-tabs-left .scrollbar{
+
+  .console-tabs-left .scrollbar {
     background: transparent;
-    position: relative;
+    position: absolute;
     background-position: 0 0;
     float: right;
     width: 0;
     height: 2px;
-    position: absolute;
     z-index: 101;
+    bottom: 0;
+    opacity: 0;
+    transition: all .5s;
   }
+
   .console-tabs-left .track {
     background: #dadada;
     height: 100%;
@@ -104,8 +128,9 @@
     position: relative;
     padding: 0 1px;
   }
+
   .console-tabs-left .thumb {
-    background: #000000;
+    background: #424242;
     height: 4px;
     width: 0;
     cursor: pointer;
@@ -115,9 +140,11 @@
     left: -5px;
     border-radius: 4px;
   }
+
   .console-tabs-left .thumb .end {
     display: none;
   }
+
   .console-tabs-left .disable {
     display: none;
   }
