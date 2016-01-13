@@ -184,7 +184,7 @@ Browser = React.createClass({displayName: "Browser",
     this.refs.browser.src = this.state.location;
   },
   componentDidUpdate: function() {
-    if (this.refs.browser.src !== this.state.location) {
+    if (this.refs.browser.src.replace(/\/$/, '') !== this.state.location.replace(/\/$/, '')) {
       this.refs.browser.src = this.state.location;
     }
   },
@@ -636,7 +636,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
       }
     }
     else {
-      this.refs['tabpage-' + index].focus();
+      this.refs['tabpage-' + item.id].contentWindow.focus();
     }
 
     var tabSelectedEvent = new global.CustomEvent('codebasket:tabselected', {
@@ -749,12 +749,12 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     }
     else if (item.type === 'terminal') {
       return (
-        React.createElement("iframe", {ref: 'terminal-' + index, className: 'console-tabpage' + (item.isActive ? ' active' : ''), "data-identifier": item.id, title: "Press enter to submit commands", src: item.location + '?id=' + item.id + '&console_id=' + item.consoleId, key: index})
+        React.createElement("iframe", {ref: 'tabpage-' + item.id, className: 'console-tabpage' + (item.isActive ? ' active' : ''), "data-identifier": item.id, title: "Press enter to submit commands", src: item.location + '?id=' + item.id + '&console_id=' + item.consoleId, key: index})
       );
     }
     else {
       return (
-        React.createElement("iframe", {ref: 'tabpage-' + index, className: 'console-tabpage' + (item.isActive ? ' active' : ''), src: item.location, key: index})
+        React.createElement("iframe", {ref: 'tabpage-' + item.id, className: 'console-tabpage' + (item.isActive ? ' active' : ''), src: item.location, key: index})
       );
     }
    },
@@ -1125,7 +1125,8 @@ function selectItem(item) {
 }
 
 function renameItem(item, newName) {
-  var directory = item.name.split('/'),
+  var oldName = item.name,
+      directory = oldName.split('/'),
       newDirectory = newName.split('/'),
       fileName = directory.pop(),
       newFileName = newDirectory.pop(),
@@ -1141,6 +1142,16 @@ function renameItem(item, newName) {
   item.title = item.name = newName;
 
   this.render();
+
+  var renameItemEvent = new global.CustomEvent('codebasket:renameitem', {
+    detail: {
+      codeBasket: this,
+      oldName: oldName,
+      newName: newName
+    }
+  });
+
+  global.dispatchEvent(renameItemEvent);
 }
 
 function removeItem(item) {
