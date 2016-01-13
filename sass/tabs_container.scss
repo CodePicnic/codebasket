@@ -245,6 +245,19 @@
     @include flex(1 100%);
     @include flex-direction(column);
     height: 100%;
+    position: relative;
+
+    &.empty:before {
+      content: "Create or open a file from the sidebar";
+      position: absolute;
+      top: calc(50% - 40px);
+      left: 0;
+      right: 0;
+      text-align: center;
+      padding: 20px;
+      color: #ababab;
+      text-align: center;
+    }
   }
 
   .console-tabpage {
@@ -262,49 +275,6 @@
       @include display-flex();
       @include flex(1 100%);
       @include flex-direction(column);
-    }
-
-    &.console-browser {
-      .console-browser-location-bar-container {
-        @include display-flex();
-        @include flex-flow(row);
-        max-height: 33px;
-        border-bottom: solid 1px #dadada;
-      }
-
-      iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        box-shadow: none;
-        @include flex(1 100%);
-        @include flex-grow(1);
-      }
-
-      .console-browser-location-bar {
-        width: 100%;
-        height: 33px;
-        border: none;
-      }
-
-      .console-browser-logs {
-        width: 100%;
-        height: 100%;
-        max-height: 100px;
-        border: none;
-        @include flex(1 auto);
-        @include flex-grow(1);
-        overflow: auto;
-
-        > li {
-          list-style: none;
-          margin: 0;
-          padding: 2px 5px;
-          font-size: 12px;
-          font-family: 'Menlo', 'Monaco';
-          border-bottom: solid 1px #999999;
-        }
-      }
     }
 
     &.console-editor {
