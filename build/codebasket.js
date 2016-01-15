@@ -1163,7 +1163,6 @@ function selectItem(item) {
 
   if (activeItem !== item) {
     item.isActive = true;
-    item.isVisible = true;
 
     if (item.type === 'file' && item.session && this.editor) {
       this.editor.setSession(item.session);
