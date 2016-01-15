@@ -36,7 +36,7 @@
   -moz-flex: 1 100%;
   -ms-flex: 1 100%;
   flex: 1 100%;
-  transition: all .7s ease; }
+  transition: background-color .7s ease; }
   .console-container .console-sidebar.on-dragover {
     cursor: copy;
     background: #c0cad7; }
@@ -88,7 +88,7 @@
   .console-container .console-sidebar dt:hover::after,
   .console-container .console-sidebar .active::after {
     content: "";
-    background-color: rgba(160, 230, 213, 0.25);
+    background-color: rgba(220, 223, 225, 0.5);
     position: absolute;
     left: -100px;
     right: 0;
@@ -156,7 +156,8 @@
     border-bottom: 1px solid #dadada; }
     .console-container .console-options a {
       text-decoration: none;
-      color: #333333; }
+      color: #333333;
+      cursor: pointer; }
     .console-container .console-options.visible {
       display: block; }
     .console-container .console-options > * {
@@ -734,6 +735,8 @@
     font-size: 13px;
     position: relative;
     cursor: pointer; }
+    .console-container .console-container-button.hidden {
+      display: none; }
     .console-container .console-container-button.with-border {
       border-right: 1px solid #dadada; }
     .console-container .console-container-button.with-plus:after {

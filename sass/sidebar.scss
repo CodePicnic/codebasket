@@ -36,7 +36,7 @@
     position: relative;
     overflow: auto;
     @include flex(1 100%);
-    transition: all .7s ease;
+    transition: background-color .7s ease;
 
     &.on-dragover {
       cursor: copy;
@@ -115,7 +115,7 @@
     dt:hover::after,
     .active::after {
       content: "";
-      background-color: rgba(160, 230, 213, .25);
+      background-color: rgba(220, 223, 225, .5);
       position: absolute;
       left: -100px;
       right: 0;

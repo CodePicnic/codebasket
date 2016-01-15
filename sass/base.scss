@@ -84,6 +84,10 @@
     position: relative;
     cursor: pointer;
 
+    &.hidden {
+      display: none;
+    }
+
     &.with-border {
       border-right: 1px solid #dadada;
     }

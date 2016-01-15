@@ -13,10 +13,11 @@ CodeBasket.create = function(options) {
       toolbarOptions = options.toolbarOptions || [],
       uiOptionsList = options.ui || {},
       sidebarActions = options.sidebarActions || [],
-      uiOptions = merge({}, uiOptionsList, {
+      uiOptions = merge({}, {
         isSidebarVisible: true,
-        isProgressBarVisible: false
-      }),
+        isProgressBarVisible: false,
+        isAddTabVisible: true
+      }, uiOptionsList),
       filesFromDOM,
       librariesFromDOM,
       newCodeBasket;
