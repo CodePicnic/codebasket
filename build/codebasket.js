@@ -624,12 +624,29 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
   getInitialState: function() {
     return { isOptionsListVisible: false, isModalVisible: false };
   },
+  scrollToActiveItem: function() {
+    var codeBasket = this.props.app,
+        visibleItems = filter(codeBasket.items, function(item) { return item.isVisible; }),
+        activeItem = find(visibleItems, function(item) { return item.isActive; }),
+        activeItemIndex = visibleItems.indexOf(activeItem),
+        container = this.refs['tabs-container'],
+        viewportWidth = container.querySelector('.viewport').clientWidth,
+        overviewWidth = container.querySelector('.overview').clientWidth,
+        activeItemWidth = container.querySelector('.console-tab.active').offsetWidth,
+        activeItemOffsetLeft = container.querySelector('.console-tab.active').offsetLeft,
+        scroll = (overviewWidth > viewportWidth) ? (activeItemWidth - (viewportWidth - activeItemOffsetLeft)) : (0);
+
+        scroll = (scroll < 0 ? 0 : scroll);
+
+    if (useScrollbarPlugin) {
+      // console.log(tinyscrollbar(container, { axis: 'x' }), scroll);
+      tinyscrollbar(container, { axis: 'x' }).update(scroll);
+    }
+  },
   componentDidMount: function() {
     var codeBasket = this.props.app;
 
-    if (useScrollbarPlugin) {
-      tinyscrollbar(this.refs['tabs-container'], { axis: 'x' });
-    }
+    this.scrollToActiveItem();
 
     codeBasket.editor = this.refs.editor.editor;
     this.props.parentView.tabsContainer = this;
@@ -644,8 +661,8 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
   },
   componentDidUpdate: function() {
     if (useScrollbarPlugin) {
-      tinyscrollbar(this.refs['tabs-container'], { axis: 'x' });
-      setTimeout(tinyscrollbar, 710, this.refs['tabs-container'], { axis: 'x' });
+      this.scrollToActiveItem();
+      setTimeout(this.scrollToActiveItem, 710);
     }
   },
   onClickTab: function(item, index, event) {
@@ -680,6 +697,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
   },
   onDoubleClickTab: function(item, index, event) {
     event.preventDefault();
+    event.stopPropagation();
 
     var codeBasket = this.props.app,
         oldName = item.name,
@@ -765,9 +783,9 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     }
 
     return (
-      React.createElement("a", {href: "#", className: tabClasses, onClick: onClick, onDoubleClick: onDoubleClick, key: index}, 
+      React.createElement("a", {href: "#", className: tabClasses, onDoubleClick: (item.type === 'file') ? onDoubleClick : null, key: index}, 
         editText, 
-        React.createElement("span", {className: "console-tab-text", title: item.title}, item.name.split('/').pop()), 
+        React.createElement("span", {className: "console-tab-text", title: item.title, onClick: onClick}, item.name.split('/').pop()), 
         closeButton
       )
     );
