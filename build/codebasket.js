@@ -617,7 +617,7 @@ var React = require('react'),
     Browser = require('./browser'),
     Terminal = require('./terminal'),
     Libraries = require('../libraries'),
-    usePlugin = true,// !global.navigator.userAgent.match(/macintosh/ig),
+    useScrollbarPlugin = true,// !global.navigator.userAgent.match(/macintosh/ig),
     TabsContainer;
 
 TabsContainer = React.createClass({displayName: "TabsContainer",
@@ -627,7 +627,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
   componentDidMount: function() {
     var codeBasket = this.props.app;
 
-    if (usePlugin) {
+    if (useScrollbarPlugin) {
       tinyscrollbar(this.refs['tabs-container'], { axis: 'x' });
     }
 
@@ -643,8 +643,9 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     global.dispatchEvent(editorReadyEvent);
   },
   componentDidUpdate: function() {
-    if (usePlugin) {
+    if (useScrollbarPlugin) {
       tinyscrollbar(this.refs['tabs-container'], { axis: 'x' });
+      setTimeout(tinyscrollbar, 710, this.refs['tabs-container'], { axis: 'x' });
     }
   },
   onClickTab: function(item, index, event) {
@@ -838,7 +839,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
       optionsButton = React.createElement(ToolBarButton, {onClick: this.toggleOptions, title: "Options", className: 'with-caret fa-cog' + (this.state.isOptionsListVisible ? ' active' : '')});
     }
 
-    if (usePlugin) {
+    if (useScrollbarPlugin) {
       tabsList = (
         React.createElement("article", {ref: "tabs-container", className: "console-tabs-left"}, 
           React.createElement("div", {className: "scrollbar"}, React.createElement("div", {className: "track"}, React.createElement("div", {className: "thumb"}, React.createElement("div", {className: "end"})))), 
