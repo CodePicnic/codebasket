@@ -693,7 +693,10 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
       global.dispatchEvent(renameItemEvent);
     }
   },
-  closeTab: function(item, index) {
+  closeTab: function(item, index, event) {
+    event.preventDefault();
+    event.stopPropagation();
+
     var codeBasket = this.props.app,
         visibleItems = filter(this.props.items, function(item) { return item.isVisible; });
 
@@ -777,13 +780,16 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     }
    },
   render: function() {
-    var visibleItems = filter(this.props.items, function(item) { return item.isVisible; }),
+    var codeBasket = this.props.app,
         activeItem = find(this.props.items, function(item) { return item.isActive; }),
-        isActiveItemAFile = activeItem && (activeItem.type === 'file');
+        isActiveItemAFile = activeItem && (activeItem.type === 'file'),
+        isSidebarVisible = this.props.parentView.state.isSidebarVisible,
+        visibleItems = filter(this.props.items, function(item) { return item.isVisible; }),
+        visibleOptions = filter(codeBasket.options, function(item) {
+          return item.isVisible !== false;
+        });
 
-    var codeBasket = this.props.app;
-    var isSidebarVisible = this.props.parentView.state.isSidebarVisible,
-        toolbarOptions = codeBasket.toolbarOptions.map(function(toolbarOption, index) {
+    var toolbarOptions = codeBasket.toolbarOptions.map(function(toolbarOption, index) {
           return (
             React.createElement(ToolBarButton, {onClick: toolbarOption.action, title: toolbarOption.title, className: toolbarOption.icon, key: index})
           );
@@ -792,7 +798,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
         tabsList,
         addTab,
         librariesCollection,
-        optionsList = codeBasket.options.map(function(option, index) {
+        optionsList = visibleOptions.map(function(option, index) {
           var optionIdentifier = option.id || option.title.toLowerCase().replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '-');
 
           return (
@@ -894,7 +900,9 @@ Terminal = React.createClass({displayName: "Terminal",
     return { loaded: false };
   },
   onLoadTerminal: function() {
-    this.setState({ loaded: true });
+    if (this.refs.frame.src !== 'about:blank') {
+      this.setState({ loaded: true });
+    }
   },
   componentDidMount: function() {
     this.props.item.tabPage = this.props.item.tabPage || this;
@@ -1155,13 +1163,13 @@ function findFile(name) {
 }
 
 function selectItem(item) {
-  var activeItem = find(this.items, function(item) { return item.isActive });
-
-  if (activeItem) {
-    activeItem.isActive = false;
-  }
+  var activeItem = find(this.items, function(itemInCollection) { return itemInCollection.isActive });
 
   if (activeItem !== item) {
+    if (activeItem) {
+      activeItem.isActive = false;
+    }
+
     item.isActive = true;
 
     if (item.type === 'file' && item.session && this.editor) {
