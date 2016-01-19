@@ -617,6 +617,7 @@ var React = require('react'),
     Browser = require('./browser'),
     Terminal = require('./terminal'),
     Libraries = require('../libraries'),
+    usePlugin = true,// !global.navigator.userAgent.match(/macintosh/ig),
     TabsContainer;
 
 TabsContainer = React.createClass({displayName: "TabsContainer",
@@ -626,7 +627,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
   componentDidMount: function() {
     var codeBasket = this.props.app;
 
-    if (!navigator.userAgent.match(/macintosh/ig)) {
+    if (usePlugin) {
       tinyscrollbar(this.refs['tabs-container'], { axis: 'x' });
     }
 
@@ -640,6 +641,11 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     });
 
     global.dispatchEvent(editorReadyEvent);
+  },
+  componentDidUpdate: function() {
+    if (usePlugin) {
+      tinyscrollbar(this.refs['tabs-container'], { axis: 'x' });
+    }
   },
   onClickTab: function(item, index, event) {
     event.preventDefault();
@@ -832,14 +838,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
       optionsButton = React.createElement(ToolBarButton, {onClick: this.toggleOptions, title: "Options", className: 'with-caret fa-cog' + (this.state.isOptionsListVisible ? ' active' : '')});
     }
 
-    if (navigator.userAgent.match(/macintosh/ig)) {
-      tabsList = (
-        React.createElement("article", {ref: "tabs-container", className: "console-tabs-left scrollable"}, 
-          visibleItems.map(this.renderTab)
-        )
-      );
-    }
-    else {
+    if (usePlugin) {
       tabsList = (
         React.createElement("article", {ref: "tabs-container", className: "console-tabs-left"}, 
           React.createElement("div", {className: "scrollbar"}, React.createElement("div", {className: "track"}, React.createElement("div", {className: "thumb"}, React.createElement("div", {className: "end"})))), 
@@ -848,6 +847,13 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
               visibleItems.map(this.renderTab)
             )
           )
+        )
+      );
+    }
+    else {
+      tabsList = (
+        React.createElement("article", {ref: "tabs-container", className: "console-tabs-left scrollable"}, 
+          visibleItems.map(this.renderTab)
         )
       );
     }
