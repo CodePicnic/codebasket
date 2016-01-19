@@ -1216,6 +1216,8 @@ function renameItem(item, newName) {
   delete sidebarItems[item.name];
 
   item.title = item.name = newName;
+  item.language = item.name.split('.').pop();
+  item.session.setMode('ace/mode/' + (constants.MODES[item.language] || item.language));
 
   this.render();
 
