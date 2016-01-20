@@ -877,7 +877,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
 
     if (this.props.app.uiOptions.isAddTabVisible) {
       addTab = (
-        React.createElement(ToolBarButton, {onClick: this.toggleModal, id: "add-tab", title: "Add tab", className: 'fa-plus' + (this.state.isModalVisible ? ' active' : '')})
+        React.createElement(ToolBarButton, {onClick: this.props.app.uiOptions.addAction || this.toggleModal, id: "add-tab", title: "Add tab", className: 'fa-plus' + (this.state.isModalVisible ? ' active' : '')})
       );
     }
 

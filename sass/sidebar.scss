@@ -10,7 +10,8 @@
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-    transition: all .7s ease;
+    transition: min-width .7s ease, max-width .7s ease, border-right .9s ease;
+    border-right: 1px solid transparent;
 
     &.visible {
       min-width: 200px;

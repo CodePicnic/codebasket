@@ -9,7 +9,8 @@
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  transition: all .7s ease; }
+  transition: min-width .7s ease, max-width .7s ease, border-right .9s ease;
+  border-right: 1px solid transparent; }
   .console-container .console-sidebar-container.visible {
     min-width: 200px;
     max-width: 200px;
@@ -315,6 +316,8 @@
       display: inline-block; }
     .console-container .console-tab.edit-mode span.console-tab-text {
       display: none; }
+    .console-container .console-tab:last-child {
+      border-right: none; }
     .console-container .console-tab.active, .console-container .console-tab:hover {
       background: #ffffff;
       color: #222524;
@@ -390,7 +393,8 @@
     -moz-box-flex: 1 100%;
     -moz-flex: 1 100%;
     -ms-flex: 1 100%;
-    flex: 1 100%; }
+    flex: 1 100%;
+    box-shadow: none; }
     .console-container .console-tabpage.active {
       display: block; }
     .console-container .console-tabpage.active.console-browser {

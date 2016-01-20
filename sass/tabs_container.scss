@@ -198,6 +198,10 @@
       }
     }
 
+    &:last-child {
+      border-right: none;
+    }
+
     &.active,
     &:hover {
       background: #ffffff;
@@ -271,6 +275,7 @@
     height: 100%;
     border: none;
     @include flex(1 100%);
+    box-shadow: none;
 
     &.active {
       display: block;
