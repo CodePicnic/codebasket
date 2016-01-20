@@ -462,7 +462,7 @@ var React = require('react'),
 
 Sidebar = React.createClass({displayName: "Sidebar",
   getInitialState: function() {
-    return { currentPath: '', paths: {} };
+    return { currentPath: '', selectedPath: '', paths: {} };
   },
   getDefaultProps: function() {
     return {};
@@ -472,7 +472,10 @@ Sidebar = React.createClass({displayName: "Sidebar",
   },
   toggleFolder: function(fileInfo) {
     var path = fileInfo.path,
-        newState = { currentPath: (this.state.currentPath === path) ? '' : path };
+        newState = {
+          currentPath: (this.state.currentPath === path) ? '' : path,
+          selectedPath: path
+        };
 
     if (fileInfo.isCollapsed) {
       var openFolderEvent = new global.CustomEvent('codebasket:openfolder', {
@@ -490,6 +493,9 @@ Sidebar = React.createClass({displayName: "Sidebar",
     this.setState(newState);
   },
   onClickFile: function(fileName, fileInfo) {
+    var path = fileInfo.path,
+        newState = { selectedPath: path };
+
     var openFileEvent = new global.CustomEvent('codebasket:openfile', {
       detail: {
         codeBasket: this.props.app,
@@ -499,6 +505,8 @@ Sidebar = React.createClass({displayName: "Sidebar",
     });
 
     global.dispatchEvent(openFileEvent);
+
+    this.setState(newState);
   },
   removeFile: function(fileName, fileInfo) {
     var removeFileEvent = new global.CustomEvent('codebasket:removefile', {
@@ -556,7 +564,7 @@ Sidebar = React.createClass({displayName: "Sidebar",
   renderFolder: function(fileName, fileInfo) {
     var isCollapsed = fileInfo.isCollapsed,
         collapsedClass = isCollapsed ? 'collapsed' : '',
-        activeClass = (this.state.currentPath === fileInfo.path) ? ' active' : '';
+        activeClass = (this.state.selectedPath === fileInfo.path) ? ' active' : '';
 
     return (
       React.createElement("dl", {className: collapsedClass, key: fileInfo.name}, 
@@ -569,8 +577,10 @@ Sidebar = React.createClass({displayName: "Sidebar",
     );
   },
   renderFile: function(fileName, fileInfo) {
+    var activeClass = (this.state.selectedPath === fileInfo.path) ? ' active' : '';
+
     return (
-      React.createElement("dd", {className: "file", title: fileInfo.path, key: fileName}, 
+      React.createElement("dd", {className: 'file' + activeClass, title: fileInfo.path, key: fileName}, 
         React.createElement("span", {className: "entry-text", onClick: this.onClickFile.bind(null, fileName, fileInfo)}, fileInfo.name), 
         React.createElement("span", {className: "remove-entry", onClick: this.removeFile.bind(null, fileName, fileInfo)}, React.createElement("i", {className: "fa fa-times"}))
       )
@@ -682,16 +692,6 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
         this.refs['tabpage-' + item.id].contentWindow.focus();
       }
     }
-
-    var tabSelectedEvent = new global.CustomEvent('codebasket:tabselected', {
-      detail: {
-        codeBasket: codeBasket,
-        item: item,
-        index: index
-      }
-    });
-
-    global.dispatchEvent(tabSelectedEvent);
   },
   onDoubleClickTab: function(item, index, event) {
     event.preventDefault();
@@ -1185,7 +1185,7 @@ function findFile(name) {
   return find(this.items, function(item) { return item.type === 'file' && item.name === name; });
 }
 
-function selectItem(item) {
+function selectItem(item, index) {
   var activeItem = find(this.items, function(itemInCollection) { return itemInCollection.isActive });
 
   if (activeItem !== item) {
@@ -1200,6 +1200,16 @@ function selectItem(item) {
       this.editor.focus();
     }
   }
+
+  var tabSelectedEvent = new global.CustomEvent('codebasket:tabselected', {
+    detail: {
+      codeBasket: this,
+      item: item,
+      index: index
+    }
+  });
+
+  global.dispatchEvent(tabSelectedEvent);
 
   this.render();
 
