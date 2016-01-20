@@ -554,8 +554,7 @@ Sidebar = React.createClass({displayName: "Sidebar",
     });
   },
   renderFolder: function(fileName, fileInfo) {
-    var elementState = fileInfo,
-        isCollapsed = fileInfo.isCollapsed,
+    var isCollapsed = fileInfo.isCollapsed,
         collapsedClass = isCollapsed ? 'collapsed' : '',
         activeClass = (this.state.currentPath === fileInfo.path) ? ' active' : '';
 
@@ -628,7 +627,6 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     var codeBasket = this.props.app,
         visibleItems = filter(codeBasket.items, function(item) { return item.isVisible; }),
         activeItem = find(visibleItems, function(item) { return item.isActive; }),
-        activeItemIndex = visibleItems.indexOf(activeItem),
         container = this.refs['tabs-container'],
         viewportWidth = container.querySelector('.viewport').clientWidth,
         overviewWidth = container.querySelector('.overview').clientWidth,
@@ -886,7 +884,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     return (
       React.createElement("aside", {className: "console-tabs-container"}, 
         React.createElement("nav", {className: "console-tabs"}, 
-          React.createElement(ToolBarButton, {onClick: this.props.parentView.toggleSidebar, title: "Toggle sidebar", className: 'with-border ' + (isSidebarVisible ? 'fa-caret-left' : 'fa-caret-right')}), 
+          React.createElement(ToolBarButton, {onClick: this.props.parentView.toggleSidebar, title: "Toggle sidebar", className: 'with-border ' + (isSidebarVisible ? 'fa-caret-left' : 'fa-caret-right'), id: "toggle-sidebar"}), 
           tabsList, 
           addTab, 
           React.createElement("article", {className: "console-tabs-right"}, 

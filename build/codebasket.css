@@ -123,6 +123,9 @@
 
 .console-container {
   /* Tiny Scrollbar */ }
+  .console-container #toggle-sidebar {
+    width: 41px;
+    text-align: center; }
   .console-container .console-tabs {
     font-size: 11px;
     background: #f7f7f7;
