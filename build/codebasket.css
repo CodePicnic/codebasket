@@ -234,8 +234,10 @@
     position: absolute;
     left: 0;
     top: 0;
+    bottom: 0;
     padding: 0;
-    margin: 0; }
+    margin: 0;
+    transition: left .65s ease; }
   .console-container .console-tabs-left .scrollbar {
     background: transparent;
     position: absolute;
