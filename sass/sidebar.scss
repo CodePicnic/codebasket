@@ -1,7 +1,7 @@
 .console-container {
   .console-sidebar-container {
-    min-width: 0;
-    max-width: 0;
+    min-width: 100%;
+    max-width: 100%;
     background: #ffffff;
     overflow: hidden;
     margin: 0;
@@ -10,14 +10,6 @@
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-    transition: min-width .7s ease, max-width .7s ease, border-right .9s ease;
-    border-right: 1px solid transparent;
-
-    &.visible {
-      min-width: 200px;
-      max-width: 200px;
-      border-right: 1px solid #dadada;
-    }
   }
 
   .console-sidebar-actions {

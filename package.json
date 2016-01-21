@@ -20,6 +20,10 @@
   },
   "homepage": "https://github.com/CodePicnic/codebasket#readme",
   "devDependencies": {
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
     "browserify": "^12.0.1",
     "gulp": "^3.9.0",
     "gulp-eslint": "^1.1.1",
@@ -37,6 +41,7 @@
   "dependencies": {
     "lodash": "^3.10.1",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3"
+    "react-dom": "^0.14.3",
+    "react-split-pane": "^0.1.22"
   }
 }

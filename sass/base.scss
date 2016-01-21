@@ -3,6 +3,7 @@
 @import 'tabs_container';
 @import 'browser';
 @import 'footer';
+@import 'vendors';
 
 .console-container {
   width: 100%;
@@ -128,6 +129,7 @@
     @include flex(1 100%);
     @include display-flex();
     @include flex-flow(row wrap);
+    position: relative;
   }
 
   .console-sidebar-container,
