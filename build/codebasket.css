@@ -187,7 +187,7 @@
       background: linear-gradient(90deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)), linear-gradient(270deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)) 100% 0, linear-gradient(90deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)), linear-gradient(270deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)) 100% 0;
       background-repeat: no-repeat;
       background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
-      background-attachment: fixed, local, scroll, scroll;
+      background-attachment: fixed, scroll, scroll, scroll;
       pointer-events: none; }
     .console-container .console-tabs-left .viewport,
     .console-container .console-tabs-left .overview {
@@ -229,7 +229,7 @@
       background: linear-gradient(90deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)), linear-gradient(270deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)) 100% 0, linear-gradient(90deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)), linear-gradient(270deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)) 100% 0;
       background-repeat: no-repeat;
       background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
-      background-attachment: fixed, local, scroll, scroll; }
+      background-attachment: fixed, scroll, scroll, scroll; }
     .console-container .console-tabs-left .viewport {
       height: 33px;
       overflow: hidden;
