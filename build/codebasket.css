@@ -174,7 +174,12 @@
         color: #ffffff; }
   .console-container .console-tabs-left {
     min-width: 50%;
-    border-right: solid 1px #dadada; }
+    border-right: solid 1px #dadada;
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    -ms-flex-grow: 1;
+    flex-grow: 1;
+    -ms-flex-positive: 1; }
     .console-container .console-tabs-left .viewport,
     .console-container .console-tabs-left .overview {
       min-width: 100%;
@@ -221,60 +226,60 @@
       background-repeat: no-repeat;
       background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
       background-attachment: local, local, scroll, scroll; }
+    .console-container .console-tabs-left .viewport {
+      height: 33px;
+      overflow: hidden;
+      position: relative; }
+    .console-container .console-tabs-left .overview {
+      list-style: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      padding: 0;
+      margin: 0;
+      transition: left .65s ease; }
+    .console-container .console-tabs-left .scrollbar {
+      background: transparent;
+      position: absolute;
+      background-position: 0 0;
+      float: right;
+      width: 0;
+      height: 2px;
+      z-index: 101;
+      bottom: 0;
+      opacity: 0;
+      transition: all .5s; }
+    .console-container .console-tabs-left .track {
+      background: #dadada;
+      height: 100%;
+      width: 0;
+      position: relative;
+      padding: 0 1px; }
+    .console-container .console-tabs-left .thumb {
+      background: #424242;
+      height: 4px;
+      width: 0;
+      cursor: pointer;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: -5px;
+      border-radius: 4px; }
+    .console-container .console-tabs-left .thumb .end {
+      display: none; }
+    .console-container .console-tabs-left .disable {
+      display: none; }
   .console-container .console-tabs-left {
     position: relative; }
     .console-container .console-tabs-left:hover .scrollbar {
       opacity: 1; }
-  .console-container .console-tabs-left .viewport {
-    height: 33px;
-    overflow: hidden;
-    position: relative; }
-  .console-container .console-tabs-left .overview {
-    list-style: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    padding: 0;
-    margin: 0;
-    transition: left .65s ease; }
-  .console-container .console-tabs-left .scrollbar {
-    background: transparent;
-    position: absolute;
-    background-position: 0 0;
-    float: right;
-    width: 0;
-    height: 2px;
-    z-index: 101;
-    bottom: 0;
-    opacity: 0;
-    transition: all .5s; }
-  .console-container .console-tabs-left .track {
-    background: #dadada;
-    height: 100%;
-    width: 0;
-    position: relative;
-    padding: 0 1px; }
-  .console-container .console-tabs-left .thumb {
-    background: #424242;
-    height: 4px;
-    width: 0;
-    cursor: pointer;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: -5px;
-    border-radius: 4px; }
-  .console-container .console-tabs-left .thumb .end {
-    display: none; }
-  .console-container .console-tabs-left .disable {
-    display: none; }
   .console-container .console-tabs-right {
-    -webkit-flex-grow: 1;
-    -moz-flex-grow: 1;
-    -ms-flex-grow: 1;
-    flex-grow: 1;
-    -ms-flex-positive: 1;
+    -webkit-flex-grow: 0;
+    -moz-flex-grow: 0;
+    -ms-flex-grow: 0;
+    flex-grow: 0;
+    -ms-flex-positive: 0;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -285,7 +290,7 @@
     -moz-flex-flow: row;
     -ms-flex-flow: row;
     flex-flow: row;
-    margin-left: 20px;
+    margin-left: 0;
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     -webkit-justify-content: flex-end;
