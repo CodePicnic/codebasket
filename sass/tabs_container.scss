@@ -89,7 +89,6 @@
       @include display-flex();
       @include flex-flow(row);
       overflow: auto;
-      //@include scrolling-shadows($background-color: #f7f7f7);
     }
 
     &.scrollable {
