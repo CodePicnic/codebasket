@@ -648,8 +648,13 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
   scrollToActiveItem: function() {
     var codeBasket = this.props.app,
         visibleItems = filter(codeBasket.items, function(item) { return item.isVisible; }),
-        activeItem = find(visibleItems, function(item) { return item.isActive; }),
-        container = this.refs['tabs-container'],
+        activeItem = find(visibleItems, function(item) { return item.isActive; });
+
+    if (!activeItem) {
+      return;
+    }
+
+    var container = this.refs['tabs-container'],
         viewportWidth = container.querySelector('.viewport').clientWidth,
         overviewWidth = container.querySelector('.overview').clientWidth,
         activeItemWidth = container.querySelector('.console-tab.active').offsetWidth,
@@ -701,7 +706,9 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
         item.tabPage.refs.frame.contentWindow.focus();
       }
       else {
-        this.refs['tabpage-' + item.id].contentWindow.focus();
+        if (this.refs['tabpage-' + item.id]) {
+          this.refs['tabpage-' + item.id].contentWindow.focus();
+        }
       }
     }
   },
@@ -1130,6 +1137,10 @@ function addItem(newItem) {
 
   if (newItem.title === undefined) {
     newItem.title = newItem.name;
+  }
+
+  if (newItem.id === undefined) {
+    newItem.id = newItem.type + '-' + this.items.length;
   }
 
   this.items.push(newItem);
