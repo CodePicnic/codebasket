@@ -159,7 +159,7 @@ describe('Creating a CodeBasket', function() {
     codeBasket.render();
     expect(spies.onReady).toHaveBeenCalled();
 
-    var secondTab = codeBasket.element.querySelector('.console-tab:nth-child(2)'),
+    var secondTab = codeBasket.element.querySelector('.console-tab:nth-child(2) span.console-tab-text'),
         clickEvent = document.createEvent('MouseEvent');
 
     clickEvent.initMouseEvent('click', true, true, window, null);
