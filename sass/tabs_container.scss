@@ -83,13 +83,13 @@
       @include display-flex();
       @include flex-flow(row);
       overflow: auto;
-      @include scrolling-shadows($background-color: #f7f7f7);
     }
 
     .viewport {
       height: 33px;
       overflow: hidden;
       position: relative;
+      @include offset-shadow($background: #f7f7f7, $shadow: rgba(#000000, 0.9));
     }
 
     .overview {
@@ -100,7 +100,7 @@
       bottom: 0;
       padding: 0;
       margin: 0;
-      transition: left .65s ease;
+      transition: left .65s;
     }
 
     .scrollbar {

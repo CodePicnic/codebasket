@@ -209,16 +209,34 @@
       -moz-flex-flow: row;
       -ms-flex-flow: row;
       flex-flow: row;
-      overflow: auto;
-      background: -webkit-linear-gradient(0deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)), -webkit-linear-gradient(180deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)) 100% 0, -webkit-linear-gradient(0deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)), -webkit-linear-gradient(180deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)) 100% 0;
-      background: linear-gradient(90deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)), linear-gradient(270deg, #f7f7f7 20%, rgba(247, 247, 247, 0.2)) 100% 0, linear-gradient(90deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)), linear-gradient(270deg, rgba(0, 0, 0, 0.2) 10%, rgba(247, 247, 247, 0.2)) 100% 0;
-      background-repeat: no-repeat;
-      background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
-      background-attachment: scroll, scroll, scroll, scroll; }
+      overflow: auto; }
     .console-container .console-tabs-left .viewport {
       height: 33px;
       overflow: hidden;
       position: relative; }
+      .console-container .console-tabs-left .viewport.offset-left, .console-container .console-tabs-left .viewport.offset-right {
+        transition: all .75s ease; }
+      .console-container .console-tabs-left .viewport:before, .console-container .console-tabs-left .viewport:after {
+        content: '';
+        transition: all .75s ease; }
+      .console-container .console-tabs-left .viewport.offset-left:before {
+        content: '';
+        width: 0;
+        box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.9);
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1; }
+      .console-container .console-tabs-left .viewport.offset-right:after {
+        content: '';
+        width: 0;
+        box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.9);
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1; }
     .console-container .console-tabs-left .overview {
       list-style: none;
       position: absolute;
@@ -227,7 +245,7 @@
       bottom: 0;
       padding: 0;
       margin: 0;
-      transition: left .65s ease; }
+      transition: left .65s; }
     .console-container .console-tabs-left .scrollbar {
       background: transparent;
       position: absolute;

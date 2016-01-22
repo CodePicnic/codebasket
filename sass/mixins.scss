@@ -177,20 +177,38 @@
   }
 }
 
-@mixin scrolling-shadows($background-color: rgb(255, 255, 255), $shadow-intensity: 0.2, $shadow-color: rgba(0,0,0, .2), $cover-size: 40px, $shadow-size: 14px) {
-  background:
-    -webkit-linear-gradient(0deg,  $background-color 20%, rgba($background-color, $shadow-intensity)),
-    -webkit-linear-gradient(180deg, $background-color 20%, rgba($background-color, $shadow-intensity)) 100% 0,
-    -webkit-linear-gradient(0deg,  $shadow-color  10%, rgba($background-color, $shadow-intensity)),
-    -webkit-linear-gradient(180deg, $shadow-color  10%, rgba($background-color, $shadow-intensity)) 100% 0;
 
-  background:
-    linear-gradient(90deg,  $background-color 20%, rgba($background-color, $shadow-intensity)),
-    linear-gradient(270deg, $background-color 20%, rgba($background-color, $shadow-intensity)) 100% 0,
-    linear-gradient(90deg,  $shadow-color  10%, rgba($background-color, $shadow-intensity)),
-    linear-gradient(270deg, $shadow-color  10%, rgba($background-color, $shadow-intensity)) 100% 0;
+@mixin offset-shadow($background: rgb(255, 255, 255), $shadow: rgba(0,0,0, .2), $shadow-size: 14px) {
+  &.offset-left,
+  &.offset-right {
+    transition: all .75s ease;
+  }
 
-  background-repeat: no-repeat;
-  background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
-  background-attachment: scroll, scroll, scroll, scroll;
+  &:before,
+  &:after {
+    content: '';
+    transition: all .75s ease;
+  }
+
+  &.offset-left:before {
+    content: '';
+    width: 0;
+    box-shadow: 0 0 $shadow-size 3px $shadow;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  &.offset-right:after {
+    content: '';
+    width: 0;
+    box-shadow: 0 0 $shadow-size 3px $shadow;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+  }
 }

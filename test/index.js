@@ -59,7 +59,21 @@ describe('Creating a CodeBasket', function() {
         language: 'sass',
         name: 'index.scss',
         title: 'index.scss',
-        content: 'body { background-color: $grey200; }'
+        content: '$grey200: #dadada;\nbody { background-color: $grey200; }'
+      },
+      {
+        type: 'file',
+        language: 'html',
+        name: 'index.html',
+        title: 'index.html',
+        content: '<p></p>'
+      },
+      {
+        type: 'file',
+        language: 'css',
+        name: 'index.css',
+        title: 'index.css',
+        content: 'body { background-color: #dadada; }'
       },
       {
         type: 'browser',
