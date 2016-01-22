@@ -320,7 +320,8 @@
     -moz-box-flex: 1;
     -moz-flex: 1;
     -ms-flex: 1;
-    flex: 1; }
+    flex: 1;
+    cursor: pointer; }
     .console-container .console-tab input.console-tab-text {
       display: none; }
     .console-container .console-tab.closeable {

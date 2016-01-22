@@ -181,6 +181,7 @@
     text-decoration: none;
     color: #111111;
     @include flex(1);
+    cursor: pointer;
 
     input.console-tab-text {
       display: none;

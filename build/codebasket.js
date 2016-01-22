@@ -646,6 +646,38 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
   getInitialState: function() {
     return { isOptionsListVisible: false, isModalVisible: false };
   },
+  applyScrollShadow: function() {
+    var container = this.refs['tabs-container'],
+        overview = container.querySelector('.console-tabs .overview'),
+        viewport = container.querySelector('.console-tabs .viewport'),
+        overviewParentWidth,
+        overviewOffsetLeft,
+        overviewOffsetWidth,
+        delta;
+
+    if (window.requestAnimationFrame || window.webkitRequestAnimationFrame) {
+      (window.requestAnimationFrame || window.webkitRequestAnimationFrame)(function() {
+        overviewParentWidth = overview.parentElement.offsetWidth;
+        overviewOffsetWidth = overview.offsetWidth;
+        overviewOffsetLeft = overview.offsetLeft;
+        delta = (overviewParentWidth - overviewOffsetWidth);
+
+        if (overviewOffsetLeft <= delta) {
+          viewport.classList.remove('offset-right');
+        }
+        else {
+          viewport.classList.add('offset-right');
+        }
+
+        if (overviewOffsetLeft === 0) {
+          viewport.classList.remove('offset-left');
+        }
+        else {
+          viewport.classList.add('offset-left');
+        }
+      });
+    }
+  },
   scrollToActiveItem: function() {
     var codeBasket = this.props.app,
         visibleItems = filter(codeBasket.items, function(item) { return item.isVisible; }),
@@ -656,8 +688,10 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     }
 
     var container = this.refs['tabs-container'],
-        viewportWidth = container.querySelector('.viewport').clientWidth,
-        overviewWidth = container.querySelector('.overview').clientWidth,
+        overview = container.querySelector('.console-tabs .overview'),
+        viewport = container.querySelector('.console-tabs .viewport'),
+        viewportWidth = viewport.clientWidth,
+        overviewWidth = overview.clientWidth,
         activeItemWidth = container.querySelector('.console-tab.active').offsetWidth,
         activeItemOffsetLeft = container.querySelector('.console-tab.active').offsetLeft,
         scroll = (overviewWidth > viewportWidth) ? (activeItemWidth - (viewportWidth - activeItemOffsetLeft)) : (0);
@@ -666,43 +700,15 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
 
     if (useScrollbarPlugin) {
       tinyscrollbar(container, { axis: 'x' }).update(scroll);
+      this.applyScrollShadow();
     }
   },
   componentDidMount: function() {
     var codeBasket = this.props.app,
-        container = this.refs['tabs-container'],
-        overview = container.querySelector('.console-tabs .overview'),
-        viewport = container.querySelector('.console-tabs .viewport'),
-        overviewParentWidth,
-        overviewOffsetLeft,
-        overviewOffsetWidth,
-        delta;
+        container = this.refs['tabs-container'];
 
     this.scrollToActiveItem();
-    container.addEventListener('move', function() {
-      if (window.requestAnimationFrame || window.webkitRequestAnimationFrame) {
-        (window.requestAnimationFrame || window.webkitRequestAnimationFrame)(function() {
-          overviewParentWidth = overview.parentElement.offsetWidth;
-          overviewOffsetWidth = overview.offsetWidth;
-          overviewOffsetLeft = overview.offsetLeft;
-          delta = (overviewParentWidth - overviewOffsetWidth);
-
-          if (overviewOffsetLeft <= delta) {
-            viewport.classList.remove('offset-right');
-          }
-          else {
-            viewport.classList.add('offset-right');
-          }
-
-          if (overviewOffsetLeft === 0) {
-            viewport.classList.remove('offset-left');
-          }
-          else {
-            viewport.classList.add('offset-left');
-          }
-        });
-      }
-    });
+    container.addEventListener('move', this.applyScrollShadow);
 
     codeBasket.editor = this.refs.editor.editor;
     this.props.parentView.tabsContainer = this;
@@ -831,7 +837,7 @@ TabsContainer = React.createClass({displayName: "TabsContainer",
     }
 
     return (
-      React.createElement("a", {href: "#", className: tabClasses, onDoubleClick: (item.type === 'file') ? onDoubleClick : null, key: index}, 
+      React.createElement("span", {href: "#", className: tabClasses, onDoubleClick: (item.type === 'file') ? onDoubleClick : null, key: index}, 
         editText, 
         React.createElement("span", {className: "console-tab-text", title: item.title, onClick: onClick}, item.name.split('/').pop()), 
         closeButton
@@ -1289,11 +1295,13 @@ function renameItem(item, newName) {
       sidebarItems = this.findInSidebar(directory.join('/')),
       sidebarItem = sidebarItems[item.name];
 
-  sidebarItem.name = newFileName;
-  sidebarItem.path = newName;
+  if (sidebarItems && sidebarItem) {
+    sidebarItem.name = newFileName;
+    sidebarItem.path = newName;
 
-  sidebarItems[newFileName] = sidebarItem;
-  delete sidebarItems[item.name];
+    sidebarItems[newFileName] = sidebarItem;
+    delete sidebarItems[item.name];
+  }
 
   item.title = item.name = newName;
   item.language = item.name.split('.').pop();
