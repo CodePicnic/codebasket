@@ -178,7 +178,7 @@
 }
 
 
-@mixin offset-shadow($background: rgb(255, 255, 255), $shadow: rgba(0,0,0, .2), $shadow-size: 14px) {
+@mixin offset-shadow($background: rgb(255, 255, 255), $shadow: rgba(0, 0, 0, .54), $shadow-size: 29px) {
   &.offset-left,
   &.offset-right {
     transition: all .75s ease;
