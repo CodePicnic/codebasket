@@ -286,6 +286,7 @@ CodeEditor = React.createClass({displayName: "CodeEditor",
           codeBasket: app,
           item: item,
           session: changeSession.session,
+          newSession: changeSession.session,
           oldSession: changeSession.oldSession
         }
       });
@@ -1168,7 +1169,7 @@ function addItem(newItem) {
   }
 
   if (newItem.type === 'file') {
-    newItem.session = createFileSession(newItem);
+    newItem.session = createFileSession.call(this, newItem);
   }
 
   if (newItem.title === undefined) {
@@ -1186,7 +1187,7 @@ function addItem(newItem) {
 
 function addFile(newFile) {
   newFile.type = 'file';
-  newFile.session = createFileSession(newFile);
+  newFile.session = createFileSession.call(this, newFile);
 
   return this.addItem(newFile);
 }
@@ -1272,17 +1273,18 @@ function selectItem(item, index) {
 
   this.render();
 
-  if (activeItem && item) {
-    var changeSessionEvent = new global.CustomEvent('codebasket:changesession', {
-      detail: {
-        codeBasket: this,
-        oldSession: activeItem.session,
-        newSession: item.session
-      }
-    });
-
-    global.dispatchEvent(changeSessionEvent);
-  }
+  // if (activeItem && item) {
+  //   console.log(item, item.session);
+  //   var changeSessionEvent = new global.CustomEvent('codebasket:changesession', {
+  //     detail: {
+  //       codeBasket: this,
+  //       oldSession: activeItem.session,
+  //       newSession: item.session
+  //     }
+  //   });
+  //
+  //   global.dispatchEvent(changeSessionEvent);
+  // }
 }
 
 function renameItem(item, newName) {
