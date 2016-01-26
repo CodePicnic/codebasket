@@ -13,7 +13,7 @@
 .console-container .console-sidebar-actions {
   display: block;
   color: #ffffff;
-  overflow: hidden;
+  overflow: visible;
   margin: 0;
   padding: 0;
   background: #f7f7f7;
