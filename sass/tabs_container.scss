@@ -66,7 +66,6 @@
 
   .console-tabs-left {
     min-width: 50%;
-    border-right: solid 1px #dadada;
     @include flex-grow(1);
 
     .viewport,
