@@ -115,12 +115,12 @@ App = React.createClass({displayName: "App",
       usersList = React.createElement(UsersList, {currentUser: codeBasket.currentUser, users: codeBasket.users});
     }
 
-    var size = (this.state.isSidebarVisible ? 200 : 0);
+    var size = (this.state.isSidebarVisible ? 200 : 0.1);
 
     return (
       React.createElement("main", {className: "console-container"}, 
         React.createElement("section", {className: "console-wrapper"}, 
-          React.createElement(SplitPane, {split: "vertical", minSize: 200, defaultSize: 200}, 
+          React.createElement(SplitPane, {split: "vertical", minSize: 200, defaultSize: size}, 
             React.createElement("aside", {className: "console-sidebar-container", ref: "sidebar-container"}, 
               React.createElement("nav", {className: "console-sidebar-actions"}, 
                 sidebarActions
