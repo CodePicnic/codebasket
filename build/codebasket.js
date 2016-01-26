@@ -1287,13 +1287,15 @@ function selectItem(item, index) {
   // }
 }
 
-function renameItem(item, newName) {
+function renameItem(item, newName, options) {
   var oldName = item.name,
       directory = oldName.split('/'),
       newDirectory = newName.split('/'),
+      oldFileName = directory.pop(),
       newFileName = newDirectory.pop(),
       sidebarItems = this.findInSidebar(directory.join('/')),
-      sidebarItem = sidebarItems[item.name];
+      sidebarItem = sidebarItems[item.name],
+      options = options || {};
 
   if (sidebarItems && sidebarItem) {
     sidebarItem.name = newFileName;
@@ -1301,6 +1303,10 @@ function renameItem(item, newName) {
 
     sidebarItems[newFileName] = sidebarItem;
     delete sidebarItems[item.name];
+
+    if (this.view.sidebar.state.selectedPath === oldName) {
+      this.view.sidebar.setState({ selectedPath: newName });
+    }
   }
 
   item.title = item.name = newName;
@@ -1309,15 +1315,18 @@ function renameItem(item, newName) {
 
   this.render();
 
-  var renameItemEvent = new global.CustomEvent('codebasket:renameitem', {
-    detail: {
-      codeBasket: this,
-      oldName: oldName,
-      newName: newName
-    }
-  });
+  if (!options.silent) {
+    var renameItemEvent = new global.CustomEvent('codebasket:renameitem', {
+      detail: {
+        codeBasket: this,
+        item: item,
+        oldName: oldName,
+        newName: newName
+      }
+    });
 
-  global.dispatchEvent(renameItemEvent);
+    global.dispatchEvent(renameItemEvent);
+  }
 }
 
 function removeItem(item) {
