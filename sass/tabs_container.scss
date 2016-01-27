@@ -201,6 +201,10 @@
       }
     }
 
+    &.changed span.console-tab-text:after {
+      content: "*";
+    }
+
     &.active,
     &:hover {
       background: #ffffff;

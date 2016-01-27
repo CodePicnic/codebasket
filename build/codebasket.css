@@ -330,6 +330,8 @@
       display: inline-block; }
     .console-container .console-tab.edit-mode span.console-tab-text {
       display: none; }
+    .console-container .console-tab.changed span.console-tab-text:after {
+      content: "*"; }
     .console-container .console-tab.active, .console-container .console-tab:hover {
       background: #ffffff;
       color: #222524;
