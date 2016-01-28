@@ -47,10 +47,9 @@ CodeBasket.create = function(options) {
   forEach(filesFromDOM, newCodeBasket.addFile, newCodeBasket);
   forEach(librariesFromDOM, newCodeBasket.toggleLibrary, newCodeBasket);
 
-  var readyEvent = new global.CustomEvent('codebasket:ready', {
-    detail: {
-      codeBasket: newCodeBasket
-    }
+  var readyEvent = global.document.createEvent('CustomEvent');
+  readyEvent.initCustomEvent('codebasket:ready', true, true, {
+    codeBasket: newCodeBasket
   });
 
   global.dispatchEvent(readyEvent);

@@ -373,12 +373,12 @@
     display: -moz-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-flex: 1 100%;
-    -webkit-flex: 1 100%;
-    -moz-box-flex: 1 100%;
-    -moz-flex: 1 100%;
-    -ms-flex: 1 100%;
-    flex: 1 100%;
+    -webkit-box-flex: 1 auto;
+    -webkit-flex: 1 auto;
+    -moz-box-flex: 1 auto;
+    -moz-flex: 1 auto;
+    -ms-flex: 1 auto;
+    flex: 1 auto;
     -webkit-box-direction: normal;
     -webkit-box-orient: vertical;
     -webkit-flex-direction: column;
@@ -386,6 +386,7 @@
     -ms-flex-direction: column;
     flex-direction: column;
     height: 100%;
+    max-height: calc(100% - 34px);
     position: relative; }
     .console-container .console-tabpages.empty:before {
       content: "Create or open a file from the sidebar";
@@ -418,12 +419,12 @@
       display: -moz-flex;
       display: -ms-flexbox;
       display: flex;
-      -webkit-box-flex: 1 100%;
-      -webkit-flex: 1 100%;
-      -moz-box-flex: 1 100%;
-      -moz-flex: 1 100%;
-      -ms-flex: 1 100%;
-      flex: 1 100%;
+      -webkit-box-flex: 1 auto;
+      -webkit-flex: 1 auto;
+      -moz-box-flex: 1 auto;
+      -moz-flex: 1 auto;
+      -ms-flex: 1 auto;
+      flex: 1 auto;
       -webkit-box-direction: normal;
       -webkit-box-orient: vertical;
       -webkit-flex-direction: column;
@@ -447,17 +448,17 @@
   max-height: 33px;
   border-bottom: solid 1px #dadada; }
 
-.console-browser iframe {
+.console-browser .console-browser-iframe {
   width: 100%;
   height: 100%;
   border: none;
   box-shadow: none;
-  -webkit-box-flex: 1 100%;
-  -webkit-flex: 1 100%;
-  -moz-box-flex: 1 100%;
-  -moz-flex: 1 100%;
-  -ms-flex: 1 100%;
-  flex: 1 100%;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   -webkit-flex-grow: 1;
   -moz-flex-grow: 1;
   -ms-flex-grow: 1;
@@ -467,6 +468,12 @@
 .console-browser .console-browser-location-bar {
   width: 100%;
   height: 32px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   border: none; }
 
 .console-browser .console-browser-logs {
@@ -693,12 +700,15 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  position: absolute;
   background: #000;
   opacity: .2;
-  z-index: 1;
+  z-index: 9;
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
-  background-clip: padding-box; }
+  background-clip: padding-box;
+  top: 0;
+  bottom: 0; }
 
 .SplitPane .Resizer:hover {
   -webkit-transition: all 2s ease;
@@ -735,6 +745,13 @@
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex; }
+  .SplitPane .Pane.vertical:first-child {
+    -webkit-box-flex: 0 0 auto !important;
+    -webkit-flex: 0 0 auto !important;
+    -moz-box-flex: 0 0 auto !important;
+    -moz-flex: 0 0 auto !important;
+    -ms-flex: 0 0 auto !important;
+    flex: 0 0 auto !important; }
   .SplitPane .Pane.with-transition {
     transition: width .7s ease, min-width .7s ease, max-width .7s ease, border-right .9s ease; }
 
@@ -742,7 +759,6 @@
   width: 100%;
   height: 100%;
   position: relative;
-  min-height: 300px;
   font-family: 'PT Sans', Helvetica Neue, Arial, sans-serif;
   border: 1px solid #dadada;
   display: -webkit-box;
@@ -759,6 +775,8 @@
   background: #ffffff; }
   .console-container * {
     box-sizing: border-box; }
+  .console-container a img {
+    border: none; }
   .console-container .hidden {
     display: none; }
   .console-container .console-modal-overlay {
@@ -829,20 +847,36 @@
       font-size: 0.95em; }
     .console-container .console-container-button:hover {
       background: #e3e3e3; }
-  .console-container .console-wrapper {
+  .console-container .console-container-wrapper {
     width: 100%;
-    -webkit-box-flex: 1 100%;
-    -webkit-flex: 1 100%;
-    -moz-box-flex: 1 100%;
-    -moz-flex: 1 100%;
-    -ms-flex: 1 100%;
-    flex: 1 100%;
+    min-height: 300px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
     display: -moz-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative; }
+  .console-container .console-wrapper {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1 auto;
+    -webkit-flex: 1 auto;
+    -moz-box-flex: 1 auto;
+    -moz-flex: 1 auto;
+    -ms-flex: 1 auto;
+    flex: 1 auto;
     -webkit-flex-flow: row wrap;
     -moz-flex-flow: row wrap;
     -ms-flex-flow: row wrap;

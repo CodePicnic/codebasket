@@ -5,12 +5,15 @@
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
+      position: absolute;
       background: #000;
       opacity: .2;
-      z-index: 1;
+      z-index: 9;
       -moz-background-clip: padding;
       -webkit-background-clip: padding;
       background-clip: padding-box;
+      top: 0;
+      bottom: 0;
   }
   .Resizer:hover {
       -webkit-transition: all 2s ease;
@@ -42,6 +45,10 @@
   }
   .Pane {
     @include display-flex();
+
+    &.vertical:first-child {
+      @include flex(0 0 auto !important);
+    }
 
     &.with-transition {
       transition: width .7s ease, min-width .7s ease, max-width .7s ease, border-right .9s ease;

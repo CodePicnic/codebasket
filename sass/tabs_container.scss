@@ -254,9 +254,10 @@
 
   .console-tabpages {
     @include display-flex();
-    @include flex(1 100%);
+    @include flex(1 auto);
     @include flex-direction(column);
     height: 100%;
+    max-height: calc(100% - 34px);
     position: relative;
 
     &.empty:before {
@@ -286,7 +287,7 @@
 
     &.active.console-browser {
       @include display-flex();
-      @include flex(1 100%);
+      @include flex(1 auto);
       @include flex-direction(column);
     }
 

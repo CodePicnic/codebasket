@@ -36,15 +36,16 @@ describe('Creating a CodeBasket', function() {
         icon: 'fa-globe',
         href: '#',
         action: function() {
-          var browser = codeBasket.items.find(function(item) { return item.type === 'browser' });
+          var browser = _.find(codeBasket.items, function(item) { return item.type === 'browser' });
 
           codeBasket.selectItem(browser);
-        }
+        },
+        isVisible: true
       }],
       items = [{
-        location: 'http://jsfiddle.net/EVAXW/embedded/result/',
-        title: 'JSFiddle',
-        name: 'JSFiddle',
+        location: 'http://codepen.io/philipwalton/embed/LEbQON/?height=268&theme-id=0&default-tab=result',
+        title: 'CodePen',
+        name: 'CodePen',
         isActive: true
       },
       {
@@ -77,9 +78,9 @@ describe('Creating a CodeBasket', function() {
       },
       {
         type: 'browser',
-        location: 'http://jsfiddle.net/EVAXW/embedded/result/',
-        title: 'JSFiddle',
-        name: 'JSFiddle',
+        location: 'https://www.youtube.com/embed/3qI-XExjyC4',
+        title: 'YouTube',
+        name: 'YouTube',
         isCloseable: true,
         isVisible: false
       }],
@@ -136,6 +137,7 @@ describe('Creating a CodeBasket', function() {
       element: '#codebasket-test',
       items: items,
       sidebarActions: sidebarActions,
+      toolbarOptions: toolbarOptions,
       options: options,
       brand: brand
     });
@@ -166,6 +168,7 @@ describe('Creating a CodeBasket', function() {
       element: '#codebasket-test',
       items: items,
       sidebarActions: sidebarActions,
+      toolbarOptions: toolbarOptions,
       options: options,
       brand: brand
     });
@@ -176,7 +179,7 @@ describe('Creating a CodeBasket', function() {
     var secondTab = codeBasket.element.querySelector('.console-tab:nth-child(2) span.console-tab-text'),
         clickEvent = document.createEvent('MouseEvent');
 
-    clickEvent.initMouseEvent('click', true, true, window, null);
+    clickEvent.initMouseEvent('click', true, true, window, null, 0, 0, 0, 0, false, false, false, false, 0, null);
 
     secondTab.dispatchEvent(clickEvent);
     expect(spies.onTabSelected).toHaveBeenCalled();
