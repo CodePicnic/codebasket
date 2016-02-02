@@ -16,7 +16,8 @@ CodeBasket.create = function(options) {
       uiOptions = merge({}, {
         isSidebarVisible: true,
         isProgressBarVisible: false,
-        isAddTabVisible: true
+        isAddTabVisible: true,
+        isFullScreen: false
       }, uiOptionsList),
       filesFromDOM,
       librariesFromDOM,
@@ -25,6 +26,8 @@ CodeBasket.create = function(options) {
   if (!options.element) {
     throw "You need to set a container element";
   }
+
+  uiOptions.isSidebarVisible =  uiOptions.isFullScreen ? false : uiOptions.isSidebarVisible;
 
   newCodeBasket = {
     element: internalMethods.getElement(options.element),
@@ -47,12 +50,12 @@ CodeBasket.create = function(options) {
   forEach(filesFromDOM, newCodeBasket.addFile, newCodeBasket);
   forEach(librariesFromDOM, newCodeBasket.toggleLibrary, newCodeBasket);
 
-  var readyEvent = global.document.createEvent('CustomEvent');
-  readyEvent.initCustomEvent('codebasket:ready', true, true, {
-    codeBasket: newCodeBasket
-  });
-
-  global.dispatchEvent(readyEvent);
+  // var readyEvent = global.document.createEvent('CustomEvent');
+  // readyEvent.initCustomEvent('codebasket:ready', true, true, {
+  //   codeBasket: newCodeBasket
+  // });
+  //
+  // global.dispatchEvent(readyEvent);
 
   return newCodeBasket;
 };

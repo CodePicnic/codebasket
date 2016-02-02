@@ -1,6 +1,15 @@
 var codeBasket;
 
 describe('Creating a CodeBasket', function() {
+  function onReady() {
+    console.log('codebasket:ready');
+  }
+
+  function onTabSelected() {
+    console.log('codebasket:tabselected');
+  }
+
+  var spies = { onReady: onReady, onTabSelected: onTabSelected };
   var options = [{
         title: 'Edit',
         icon: 'fa-pencil',
@@ -89,6 +98,12 @@ describe('Creating a CodeBasket', function() {
         image: 'codepicnic_logo.png'
       };
 
+  expect.spyOn(spies, 'onReady').andCallThrough();
+  expect.spyOn(spies, 'onTabSelected').andCallThrough();
+
+  window.addEventListener('codebasket:ready', spies.onReady, true);
+  window.addEventListener('codebasket:tabselected', spies.onTabSelected);
+
   it('should throw an error if element is not defined', function() {
     expect(function() {
       CodeBasket.create({});
@@ -148,22 +163,6 @@ describe('Creating a CodeBasket', function() {
   });
 
   it ('should support custom events', function() {
-    function onReady() {
-      console.log('codebasket:ready');
-    }
-
-    function onTabSelected() {
-      console.log('codebasket:tabselected');
-    }
-
-    var spies = { onReady: onReady, onTabSelected: onTabSelected };
-
-    expect.spyOn(spies, 'onReady').andCallThrough();
-    expect.spyOn(spies, 'onTabSelected').andCallThrough();
-
-    window.addEventListener('codebasket:ready', spies.onReady);
-    window.addEventListener('codebasket:tabselected', spies.onTabSelected);
-
     codeBasket = CodeBasket.create({
       element: '#codebasket-test',
       items: items,
@@ -174,6 +173,7 @@ describe('Creating a CodeBasket', function() {
     });
 
     codeBasket.render();
+
     expect(spies.onReady).toHaveBeenCalled();
 
     var secondTab = codeBasket.element.querySelector('.console-tab:nth-child(2) span.console-tab-text'),

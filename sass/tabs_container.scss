@@ -15,7 +15,18 @@
     overflow: visible !important;
     text-align: left;
     @include display-flex();
-    // height: 34px;
+    height: 33px;
+    transition: all .7s ease;
+
+    &.collapsed {
+      height: 0;
+      overflow: hidden;
+      border-bottom-width: 0;
+
+      .console-tabs-left .viewport {
+        height: 0;
+      }
+    }
 
     .console-container-button:hover,
     .console-container-button.active {
@@ -89,6 +100,7 @@
       overflow: hidden;
       position: relative;
       @include offset-shadow($background: #f7f7f7);
+      transition: height .7s ease;
     }
 
     .overview {

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "copybuild": "gulp build --copy-js ~/Development/codepicnic/app/assets/javascripts/embedded_console --copy-css ~/Development/codepicnic/app/assets/stylesheets/pages/console-editor/embedded_console"
   },
   "repository": {
     "type": "git",

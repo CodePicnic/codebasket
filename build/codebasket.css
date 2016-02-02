@@ -132,7 +132,15 @@
     display: -moz-box;
     display: -moz-flex;
     display: -ms-flexbox;
-    display: flex; }
+    display: flex;
+    height: 33px;
+    transition: all .7s ease; }
+    .console-container .console-tabs.collapsed {
+      height: 0;
+      overflow: hidden;
+      border-bottom-width: 0; }
+      .console-container .console-tabs.collapsed .console-tabs-left .viewport {
+        height: 0; }
     .console-container .console-tabs .console-container-button:hover,
     .console-container .console-tabs .console-container-button.active {
       color: #000000;
@@ -212,7 +220,8 @@
     .console-container .console-tabs-left .viewport {
       height: 33px;
       overflow: hidden;
-      position: relative; }
+      position: relative;
+      transition: height .7s ease; }
       .console-container .console-tabs-left .viewport.offset-left, .console-container .console-tabs-left .viewport.offset-right {
         transition: all .75s ease; }
       .console-container .console-tabs-left .viewport:before, .console-container .console-tabs-left .viewport:after {
@@ -633,7 +642,12 @@
   height: 30px;
   line-height: 30px;
   font-size: 12px;
-  overflow: visible; }
+  overflow: visible;
+  transition: all .7s ease; }
+  .console-container .console-footer.collapsed {
+    height: 0;
+    overflow: hidden;
+    border-top-width: 0; }
   .console-container .console-footer a {
     color: inherit;
     text-decoration: none;
@@ -849,6 +863,7 @@
       background: #e3e3e3; }
   .console-container .console-container-wrapper {
     width: 100%;
+    height: 100%;
     min-height: 300px;
     display: -webkit-box;
     display: -webkit-flex;

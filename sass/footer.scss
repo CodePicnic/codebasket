@@ -6,6 +6,13 @@
     line-height: 30px;
     font-size: 12px;
     overflow: visible;
+    transition: all .7s ease;
+
+    &.collapsed {
+      height: 0;
+      overflow: hidden;
+      border-top-width: 0;
+    }
 
     a {
       color: inherit;
