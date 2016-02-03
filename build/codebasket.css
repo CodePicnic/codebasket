@@ -18,7 +18,7 @@
   padding: 0;
   background: #f7f7f7;
   border-bottom: 1px solid #dadada;
-  height: 34px; }
+  height: 33px; }
 
 .console-container .console-sidebar {
   margin: 0;
@@ -769,6 +769,33 @@
   .SplitPane .Pane.with-transition {
     transition: width .7s ease, min-width .7s ease, max-width .7s ease, border-right .9s ease; }
 
+@media (max-width: 640px) {
+  .console-container .console-tab {
+    min-width: 64px;
+    max-width: 64px;
+    text-align: center; }
+  .console-container .console-tab.closeable {
+    min-width: 80px;
+    max-width: 80px; }
+  .console-container .console-tab .console-tab-text {
+    font-size: 0;
+    width: 100%;
+    line-height: 0; }
+  .console-container .console-tab.closeable .console-tab-text {
+    width: auto; }
+  .console-container .console-tab .console-tab-text:before {
+    font: normal normal normal 16px/1 FontAwesome;
+    color: #867f7f; }
+  .console-container .console-tab.page .console-tab-text:before {
+    content: "\f016"; }
+  .console-container .console-tab.terminal .console-tab-text:before {
+    content: "\f120"; }
+  .console-container .console-tab.file .console-tab-text:before {
+    content: "\f121"; }
+  .console-container .console-tab .console-tab-close {
+    font-size: 14px;
+    margin-left: 14px; } }
+
 .console-container {
   width: 100%;
   height: 100%;
@@ -828,8 +855,8 @@
         margin-right: 5px; }
   .console-container .console-container-button {
     display: inline-block;
-    height: 33px;
-    line-height: 33px;
+    height: 32px;
+    line-height: 32px;
     padding: 0 12px;
     text-decoration: none;
     color: #867F7F;
@@ -852,7 +879,8 @@
       font-weight: bold;
       color: #000000; }
     .console-container .console-container-button.with-caret.active {
-      line-height: 33px; }
+      height: 33px;
+      line-height: 32px; }
     .console-container .console-container-button.with-caret:after {
       content: "\f0d7";
       font: normal normal normal 14px/1 FontAwesome;

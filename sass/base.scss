@@ -4,6 +4,7 @@
 @import 'browser';
 @import 'footer';
 @import 'vendors';
+@import 'mobile';
 
 .console-container {
   width: 100%;
@@ -79,8 +80,8 @@
 
   .console-container-button {
     display: inline-block;
-    height: 33px;
-    line-height: 33px;
+    height: 32px;
+    line-height: 32px;
     padding: 0 12px;
     text-decoration: none;
     color: #867F7F;
@@ -110,8 +111,8 @@
     }
 
     &.with-caret.active {
-      // height: 33px;
-      line-height: 33px;
+      height: 33px;
+      line-height: 32px;
     }
 
     &.with-caret:after {

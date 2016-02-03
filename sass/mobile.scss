@@ -1,0 +1,46 @@
+@media (max-width: 640px) {
+  .console-container .console-tab {
+    min-width: 64px;
+    max-width: 64px;
+    text-align: center;
+  }
+
+  .console-container .console-tab.closeable {
+    min-width: 80px;
+    max-width: 80px;
+  }
+
+  .console-container .console-tab .console-tab-text {
+    font-size: 0;
+    width: 100%;
+    line-height: 0;
+  }
+
+  .console-container .console-tab.closeable .console-tab-text {
+    width: auto;
+  }
+
+  .console-container .console-tab .console-tab-text:before {
+    font: normal normal normal 16px/1 FontAwesome;
+    color: #867f7f;
+  }
+
+  .console-container .console-tab.page .console-tab-text:before {
+    content: "\f016";
+  }
+
+  .console-container .console-tab.terminal .console-tab-text:before {
+    content: "\f120";
+  }
+
+  .console-container .console-tab.file .console-tab-text:before {
+    // content: "\f0f6";
+    // content: "\f1c9";
+    content: "\f121";
+  }
+
+  .console-container .console-tab .console-tab-close {
+    font-size: 14px;
+    margin-left: 14px;
+  }
+}
