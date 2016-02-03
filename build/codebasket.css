@@ -822,6 +822,31 @@
     border: none; }
   .console-container .hidden {
     display: none; }
+  .console-container .console-editor-overlay {
+    position: absolute;
+    left: auto;
+    right: 0;
+    top: 34px;
+    bottom: 0;
+    z-index: 99;
+    padding: 20px;
+    display: none;
+    transition: all .7s ease; }
+    .console-container .console-editor-overlay.full-screen {
+      top: 0; }
+    .console-container .console-editor-overlay:hover, .console-container .console-editor-overlay.enabled {
+      display: block; }
+    .console-container .console-editor-overlay .console-container-button {
+      width: 37px;
+      height: 37px;
+      line-height: 37px;
+      border: solid 1px #dadada;
+      border-radius: 50%; }
+    .console-container .console-editor-overlay > * {
+      opacity: 0;
+      transition: opacity .7s ease; }
+    .console-container .console-editor-overlay:hover > * {
+      opacity: 1; }
   .console-container .console-modal-overlay {
     position: absolute;
     left: 50%;

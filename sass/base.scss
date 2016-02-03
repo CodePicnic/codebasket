@@ -29,6 +29,44 @@
     display: none;
   }
 
+  .console-editor-overlay {
+    position: absolute;
+    left: auto;
+    right: 0;
+    top: 34px;
+    bottom: 0;
+    z-index: 99;
+    padding: 20px;
+    display: none;
+    transition: all .7s ease;
+
+    &.full-screen {
+      top: 0;
+    }
+
+    &:hover,
+    &.enabled {
+      display: block;
+    }
+
+    .console-container-button {
+      width: 37px;
+      height: 37px;
+      line-height: 37px;
+      border: solid 1px #dadada;
+      border-radius: 50%;
+    }
+
+    > * {
+      opacity: 0;
+      transition: opacity .7s ease;
+    }
+
+    &:hover > * {
+      opacity: 1;
+    }
+  }
+
   .console-modal-overlay {
     position: absolute;
     left: 50%;
