@@ -4,6 +4,7 @@
   .console-browser-location-bar-container {
     @include display-flex();
     @include flex-flow(row);
+    min-height: 33px;
     max-height: 33px;
     border-bottom: solid 1px #dadada;
   }
@@ -22,6 +23,7 @@
     height: 32px;
     @include flex(1);
     border: none;
+    padding: 5px;
   }
 
   .console-browser-logs {

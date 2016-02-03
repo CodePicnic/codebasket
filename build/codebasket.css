@@ -454,6 +454,7 @@
   -moz-flex-flow: row;
   -ms-flex-flow: row;
   flex-flow: row;
+  min-height: 33px;
   max-height: 33px;
   border-bottom: solid 1px #dadada; }
 
@@ -483,7 +484,8 @@
   -moz-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  border: none; }
+  border: none;
+  padding: 5px; }
 
 .console-browser .console-browser-logs {
   width: 100%;
