@@ -55,7 +55,14 @@ describe('Creating a CodeBasket', function() {
         location: 'http://codepen.io/philipwalton/embed/LEbQON/?height=268&theme-id=0&default-tab=result',
         title: 'CodePen',
         name: 'CodePen',
-        isActive: true
+        isActive: true,
+        pane: 'bottom'
+      },
+      {
+        location: 'https://www.youtube.com/embed/3qI-XExjyC4',
+        title: 'YouTube',
+        name: 'YouTube',
+        pane: 'bottom'
       },
       {
         type: 'file',
