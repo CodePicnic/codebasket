@@ -29,24 +29,18 @@
     display: none;
   }
 
-  .console-editor-overlay {
+  .console-floating-actions {
     position: absolute;
     left: auto;
     right: 0;
     top: 34px;
-    bottom: 0;
     z-index: 99;
     padding: 20px;
-    display: none;
+    display: block;
     transition: all .7s ease;
 
     &.full-screen {
       top: 0;
-    }
-
-    &:hover,
-    &.enabled {
-      display: block;
     }
 
     .console-container-button {

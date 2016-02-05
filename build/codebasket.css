@@ -839,30 +839,27 @@
     border: none; }
   .console-container .hidden {
     display: none; }
-  .console-container .console-editor-overlay {
+  .console-container .console-floating-actions {
     position: absolute;
     left: auto;
     right: 0;
     top: 34px;
-    bottom: 0;
     z-index: 99;
     padding: 20px;
-    display: none;
+    display: block;
     transition: all .7s ease; }
-    .console-container .console-editor-overlay.full-screen {
+    .console-container .console-floating-actions.full-screen {
       top: 0; }
-    .console-container .console-editor-overlay:hover, .console-container .console-editor-overlay.enabled {
-      display: block; }
-    .console-container .console-editor-overlay .console-container-button {
+    .console-container .console-floating-actions .console-container-button {
       width: 37px;
       height: 37px;
       line-height: 37px;
       border: solid 1px #dadada;
       border-radius: 50%; }
-    .console-container .console-editor-overlay > * {
+    .console-container .console-floating-actions > * {
       opacity: 0;
       transition: opacity .7s ease; }
-    .console-container .console-editor-overlay:hover > * {
+    .console-container .console-floating-actions:hover > * {
       opacity: 1; }
   .console-container .console-modal-overlay {
     position: absolute;
