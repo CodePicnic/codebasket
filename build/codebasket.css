@@ -851,6 +851,7 @@
     .console-container .console-floating-actions.full-screen {
       top: 0; }
     .console-container .console-floating-actions .console-container-button {
+      display: block;
       width: 37px;
       height: 37px;
       line-height: 37px;

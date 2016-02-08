@@ -13,6 +13,7 @@ CodeBasket.create = function(options) {
       toolbarOptions = options.toolbarOptions || [],
       uiOptionsList = options.ui || {},
       sidebarActions = options.sidebarActions || [],
+      floatingButtons = options.floatingButtons || [],
       uiOptions = merge({}, {
         isSidebarVisible: true,
         isProgressBarVisible: false,
@@ -38,6 +39,7 @@ CodeBasket.create = function(options) {
     sidebarActions: sidebarActions,
     options: optionsList,
     toolbarOptions: toolbarOptions,
+    floatingButtons: floatingButtons,
     uiOptions: uiOptions
   };
 
