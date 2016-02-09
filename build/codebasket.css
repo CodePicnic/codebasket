@@ -859,6 +859,7 @@
       border-radius: 50%; }
     .console-container .console-floating-actions > * {
       opacity: 0;
+      margin-bottom: 10px;
       transition: opacity .7s ease; }
     .console-container .console-floating-actions:hover > * {
       opacity: 1; }
