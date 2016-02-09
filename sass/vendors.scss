@@ -50,6 +50,10 @@
       @include flex(0 0 auto !important);
     }
 
+    &.horizontal:first-child {
+      max-height: calc(100% - 200px);
+    }
+
     &.with-transition {
       transition: width .7s ease, min-width .7s ease, max-width .7s ease, border-right .9s ease;
     }

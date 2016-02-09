@@ -768,6 +768,8 @@
     -moz-flex: 0 0 auto !important;
     -ms-flex: 0 0 auto !important;
     flex: 0 0 auto !important; }
+  .SplitPane .Pane.horizontal:first-child {
+    max-height: calc(100% - 200px); }
   .SplitPane .Pane.with-transition {
     transition: width .7s ease, min-width .7s ease, max-width .7s ease, border-right .9s ease; }
   .SplitPane .Pane > .SplitPane {
