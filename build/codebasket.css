@@ -845,7 +845,7 @@
     position: absolute;
     left: auto;
     right: 0;
-    top: 34px;
+    bottom: 0;
     z-index: 99;
     padding: 20px;
     display: block;
@@ -863,6 +863,8 @@
       opacity: 0;
       margin-bottom: 10px;
       transition: opacity .7s ease; }
+      .console-container .console-floating-actions > *:last-child {
+        margin-bottom: 0; }
     .console-container .console-floating-actions:hover > * {
       opacity: 1; }
   .console-container .console-modal-overlay {

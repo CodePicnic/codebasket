@@ -33,7 +33,7 @@
     position: absolute;
     left: auto;
     right: 0;
-    top: 34px;
+    bottom: 0;
     z-index: 99;
     padding: 20px;
     display: block;
@@ -56,6 +56,10 @@
       opacity: 0;
       margin-bottom: 10px;
       transition: opacity .7s ease;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
     &:hover > * {
