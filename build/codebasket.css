@@ -137,7 +137,7 @@
     transition: all .7s ease; }
     .console-container .console-tabs.collapsed {
       height: 0;
-      overflow: hidden;
+      overflow: hidden !important;
       border-bottom-width: 0; }
       .console-container .console-tabs.collapsed .console-tabs-left .viewport {
         height: 0; }

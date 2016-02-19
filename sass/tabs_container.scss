@@ -20,7 +20,7 @@
 
     &.collapsed {
       height: 0;
-      overflow: hidden;
+      overflow: hidden !important;
       border-bottom-width: 0;
 
       .console-tabs-left .viewport {
