@@ -850,8 +850,6 @@
     padding: 20px;
     display: block;
     transition: all .7s ease; }
-    .console-container .console-floating-actions.full-screen {
-      top: 0; }
     .console-container .console-floating-actions .console-container-button {
       display: block;
       width: 37px;
