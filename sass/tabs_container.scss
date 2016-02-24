@@ -55,7 +55,6 @@
     a {
       text-decoration: none;
       color: #333333;
-      cursor: pointer;
     }
 
     &.visible {
@@ -67,6 +66,7 @@
       line-height: 15px;
       padding: 8px 15px;
       display: block;
+      cursor: pointer;
 
       &:hover {
         background: #a29c9c;
