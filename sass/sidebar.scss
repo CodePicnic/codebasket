@@ -31,7 +31,7 @@
     @include flex(1 100%);
     transition: background-color .7s ease;
 
-    &.on-dragover {
+    &.on-dragover, dt.on-dragover {
       cursor: copy;
       background: #c0cad7;
     }
@@ -63,8 +63,16 @@
       cursor: default;
     }
 
+    dt {
+      transition: background-color .7s ease;
+    }
+
     dd.file {
       cursor: pointer;
+    }
+
+    dd.is-executable {
+      opacity: .5;
     }
 
     dl > dt {

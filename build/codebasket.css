@@ -32,7 +32,7 @@
   -ms-flex: 1 100%;
   flex: 1 100%;
   transition: background-color .7s ease; }
-  .console-container .console-sidebar.on-dragover {
+  .console-container .console-sidebar.on-dragover, .console-container .console-sidebar dt.on-dragover {
     cursor: copy;
     background: #c0cad7; }
   .console-container .console-sidebar.sidebar-empty:before {
@@ -52,8 +52,12 @@
   .console-container .console-sidebar dt,
   .console-container .console-sidebar dd {
     cursor: default; }
+  .console-container .console-sidebar dt {
+    transition: background-color .7s ease; }
   .console-container .console-sidebar dd.file {
     cursor: pointer; }
+  .console-container .console-sidebar dd.is-executable {
+    opacity: .5; }
   .console-container .console-sidebar dl > dt {
     margin: 0; }
   .console-container .console-sidebar dd.active {
