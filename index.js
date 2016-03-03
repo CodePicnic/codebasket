@@ -15,6 +15,7 @@ CodeBasket.create = function(options) {
       sidebarActions = options.sidebarActions || [],
       floatingButtons = options.floatingButtons || [],
       uiOptions = merge({}, {
+        sidebarSize: 200,
         isSidebarVisible: true,
         isProgressBarVisible: false,
         isAddTabVisible: true,
