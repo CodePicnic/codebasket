@@ -1,3 +1,5 @@
+@import 'colors';
+
 .console-container {
   .console-tabs-container {
   }
@@ -5,13 +7,14 @@
   #toggle-sidebar {
     width: 41px;
     text-align: center;
+    font-size: 10px;
   }
 
   .console-tabs {
     // font-family: 'latolight';
     font-size: 11px;
-    background: #f7f7f7;
-    border-bottom: solid 1px #dadada;
+    background: $nav-background;
+    border-bottom: solid 1px $border-color;
     overflow: visible !important;
     text-align: left;
     @include display-flex();
@@ -27,12 +30,6 @@
         height: 0;
       }
     }
-
-    .console-container-button:hover,
-    .console-container-button.active {
-      color: #000000;
-      background: #ffffff;
-    }
   }
 
   .console-options {
@@ -46,11 +43,11 @@
     position: absolute;
     z-index: 616;
     right: 0;
-    top: 34px;
+    top: 33px;
     background: #fff;
     text-align: left;
-    border-left: 1px solid #dadada;
-    border-bottom: 1px solid #dadada;
+    border-left: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
 
     a {
       text-decoration: none;
@@ -69,8 +66,7 @@
       cursor: pointer;
 
       &:hover {
-        background: #a29c9c;
-        color: #ffffff;
+        color: rgb(40, 106, 135);
       }
     }
   }
@@ -128,7 +124,7 @@
     }
 
     .track {
-      background: #dadada;
+      background: $border-color;
       height: 100%;
       width: 0;
       position: relative;
@@ -172,11 +168,11 @@
     @include flex-grow(0);
     @include display-flex();
     @include flex-flow(row);
-    margin-left: 0;
     @include justify-content(flex-end);
+    margin-left: 0;
 
-    > * {
-      border-left: solid 1px #dadada;
+    .console-container-button {
+      border-left: solid 1px $border-color;
     }
   }
 
@@ -187,10 +183,10 @@
     // height: 34px;
     line-height: 32px;
     padding: 0px 15px;
-    border-right: solid 1px #dadada;
+    border-right: solid 1px $border-color;
     outline: none;
     text-decoration: none;
-    color: #111111;
+    color: #4d4d4d;
     @include flex(1);
     cursor: pointer;
 
@@ -219,18 +215,16 @@
 
     &.active,
     &:hover {
-      background: #ffffff;
-      color: #222524;
       position: relative;
 
       &:after {
         content: "";
         width: 100%;
-        height: 2px;
+        height: 3px;
         position: absolute;
         bottom: 0;
         left: 0;
-        background: rgba(39, 112, 174, .81);
+        background: #3aaedd;
         z-index: 101;
       }
     }

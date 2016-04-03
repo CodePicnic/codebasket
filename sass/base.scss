@@ -1,17 +1,20 @@
 @import 'mixins';
+@import 'typography';
 @import 'sidebar';
 @import 'tabs_container';
 @import 'browser';
 @import 'footer';
 @import 'vendors';
 @import 'mobile';
+@import 'colors';
 
 .console-container {
   width: 100%;
   height: 100%;
   position: relative;
-  font-family: 'PT Sans', Helvetica Neue, Arial, sans-serif;
-  border: 1px solid #dadada;
+  font-family: 'Lato', Helvetica Neue, Arial, sans-serif;
+  font-weight: 300;
+  border: 1px solid $border-color;
   @include display-flex();
   @include flex-flow(column);
   box-sizing: border-box;
@@ -48,7 +51,7 @@
       width: 37px;
       height: 37px;
       line-height: 37px;
-      border: solid 1px #dadada;
+      border: solid 1px $border-color;
       border-radius: 50%;
     }
 
@@ -73,7 +76,7 @@
     right: 0;
     top: 34px;
     bottom: 0;
-    border-left: 1px solid #dadada;
+    border-left: 1px solid $border-color;
     background: #ffffff;
     z-index: 99;
     padding: 20px;
@@ -122,17 +125,26 @@
     line-height: 32px;
     padding: 0 12px;
     text-decoration: none;
-    color: #867F7F;
-    font-size: 13px;
+    color: #b3b3b3;
+    font-size: 14px;
     position: relative;
     cursor: pointer;
+
+    &:hover, &.active {
+      color: #000000;
+      background: #e6e6e6;
+    }
 
     &.hidden {
       display: none;
     }
 
     &.with-border {
-      border-right: 1px solid #dadada;
+      border-right: 1px solid $border-color;
+    }
+
+    &.with-left-border {
+      border-left: 1px solid $border-color;
     }
 
     &.with-plus:after {
@@ -151,6 +163,7 @@
     &.with-caret.active {
       height: 33px;
       line-height: 32px;
+      background: #ffffff;
     }
 
     &.with-caret:after {
@@ -159,10 +172,6 @@
       margin-left: 5px;
       color: #333333;
       font-size: 0.95em;
-    }
-
-    &:hover {
-      background: #e3e3e3;
     }
   }
 

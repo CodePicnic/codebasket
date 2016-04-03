@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'colors';
 
 .SplitPane {
   .Resizer {
@@ -6,8 +7,8 @@
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
       position: absolute;
-      background: #000;
-      opacity: .2;
+      background: $border-color;
+      opacity: 1;
       z-index: 9;
       -moz-background-clip: padding;
       -webkit-background-clip: padding;

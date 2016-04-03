@@ -1,3 +1,5 @@
+@import 'colors';
+
 .console-container {
   .console-sidebar-container {
     min-width: 100%;
@@ -18,9 +20,17 @@
     overflow: visible;
     margin: 0;
     padding: 0;
-    background: #f7f7f7;
-    border-bottom: 1px solid #dadada;
+    background: $nav-background;
+    border-bottom: 1px solid $border-color;
     height: 33px;
+
+    .console-container-button {
+      border-right: solid 1px $border-color;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
   }
 
   .console-sidebar {
@@ -37,12 +47,24 @@
     }
 
     &.sidebar-empty:before {
-      content: "Create your files and folders or drop them here from your local machine";
+      font-family: "codepicnic";
+      font-size: 40px;
+      content: "\e928";
       position: absolute;
       top: calc(50% - 40px);
       text-align: center;
+      padding: 0;
+      color: #e6e6e6;
+      width: 100%;
+    }
+
+    &.sidebar-empty:after {
+      content: "Create your files and folders or drop them here from your local machine";
+      position: absolute;
+      top: 50%;
+      text-align: center;
       padding: 20px;
-      color: #ababab;
+      color: #999999;
     }
 
     * {

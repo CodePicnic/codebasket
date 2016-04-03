@@ -1,3 +1,179 @@
+@font-face {
+  font-family: 'codepicnic';
+  src: url("fonts/codepicnic.eot?v1875s");
+  src: url("fonts/codepicnic.eot?v1875s#iefix") format("embedded-opentype"), url("fonts/codepicnic.ttf?v1875s") format("truetype"), url("fonts/codepicnic.woff?v1875s") format("woff"), url("fonts/codepicnic.svg?v1875s#codepicnic") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'codepicnic' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: 900;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-hide-sidebar:before {
+  content: "\e92b"; }
+
+.icon-show-sidebar:before {
+  content: "\e930"; }
+
+.icon-option-download:before {
+  content: "\e925"; }
+
+.icon-option-fork:before {
+  content: "\e926"; }
+
+.icon-option-github:before {
+  content: "\e927"; }
+
+.icon-placeholder-download:before {
+  content: "\e928"; }
+
+.icon-play:before {
+  content: "\e929"; }
+
+.icon-refresh:before {
+  content: "\e92a"; }
+
+.icon-info:before {
+  content: "\e92c"; }
+
+.icon-new-file:before {
+  content: "\e92d"; }
+
+.icon-new-folder:before {
+  content: "\e92e"; }
+
+.icon-option-configure:before {
+  content: "\e92f"; }
+
+.icon-cog:before {
+  content: "\e931"; }
+
+.icon-close-2:before {
+  content: "\e932"; }
+
+.icon-codepicnic-logo:before {
+  content: "\e933"; }
+
+.icon-add:before {
+  content: "\e923"; }
+
+.icon-browser:before {
+  content: "\e924"; }
+
+.icon-codepicnic:before {
+  content: "\e921"; }
+
+.icon-help:before {
+  content: "\e922"; }
+
+.icon-placeholder-flavor:before {
+  content: "\e920"; }
+
+.icon-placeholder-search:before {
+  content: "\e91f"; }
+
+.icon-forks:before {
+  content: "\e91d"; }
+
+.icon-stats:before {
+  content: "\e91e"; }
+
+.icon-settings:before {
+  content: "\e91a"; }
+
+.icon-card:before {
+  content: "\e918"; }
+
+.icon-profile:before {
+  content: "\e919"; }
+
+.icon-dashboard:before {
+  content: "\e917"; }
+
+.icon-typewriter:before {
+  content: "\e916"; }
+
+.icon-docs:before {
+  content: "\e915"; }
+
+.icon-menu:before {
+  content: "\e914"; }
+
+.icon-multidevice:before {
+  content: "\e913"; }
+
+.icon-personalize:before {
+  content: "\e91b"; }
+
+.icon-embed:before {
+  content: "\e91c"; }
+
+.icon-coffee:before {
+  content: "\e911"; }
+
+.icon-module:before {
+  content: "\e912"; }
+
+.icon-placeholder-github:before {
+  content: "\e90d"; }
+
+.icon-placeholder-paste:before {
+  content: "\e90e"; }
+
+.icon-placeholder-settings:before {
+  content: "\e90f"; }
+
+.icon-close:before {
+  content: "\e910"; }
+
+.icon-placeholder-email:before {
+  content: "\e90b"; }
+
+.icon-placeholder-password:before {
+  content: "\e90c"; }
+
+.icon-circle-facebook:before {
+  content: "\e908"; }
+
+.icon-circle-github:before {
+  content: "\e909"; }
+
+.icon-circle-twitter:before {
+  content: "\e90a"; }
+
+.icon-email:before {
+  content: "\e907"; }
+
+.icon-console:before {
+  content: "\e900"; }
+
+.icon-contact:before {
+  content: "\e901"; }
+
+.icon-file:before {
+  content: "\e902"; }
+
+.icon-github:before {
+  content: "\e903"; }
+
+.icon-people:before {
+  content: "\e904"; }
+
+.icon-share:before {
+  content: "\e905"; }
+
+.icon-time:before {
+  content: "\e906"; }
+
 .console-container .console-sidebar-container {
   min-width: 100%;
   max-width: 100%;
@@ -16,9 +192,13 @@
   overflow: visible;
   margin: 0;
   padding: 0;
-  background: #f7f7f7;
-  border-bottom: 1px solid #dadada;
+  background: #f5f5f5;
+  border-bottom: 1px solid #b3b3b3;
   height: 33px; }
+  .console-container .console-sidebar-actions .console-container-button {
+    border-right: solid 1px #b3b3b3; }
+    .console-container .console-sidebar-actions .console-container-button:last-child {
+      border-right: none; }
 
 .console-container .console-sidebar {
   margin: 0;
@@ -36,12 +216,22 @@
     cursor: copy;
     background: #c0cad7; }
   .console-container .console-sidebar.sidebar-empty:before {
-    content: "Create your files and folders or drop them here from your local machine";
+    font-family: "codepicnic";
+    font-size: 40px;
+    content: "\e928";
     position: absolute;
     top: calc(50% - 40px);
     text-align: center;
+    padding: 0;
+    color: #e6e6e6;
+    width: 100%; }
+  .console-container .console-sidebar.sidebar-empty:after {
+    content: "Create your files and folders or drop them here from your local machine";
+    position: absolute;
+    top: 50%;
+    text-align: center;
     padding: 20px;
-    color: #ababab; }
+    color: #999999; }
   .console-container .console-sidebar * {
     position: relative; }
   .console-container .console-sidebar > *,
@@ -124,11 +314,12 @@
   /* Tiny Scrollbar */ }
   .console-container #toggle-sidebar {
     width: 41px;
-    text-align: center; }
+    text-align: center;
+    font-size: 10px; }
   .console-container .console-tabs {
     font-size: 11px;
-    background: #f7f7f7;
-    border-bottom: solid 1px #dadada;
+    background: #f5f5f5;
+    border-bottom: solid 1px #b3b3b3;
     overflow: visible !important;
     text-align: left;
     display: -webkit-box;
@@ -145,10 +336,6 @@
       border-bottom-width: 0; }
       .console-container .console-tabs.collapsed .console-tabs-left .viewport {
         height: 0; }
-    .console-container .console-tabs .console-container-button:hover,
-    .console-container .console-tabs .console-container-button.active {
-      color: #000000;
-      background: #ffffff; }
   .console-container .console-options {
     display: none;
     margin: 0;
@@ -159,11 +346,11 @@
     position: absolute;
     z-index: 616;
     right: 0;
-    top: 34px;
+    top: 33px;
     background: #fff;
     text-align: left;
-    border-left: 1px solid #dadada;
-    border-bottom: 1px solid #dadada; }
+    border-left: 1px solid #b3b3b3;
+    border-bottom: 1px solid #b3b3b3; }
     .console-container .console-options a {
       text-decoration: none;
       color: #333333; }
@@ -176,8 +363,7 @@
       display: block;
       cursor: pointer; }
       .console-container .console-options > *:hover {
-        background: #a29c9c;
-        color: #ffffff; }
+        color: #286a87; }
   .console-container .console-tabs-left {
     min-width: 50%;
     -webkit-flex-grow: 1;
@@ -270,7 +456,7 @@
       opacity: 0;
       transition: all .5s; }
     .console-container .console-tabs-left .track {
-      background: #dadada;
+      background: #b3b3b3;
       height: 100%;
       width: 0;
       position: relative;
@@ -309,24 +495,24 @@
     -moz-flex-flow: row;
     -ms-flex-flow: row;
     flex-flow: row;
-    margin-left: 0;
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     -webkit-justify-content: flex-end;
     -moz-justify-content: flex-end;
-    justify-content: flex-end; }
-    .console-container .console-tabs-right > * {
-      border-left: solid 1px #dadada; }
+    justify-content: flex-end;
+    margin-left: 0; }
+    .console-container .console-tabs-right .console-container-button {
+      border-left: solid 1px #b3b3b3; }
   .console-container .console-tab {
     display: inline-block;
     min-width: 90px;
     max-width: 90px;
     line-height: 32px;
     padding: 0px 15px;
-    border-right: solid 1px #dadada;
+    border-right: solid 1px #b3b3b3;
     outline: none;
     text-decoration: none;
-    color: #111111;
+    color: #4d4d4d;
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     -moz-box-flex: 1;
@@ -346,17 +532,15 @@
     .console-container .console-tab.changed span.console-tab-text:after {
       content: "*"; }
     .console-container .console-tab.active, .console-container .console-tab:hover {
-      background: #ffffff;
-      color: #222524;
       position: relative; }
       .console-container .console-tab.active:after, .console-container .console-tab:hover:after {
         content: "";
         width: 100%;
-        height: 2px;
+        height: 3px;
         position: absolute;
         bottom: 0;
         left: 0;
-        background: rgba(39, 112, 174, 0.81);
+        background: #3aaedd;
         z-index: 101; }
     .console-container .console-tab .console-tab-text {
       display: inline-block;
@@ -460,7 +644,7 @@
   flex-flow: row;
   min-height: 33px;
   max-height: 33px;
-  border-bottom: solid 1px #dadada; }
+  border-bottom: solid 1px #b3b3b3; }
 
 .console-browser .console-browser-iframe {
   width: 100%;
@@ -518,7 +702,7 @@
 
 .console-browser-logs > * {
   padding: 10px 20px;
-  border-bottom: solid 1px #dadada; }
+  border-bottom: solid 1px #b3b3b3; }
 
 .console-browser-logs > :nth-child(even) {
   background: #fafafa; }
@@ -643,13 +827,14 @@
   color: #808080; }
 
 .console-container .console-footer {
-  background: #ffffff;
-  border-top: solid 1px #dadada;
+  background: #f5f5f5;
+  border-top: solid 1px #b3b3b3;
   height: 30px;
   line-height: 30px;
   font-size: 12px;
   overflow: visible;
-  transition: all .7s ease; }
+  transition: all .7s ease;
+  color: #999999; }
   .console-container .console-footer.collapsed {
     height: 0;
     overflow: hidden;
@@ -664,11 +849,13 @@
     line-height: 29px;
     margin-top: -3px;
     vertical-align: middle; }
-  .console-container .console-footer .console-brand img {
-    height: 100%;
-    padding: 5px; }
+  .console-container .console-footer .console-brand {
+    text-align: center;
+    border-right: solid 1px #b3b3b3; }
+    .console-container .console-footer .console-brand img {
+      height: 100%;
+      padding: 5px; }
   .console-container .console-footer .console-footer-permanent-status {
-    font-weight: bold;
     margin-left: 10px;
     margin-right: 10px; }
   .console-container .console-footer .console-footer-users-label {
@@ -721,8 +908,8 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: absolute;
-  background: #000;
-  opacity: .2;
+  background: #b3b3b3;
+  opacity: 1;
   z-index: 9;
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
@@ -825,8 +1012,9 @@
   width: 100%;
   height: 100%;
   position: relative;
-  font-family: 'PT Sans', Helvetica Neue, Arial, sans-serif;
-  border: 1px solid #dadada;
+  font-family: 'Lato', Helvetica Neue, Arial, sans-serif;
+  font-weight: 300;
+  border: 1px solid #b3b3b3;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -859,7 +1047,7 @@
       width: 37px;
       height: 37px;
       line-height: 37px;
-      border: solid 1px #dadada;
+      border: solid 1px #b3b3b3;
       border-radius: 50%; }
     .console-container .console-floating-actions > * {
       opacity: 0;
@@ -875,7 +1063,7 @@
     right: 0;
     top: 34px;
     bottom: 0;
-    border-left: 1px solid #dadada;
+    border-left: 1px solid #b3b3b3;
     background: #ffffff;
     z-index: 99;
     padding: 20px;
@@ -908,14 +1096,19 @@
     line-height: 32px;
     padding: 0 12px;
     text-decoration: none;
-    color: #867F7F;
-    font-size: 13px;
+    color: #b3b3b3;
+    font-size: 14px;
     position: relative;
     cursor: pointer; }
+    .console-container .console-container-button:hover, .console-container .console-container-button.active {
+      color: #000000;
+      background: #e6e6e6; }
     .console-container .console-container-button.hidden {
       display: none; }
     .console-container .console-container-button.with-border {
-      border-right: 1px solid #dadada; }
+      border-right: 1px solid #b3b3b3; }
+    .console-container .console-container-button.with-left-border {
+      border-left: 1px solid #b3b3b3; }
     .console-container .console-container-button.with-plus:after {
       content: "\f067";
       position: absolute;
@@ -929,15 +1122,14 @@
       color: #000000; }
     .console-container .console-container-button.with-caret.active {
       height: 33px;
-      line-height: 32px; }
+      line-height: 32px;
+      background: #ffffff; }
     .console-container .console-container-button.with-caret:after {
       content: "\f0d7";
       font: normal normal normal 14px/1 FontAwesome;
       margin-left: 5px;
       color: #333333;
       font-size: 0.95em; }
-    .console-container .console-container-button:hover {
-      background: #e3e3e3; }
   .console-container .console-container-wrapper {
     width: 100%;
     height: 100%;

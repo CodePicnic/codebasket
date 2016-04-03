@@ -17,23 +17,23 @@ describe('Creating a CodeBasket', function() {
       },
       {
         title: 'Fork',
-        icon: 'fa-code-fork'
+        icon: 'icon-option-fork'
       },
       {
         title: 'Share',
-        icon: 'fa-share-alt'
+        icon: 'icon-share'
       }],
       sidebarActions = [{
         title: 'Add file',
-        icon: 'with-plus fa-file',
+        icon: 'icon-new-file',
         action: function() {}
       },{
         title: 'Add folder',
-        icon: 'with-plus fa-folder',
+        icon: 'icon-new-folder',
         action: function() {}
       },{
         title: 'Reload',
-        icon: 'fa-refresh',
+        icon: 'icon-refresh',
         action: function() {}
       }],
       toolbarOptions = [{
@@ -42,7 +42,7 @@ describe('Creating a CodeBasket', function() {
         href: '#'
       },{
         title: 'Browser',
-        icon: 'fa-globe',
+        icon: 'icon-browser',
         href: '#',
         action: function() {
           var browser = _.find(codeBasket.items, function(item) { return item.type === 'browser' });
@@ -176,7 +176,8 @@ describe('Creating a CodeBasket', function() {
       sidebarActions: sidebarActions,
       toolbarOptions: toolbarOptions,
       options: options,
-      brand: brand
+      brand: brand,
+      permanentStatus: 'Register now to save your changes'
     });
 
     codeBasket.render();

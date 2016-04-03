@@ -14,6 +14,7 @@ CodeBasket.create = function(options) {
       uiOptionsList = options.ui || {},
       sidebarActions = options.sidebarActions || [],
       floatingButtons = options.floatingButtons || [],
+      permanentStatus = options.permanentStatus || '',
       uiOptions = merge({}, {
         sidebarSize: 200,
         isSidebarVisible: true,
@@ -41,7 +42,8 @@ CodeBasket.create = function(options) {
     options: optionsList,
     toolbarOptions: toolbarOptions,
     floatingButtons: floatingButtons,
-    uiOptions: uiOptions
+    uiOptions: uiOptions,
+    permanentStatus: permanentStatus
   };
 
   filesFromDOM = internalMethods.extractFilesFromDOM(newCodeBasket.element);

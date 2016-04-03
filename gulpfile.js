@@ -39,7 +39,12 @@ gulp.task('sass', function() {
     .pipe(gulp.dest(buildDir));
 });
 
-gulp.task('dist', [ 'browserify', 'sass' ], function() {
+gulp.task('copy_assets', function() {
+  gulp.src('./sass/fonts/**/*')
+    .pipe(gulp.dest(buildDir + '/fonts'));
+});
+
+gulp.task('dist', [ 'browserify', 'sass', 'copy_assets' ], function() {
   return gulp.src(buildDir + '/codebasket.js')
     .pipe(uglify())
     .pipe(gulp.dest(buildDir));
@@ -50,7 +55,7 @@ gulp.task('test', function() {
     .pipe(mochaPhantomJS());
 });
 
-gulp.task('build', [ 'lint', 'jscs', 'browserify', 'sass' ], function() {
+gulp.task('build', [ 'lint', 'jscs', 'browserify', 'sass', 'copy_assets' ], function() {
   var argv = require('yargs').argv;
 
   if (argv['copy-js']) {
