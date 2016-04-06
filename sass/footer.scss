@@ -5,7 +5,6 @@
     background: $nav-background;
     border-top: solid 1px $border-color;
     height: 30px;
-    line-height: 30px;
     font-size: 12px;
     overflow: visible;
     transition: all .7s ease;
@@ -27,7 +26,6 @@
       display: inline-block;
       height: 29px;
       line-height: 29px;
-      margin-top: -3px;
       vertical-align: middle;
     }
 
@@ -36,8 +34,10 @@
       border-right: solid 1px $border-color;
 
       img {
+        display: block;
         height: 100%;
         padding: 5px;
+        margin: 0 auto;
       }
     }
 

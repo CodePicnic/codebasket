@@ -830,7 +830,6 @@
   background: #f5f5f5;
   border-top: solid 1px #b3b3b3;
   height: 30px;
-  line-height: 30px;
   font-size: 12px;
   overflow: visible;
   transition: all .7s ease;
@@ -847,14 +846,15 @@
     display: inline-block;
     height: 29px;
     line-height: 29px;
-    margin-top: -3px;
     vertical-align: middle; }
   .console-container .console-footer .console-brand {
     text-align: center;
     border-right: solid 1px #b3b3b3; }
     .console-container .console-footer .console-brand img {
+      display: block;
       height: 100%;
-      padding: 5px; }
+      padding: 5px;
+      margin: 0 auto; }
   .console-container .console-footer .console-footer-permanent-status {
     margin-left: 10px;
     margin-right: 10px; }
