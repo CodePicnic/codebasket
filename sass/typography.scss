@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'codepicnic';
-  src:    url('fonts/codepicnic.eot?efy6ks');
-  src:    url('fonts/codepicnic.eot?efy6ks#iefix') format('embedded-opentype'),
-      url('fonts/codepicnic.ttf?efy6ks') format('truetype'),
-      url('fonts/codepicnic.woff?efy6ks') format('woff'),
-      url('fonts/codepicnic.svg?efy6ks#codepicnic') format('svg');
+  src:    url('fonts/codepicnic.eot?v8n614');
+  src:    url('fonts/codepicnic.eot?v8n614#iefix') format('embedded-opentype'),
+      url('fonts/codepicnic.ttf?v8n614') format('truetype'),
+      url('fonts/codepicnic.woff?v8n614') format('woff'),
+      url('fonts/codepicnic.svg?v8n614#codepicnic') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-sign-in:before {
+  content: "\e93d";
+}
+.icon-sign-out:before {
+  content: "\e93e";
+}
 .icon-save:before {
   content: "\e93c";
 }
