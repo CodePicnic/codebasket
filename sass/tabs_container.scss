@@ -65,6 +65,10 @@
       display: block;
       cursor: pointer;
 
+      .icon {
+        width: 20px;
+      }
+
       &:hover {
         color: rgb(40, 106, 135);
       }
