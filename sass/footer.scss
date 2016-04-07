@@ -94,7 +94,10 @@
     }
 
     .console-footer-status {
-      max-width: 30%;
+      max-width: 40%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .console-footer-progress {
