@@ -53,6 +53,12 @@
       line-height: 37px;
       border: solid 1px $border-color;
       border-radius: 50%;
+
+      &.icon-arrow-down,
+      &.icon-arrow-up {
+        font-size: 8px;
+        padding: 0;
+      }
     }
 
     > * {
@@ -172,6 +178,10 @@
       margin-left: 5px;
       color: #333333;
       font-size: 0.95em;
+    }
+
+    &.icon {
+      text-align: center;
     }
   }
 

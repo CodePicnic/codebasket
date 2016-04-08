@@ -1,17 +1,17 @@
 @font-face {
   font-family: 'codepicnic';
-  src:    url('fonts/codepicnic.eot?v8n614');
-  src:    url('fonts/codepicnic.eot?v8n614#iefix') format('embedded-opentype'),
-      url('fonts/codepicnic.ttf?v8n614') format('truetype'),
-      url('fonts/codepicnic.woff?v8n614') format('woff'),
-      url('fonts/codepicnic.svg?v8n614#codepicnic') format('svg');
+  src:    url('fonts/codepicnic.eot?xilzpx');
+  src:    url('fonts/codepicnic.eot?xilzpx#iefix') format('embedded-opentype'),
+      url('fonts/codepicnic.ttf?xilzpx') format('truetype'),
+      url('fonts/codepicnic.woff?xilzpx') format('woff'),
+      url('fonts/codepicnic.svg?xilzpx#codepicnic') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 .icon {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "codepicnic" !important;
+  font-family: 'codepicnic' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -24,6 +24,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-private:before {
+  content: "\e93f";
+}
+.icon-public:before {
+  content: "\e940";
+}
+.icon-sign-up:before {
+  content: "\e941";
+}
+.icon-streaming:before {
+  content: "\e942";
+}
 .icon-sign-in:before {
   content: "\e93d";
 }

@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'codepicnic';
-  src: url("fonts/codepicnic.eot?v8n614");
-  src: url("fonts/codepicnic.eot?v8n614#iefix") format("embedded-opentype"), url("fonts/codepicnic.ttf?v8n614") format("truetype"), url("fonts/codepicnic.woff?v8n614") format("woff"), url("fonts/codepicnic.svg?v8n614#codepicnic") format("svg");
+  src: url("fonts/codepicnic.eot?xilzpx");
+  src: url("fonts/codepicnic.eot?xilzpx#iefix") format("embedded-opentype"), url("fonts/codepicnic.ttf?xilzpx") format("truetype"), url("fonts/codepicnic.woff?xilzpx") format("woff"), url("fonts/codepicnic.svg?xilzpx#codepicnic") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 .icon {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "codepicnic" !important;
+  font-family: 'codepicnic' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -17,6 +17,18 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+.icon-private:before {
+  content: "\e93f"; }
+
+.icon-public:before {
+  content: "\e940"; }
+
+.icon-sign-up:before {
+  content: "\e941"; }
+
+.icon-streaming:before {
+  content: "\e942"; }
 
 .icon-sign-in:before {
   content: "\e93d"; }
@@ -1087,6 +1099,9 @@
       line-height: 37px;
       border: solid 1px #b3b3b3;
       border-radius: 50%; }
+      .console-container .console-floating-actions .console-container-button.icon-arrow-down, .console-container .console-floating-actions .console-container-button.icon-arrow-up {
+        font-size: 8px;
+        padding: 0; }
     .console-container .console-floating-actions > * {
       opacity: 0;
       margin-bottom: 10px;
@@ -1168,6 +1183,8 @@
       margin-left: 5px;
       color: #333333;
       font-size: 0.95em; }
+    .console-container .console-container-button.icon {
+      text-align: center; }
   .console-container .console-container-wrapper {
     width: 100%;
     height: 100%;
