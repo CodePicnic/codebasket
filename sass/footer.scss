@@ -80,13 +80,13 @@
       padding: 0;
       position: absolute;
       right: 0;
-      bottom: 28px;
+      bottom: 30px;
       z-index: 101;
       background: #ffffff;
-      border: solid 1px rgba(218, 218, 218, .6);
+      border: solid 1px #b3b3b3;
       border-bottom: solid 1px #ffffff;
-      width: 50%;
-      text-align: right;
+      width: 100%;
+      text-align: left;
 
       &.visible {
         display: block;

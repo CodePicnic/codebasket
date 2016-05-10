@@ -76,7 +76,7 @@ Tested in:
 
 ## License
 
-MIT License. Copyright 2015 Gustavo Leon. http://github.com/hpneo
+MIT License. Copyright 2016 Gustavo Leon. http://github.com/hpneo
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
