@@ -909,10 +909,12 @@
     margin-right: 10px; }
   .console-container .console-footer .console-footer-users-wrapper {
     position: relative;
-    cursor: pointer; }
+    cursor: pointer;
+    font-size: 0; }
     .console-container .console-footer .console-footer-users-wrapper > * {
       display: inline-block;
-      vertical-align: middle; }
+      vertical-align: middle;
+      font-size: 12px; }
     .console-container .console-footer .console-footer-users-wrapper .user-color {
       display: inline-block;
       width: 10px;

@@ -11,6 +11,7 @@ CodeBasket.create = function(options) {
   var optionsList = options.options || [],
       brand = options.brand,
       toolbarOptions = options.toolbarOptions || [],
+      extraToolbarOptions = options.extraToolbarOptions || [],
       uiOptionsList = options.ui || {},
       sidebarActions = options.sidebarActions || [],
       floatingButtons = options.floatingButtons || [],
@@ -27,7 +28,7 @@ CodeBasket.create = function(options) {
       newCodeBasket;
 
   if (!options.element) {
-    throw "You need to set a container element";
+    throw 'You need to set a container element';
   }
 
   uiOptions.isSidebarVisible =  uiOptions.isFullScreen ? false : uiOptions.isSidebarVisible;
@@ -41,6 +42,7 @@ CodeBasket.create = function(options) {
     sidebarActions: sidebarActions,
     options: optionsList,
     toolbarOptions: toolbarOptions,
+    extraToolbarOptions: extraToolbarOptions,
     floatingButtons: floatingButtons,
     uiOptions: uiOptions,
     permanentStatus: permanentStatus

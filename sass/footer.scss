@@ -53,10 +53,12 @@
     .console-footer-users-wrapper {
       position: relative;
       cursor: pointer;
+      font-size: 0;
 
       > * {
         display: inline-block;
         vertical-align: middle;
+        font-size: 12px;
       }
 
       .user-color {

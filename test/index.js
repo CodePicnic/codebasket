@@ -180,6 +180,18 @@ describe('Creating a CodeBasket', function() {
       permanentStatus: 'Register now to save your changes'
     });
 
+    codeBasket.users = [
+      {
+        color: 'red',
+        name: 'User 2'
+      }
+    ];
+
+    codeBasket.currentUser = {
+      color: 'blue',
+      name: 'User'
+    };
+
     codeBasket.render();
 
     expect(spies.onReady).toHaveBeenCalled();
