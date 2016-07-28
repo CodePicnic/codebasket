@@ -200,6 +200,13 @@ To create a minified version run:
 
 `NODE_ENV=production gulp dist`
 
+### Requirements
+
+* Browserify
+* Gulp
+* PhantomJS
+* [ACE editor](https://ace.c9.io/) (inside `test` directory)
+
 ## Testing
 
 Run `gulp test` in your terminal (you can also open the `test/runner.html` file in a browser).
