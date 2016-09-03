@@ -959,6 +959,7 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  position: absolute;
   background: #b3b3b3;
   opacity: 1;
   z-index: 9;
