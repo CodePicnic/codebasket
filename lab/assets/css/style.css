@@ -1,0 +1,606 @@
+@charset "UTF-8";
+@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.3\.0\/gems\/compass-core-1\.0\.3\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\000035}}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.3\.0\/gems\/compass-core-1\.0\.3\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000322}}
+html {
+  line-height: 1;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.3\.0\/gems\/compass-core-1\.0\.3\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000324}}
+ol, ul {
+  list-style: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.3\.0\/gems\/compass-core-1\.0\.3\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000326}}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.3\.0\/gems\/compass-core-1\.0\.3\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000328}}
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.3\.0\/gems\/compass-core-1\.0\.3\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000330}}
+q, blockquote {
+  quotes: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.3\.0\/gems\/compass-core-1\.0\.3\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003103}}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.3\.0\/gems\/compass-core-1\.0\.3\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000332}}
+a img {
+  border: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/usr\/local\/lib\/ruby\/gems\/2\.3\.0\/gems\/compass-core-1\.0\.3\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003116}}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\0000334}}
+a img {
+  display: block;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\0000338}}
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\0000343}}
+input {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\0000379}}
+body {
+  background: #f9f9f9;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\0000381}}
+a {
+  text-decoration: none;
+  position: relative;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\0000384}}
+a:hover {
+  text-decoration: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\0000391}}
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 76%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\0000395}}
+h1, h2, h3, h4, h5, big, blockquote {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: relative;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\0000398}}
+p, ul, ol, figure {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: relative;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003114}}
+section.container {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: block;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003126}}
+header.global {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 35px;
+  border-top: 1px solid #c8c8c8;
+  border-bottom: 1px solid #c8c8c8;
+  background: whitesmoke;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003136}}
+header.global ul {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  top: 0px;
+  border-right: 1px solid #c8c8c8;
+  border-left: 1px solid #c8c8c8;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003142}}
+header.global ul li {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: inline-block;
+  height: 33px;
+  border-right: 1px solid #c8c8c8;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003147}}
+header.global ul li a {
+  display: block;
+  padding: 11px 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003150}}
+header.global .finder {
+  left: 0px;
+  width: 20vw;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003153}}
+header.global .finder .refreshFinder {
+  position: absolute;
+  right: 0px;
+  border-left: 1px solid #c8c8c8;
+  border-right: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003158}}
+header.global .finder .toggleFinder {
+  position: absolute;
+  right: -50px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003161}}
+header.global .options {
+  right: 0px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003163}}
+header.global .options li:last-of-type {
+  border: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003166}}
+footer.global {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 30px;
+  background: whitesmoke;
+  border-top: 1px solid #c8c8c8;
+  border-bottom: 1px solid #c8c8c8;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003176}}
+footer.global .branding,
+footer.global .status {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  top: 0px;
+  height: 28px;
+  border-right: 1px solid #c8c8c8;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003183}}
+footer.global li {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: inline-block;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003186}}
+footer.global .branding {
+  left: 0px;
+  width: 20vw;
+  padding: 4px;
+  border-left: 1px solid #c8c8c8;
+  text-align: center;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003192}}
+footer.global .branding img {
+  margin: auto;
+  max-width: 200px;
+  height: 20px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003196}}
+footer.global .status {
+  right: 0;
+  width: 80vw;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003199}}
+footer.global .status li {
+  padding: 8px 20px;
+  color: #999;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003202}}
+footer.global .status li span {
+  margin: 0 10px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003209}}
+section.finder,
+section.content {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  top: 35px;
+  bottom: 30px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003216}}
+section.finder {
+  left: 0px;
+  width: 20vw;
+  padding: 15px 2px;
+  border-left: 1px solid #c8c8c8;
+  border-right: 1px solid #c8c8c8;
+  background: white;
+  overflow: scroll;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003224}}
+section.finder .terminals,
+section.finder .files {
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  line-height: 1.8em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003229}}
+section.finder ul {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003232}}
+section.finder li {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: block;
+  width: 100%;
+  padding: 0 15px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003237}}
+section.finder li a {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: block;
+  padding: 0 5px;
+  color: #444;
+  font-weight: 100;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003243}}
+section.finder .title {
+  font-weight: 900;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 26px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003250}}
+section.finder .title .options {
+  top: 12px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003252}}
+section.finder .title .options a {
+  font-size: 0.8em;
+  color: #1e83ad;
+  text-decoration: underline;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003256}}
+section.finder .title .search {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: block;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003261}}
+section.finder .title .search input {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: block;
+  border-radius: 5px;
+  padding: 5px 5px 5px 27px;
+  width: 100%;
+  background: white;
+  border: 1px solid #eee;
+  font-size: 0.9em;
+  font-weight: 100;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003271}}
+section.finder .title .search:before {
+  font: normal normal normal 14px/1 FontAwesome;
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  z-index: 1;
+  color: #ccc;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003279}}
+section.finder .title .search .clear {
+  font: normal normal normal 14px/1 FontAwesome;
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  z-index: 1;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003285}}
+section.finder .title .search .clear:after {
+  content: "";
+  color: #ccc;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003288}}
+section.finder .title:hover {
+  height: auto;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003290}}
+section.finder .title:hover .search {
+  opacity: 1;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003296}}
+section.finder .terminal:after,
+section.finder .folder:after,
+section.finder .file:after {
+  position: absolute;
+  top: 0px;
+  left: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003300}}
+section.finder .terminal:hover,
+section.finder .folder:hover,
+section.finder .file:hover {
+  background: #f5f5f5;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003302}}
+section.finder .terminal ul li:hover,
+section.finder .folder ul li:hover,
+section.finder .file ul li:hover {
+  background: #eee;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003306}}
+section.finder .terminal:after {
+  content: "■";
+  color: #ccc;
+  top: -1px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003311}}
+section.finder .terminal:hover:after {
+  color: #999;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003314}}
+section.finder .folder {
+  padding-right: 0px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003316}}
+section.finder .folder:after {
+  font: normal normal normal 14px/1 FontAwesome;
+  top: 8px;
+  font-size: 0.7em;
+  color: #aaa;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003321}}
+section.finder .folder strong {
+  position: relative;
+  display: block;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003325}}
+section.finder .folder.open:after {
+  content: "";
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003327}}
+section.finder .folder.closed {
+  overflow: hidden;
+  height: 25px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003330}}
+section.finder .folder.closed:after {
+  content: "";
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003334}}
+section.finder .file:after {
+  content: "●";
+  color: #ccc;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003338}}
+section.finder .file:hover:after {
+  color: #999;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003341}}
+section.finder .file.open:after {
+  color: #91d2ec;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003344}}
+section.finder .file.open:hover:after {
+  color: #a7dbf0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003347}}
+section.finder .file.unsaved:after {
+  color: #ffbb00;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003350}}
+section.finder .file.unsaved:hover:after {
+  color: #ffc933;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003353}}
+section.finder .file.active:after {
+  color: #8cb025;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003356}}
+section.finder .file.active:hover:after {
+  color: #9bd005;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003359}}
+section.finder .options {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003366}}
+section.finder .options a {
+  display: inline-block;
+  padding: 3px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003369}}
+section.finder .options a:before {
+  font: normal normal normal 14px/1 FontAwesome;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003372}}
+section.finder .options .terminate:before {
+  content: "";
+  color: #d14c42;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003376}}
+section.finder .options .terminate:hover:before {
+  color: #f33b37;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003379}}
+section.finder .options .duplicate:before {
+  content: "";
+  color: #1e83ad;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003383}}
+section.finder .options .duplicate:hover:before {
+  color: #2294c2;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003386}}
+section.finder .options .rename:before {
+  content: "";
+  color: #3aaedd;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003390}}
+section.finder .options .rename:hover:before {
+  color: #65c0e5;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003393}}
+section.finder .options .delete:before {
+  content: "";
+  color: #d14c42;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003397}}
+section.finder .options .delete:hover:before {
+  color: #f33b37;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003399}}
+section.finder li:hover > span.options,
+section.finder li strong:hover > span.options {
+  opacity: 1;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/pablonoel\/Sites\/codebasket\/lab\/assets\/sass\/style\.sass}line{font-family:\00003403}}
+section.content {
+  right: 0px;
+  width: 80vw;
+  border-right: 1px solid #c8c8c8;
+  background: red;
+}
