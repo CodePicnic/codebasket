@@ -1,0 +1,112 @@
+@import 'variables';
+@import 'typography';
+
+%hide-text {
+  display : inline-block;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  color: rgba(0,0,0,0);
+}
+
+%hide {
+  display : none;
+  visibility: none;
+}
+
+%box-reset {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+%full-box {
+  position: absolute;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+%basic-box {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+%inline-reset {
+  font-size: 0px;
+
+  > * {
+    display: inline-block;
+    font-size: inherit;
+  }
+}
+
+%menu-structure {
+  @extend %box-reset;
+  @extend %inline-reset;
+  // position: absolute;
+  // top: 0px;
+  // border-bottom: 1px solid $border-color;
+  background: $light-background;
+  height: $header-height - 1px;
+}
+
+%menu-item {
+  @extend %box-reset;
+  vertical-align: middle;
+  width: auto;
+  height: $header-height - 2px;
+  border-right: 1px solid $border-color;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+%font-awesome {
+  font: normal normal normal 14px/1 FontAwesome;
+}
+
+.codebasket-main {
+  @extend %box-reset;
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border: 1px solid $border-color;
+  background: #f9f9f9;
+  font-family : Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+.codebasket-sidebar,
+.codebasket-content,
+.codebasket-footer {
+  @extend %box-reset;
+  position: absolute;
+}
+
+.codebasket-sidebar,
+.codebasket-content {
+  bottom: $footer-height;
+}
+
+.codebasket-options-list,
+.codebasket-aside-content {
+  @extend %box-reset;
+  @extend %basic-box;
+  z-index: 10;
+}
+
+@import 'components/sidebar';
+@import 'components/navbar';
+@import 'components/content';
+@import 'components/footer';

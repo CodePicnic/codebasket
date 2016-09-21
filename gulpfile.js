@@ -33,7 +33,7 @@ gulp.task('browserify', function() {
 });
 
 gulp.task('sass', function() {
-  gulp.src('./sass/base.scss')
+  gulp.src('./sass/index.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(rename('codebasket.css'))
     .pipe(gulp.dest(buildDir));
@@ -51,7 +51,7 @@ gulp.task('dist', [ 'browserify', 'sass', 'copy_assets' ], function() {
 });
 
 gulp.task('test', function() {
-  return gulp.src('./test/runner.html')
+  return gulp.src('./test/index.html')
     .pipe(mochaPhantomJS());
 });
 
@@ -70,7 +70,7 @@ gulp.task('build', [ 'lint', 'jscs', 'browserify', 'sass', 'copy_assets' ], func
 });
 
 gulp.task('watch', function() {
-  gulp.watch(files.concat('./sass/*.scss'), [ 'build' ]);
+  gulp.watch(files.concat('./sass/**/*.scss'), [ 'build' ]);
 });
 
 gulp.task('default', [ 'build', 'watch' ]);

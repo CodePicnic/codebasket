@@ -1,0 +1,227 @@
+.codebasket-sidebar {
+  top: 0px;
+  left: - $sidebar-width;
+  width: $sidebar-width;
+  border-right: 1px solid $border-color;
+  transition: left .3s ease-in-out;
+
+  &.visible {
+    left: 0;
+  }
+
+  &.empty:before {
+    font-family: "codepicnic";
+    font-size: 40px;
+    content: "\e928";
+    position: absolute;
+    top: calc(50% - 40px);
+    text-align: center;
+    padding: 0;
+    color: #e6e6e6;
+    width: 100%;
+  }
+
+  &.empty:after {
+    content: "Create your files and folders or drop them here from your local machine";
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    padding: 20px;
+    color: #999999;
+  }
+
+  .codebasket-navbar {
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .codebasket-sidebar-content {
+    @extend %basic-box;
+    left: 0;
+    top: $header-height;
+    bottom: 0;
+    right: 0;
+    overflow: scroll;
+    font-size: 14px;
+    padding: 15px 2px;
+  }
+}
+
+.codebasket-items-list {
+  @extend %box-reset;
+  width: 100%;
+  margin-bottom: 20px;
+  line-height: 1.8em;
+
+  .codebasket-list-title {
+    font-weight: 900;
+
+    &:hover {
+      background: none;
+    }
+  }
+
+  > li {
+    @extend %box-reset;
+    display: block;
+    width: 100%;
+    padding: 0 15px;
+
+    &:after {
+      position: absolute;
+      top: 0px;
+      left: 5px;
+    }
+
+    &:hover {
+      background: #f5f5f5;
+
+      > .codebasket-item-actions {
+        opacity: 1;
+      }
+    }
+
+    .codebasket-item-name {
+      @extend %box-reset;
+      display: block;
+      padding: 0 5px;
+      color: #444;
+      font-weight: 100;
+      cursor: pointer;
+    }
+
+    .codebasket-search {
+      @extend %box-reset;
+      display: block;
+      margin-bottom: 15px;
+
+      &:before {
+        @extend %font-awesome;
+        content: '\f002';
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        z-index: 1;
+        color: #ccc;
+      }
+
+      input {
+        @extend %box-reset;
+        display: block;
+        border-radius: 5px;
+        padding: 5px 5px 5px 27px;
+        width: 100%;
+        border: 1px solid #eee;
+        font-size: .9em;
+        font-weight: 100;
+      }
+    }
+  }
+
+  .codebasket-item-actions {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .codebasket-item-terminal {
+    &:after {
+      content: '■';
+      color: #ccc;
+      top: -1px;
+    }
+
+    &:hover {
+      &:after {
+        color: #999;
+      }
+    }
+  }
+
+  .codebasket-item-file {
+    &:after {
+      content: '●';
+      color: #ccc;
+    }
+
+    &:hover {
+      &:after {
+        color: #999;
+      }
+    }
+
+    &.opened {
+      &:after {
+        color: $blue-light;
+      }
+
+      &:hover {
+        &:after {
+          color: $blue-light-hover;
+        }
+      }
+    }
+
+    &.active {
+      background: #eee;
+
+      &:after {
+        color: $blue-dark;
+      }
+
+      &:hover {
+        &:after {
+          color: $blue-dark-hover;
+        }
+      }
+    }
+
+    &.unsaved {
+      &:after {
+        color: $yellow;
+      }
+
+      &:hover {
+        &:after {
+          color: $yellow-hover;
+        }
+      }
+    }
+  }
+
+  .codebasket-item-folder {
+    padding-right: 0px;
+
+    &:after {
+      @extend %font-awesome;
+      top: 8px;
+      font-size: .7em;
+      color: #aaa;
+    }
+
+    .codebasket-item-name {
+      position: relative;
+      display: block;
+    }
+
+    &.opened {
+      &:after {
+        content: '\f07c';
+      }
+    }
+
+    &.closed {
+      overflow: hidden;
+      height: 25px;
+
+      &:after {
+        content: '\f07b';
+      }
+    }
+  }
+}

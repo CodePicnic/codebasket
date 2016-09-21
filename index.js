@@ -3,15 +3,20 @@
 var mixin = require('lodash/utility/mixin'),
     forEach = require('lodash/collection/forEach'),
     merge = require('lodash/object/merge'),
+    EventEmitter = require('events').EventEmitter,
     internalMethods = require('./lib/internal_methods'),
     instanceMethods = require('./lib/instance_methods'),
     CodeBasket = {};
 
 CodeBasket.create = function(options) {
+  if (!options.element) {
+    throw 'You need to set a container element';
+  }
+
   var optionsList = options.options || [],
       brand = options.brand,
-      toolbarOptions = options.toolbarOptions || [],
-      extraToolbarOptions = options.extraToolbarOptions || [],
+      actions = options.actions || [],
+      extraActions = options.extraActions || [],
       uiOptionsList = options.ui || {},
       sidebarActions = options.sidebarActions || [],
       floatingButtons = options.floatingButtons || [],
@@ -21,19 +26,16 @@ CodeBasket.create = function(options) {
         isSidebarVisible: true,
         isProgressBarVisible: false,
         isAddTabVisible: true,
-        isFullScreen: false
+        isFullScreen: false,
+        splitMode: null
       }, uiOptionsList),
       filesFromDOM,
       librariesFromDOM,
-      newCodeBasket;
-
-  if (!options.element) {
-    throw 'You need to set a container element';
-  }
+      instance;
 
   uiOptions.isSidebarVisible =  uiOptions.isFullScreen ? false : uiOptions.isSidebarVisible;
 
-  newCodeBasket = {
+  instance = {
     element: internalMethods.getElement(options.element),
     brand: brand,
     libraries: [],
@@ -41,30 +43,31 @@ CodeBasket.create = function(options) {
     sidebarItems: {},
     sidebarActions: sidebarActions,
     options: optionsList,
-    toolbarOptions: toolbarOptions,
-    extraToolbarOptions: extraToolbarOptions,
+    actions: actions,
+    extraActions: extraActions,
     floatingButtons: floatingButtons,
     uiOptions: uiOptions,
     permanentStatus: permanentStatus
   };
 
-  filesFromDOM = internalMethods.extractFilesFromDOM(newCodeBasket.element);
-  librariesFromDOM = internalMethods.extractLibrariesFromDOM(newCodeBasket.element);
+  filesFromDOM = internalMethods.extractFilesFromDOM(instance.element);
+  librariesFromDOM = internalMethods.extractLibrariesFromDOM(instance.element);
 
-  mixin(newCodeBasket, instanceMethods);
-  forEach(options.items, newCodeBasket.addItem, newCodeBasket);
-  forEach(options.libraries, newCodeBasket.addLibrary, newCodeBasket);
-  forEach(filesFromDOM, newCodeBasket.addFile, newCodeBasket);
-  forEach(librariesFromDOM, newCodeBasket.toggleLibrary, newCodeBasket);
+  mixin(instance, EventEmitter.prototype);
+  mixin(instance, instanceMethods);
+  forEach(options.items, instance.addItem, instance);
+  forEach(options.libraries, instance.addLibrary, instance);
+  forEach(filesFromDOM, instance.addFile, instance);
+  forEach(librariesFromDOM, instance.toggleLibrary, instance);
 
   // var readyEvent = global.document.createEvent('CustomEvent');
   // readyEvent.initCustomEvent('codebasket:ready', true, true, {
-  //   codeBasket: newCodeBasket
+  //   codeBasket: instance
   // });
   //
   // global.dispatchEvent(readyEvent);
 
-  return newCodeBasket;
+  return instance;
 };
 
 global.CodeBasket = CodeBasket;

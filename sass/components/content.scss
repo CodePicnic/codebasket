@@ -1,0 +1,154 @@
+.codebasket-content {
+  left: $sidebar-width;
+  top: 0;
+  right: 0;
+  width: $content-width;
+  transition: width .3s ease-in-out, left .3s ease-in-out;
+
+  &.full {
+    left: 0;
+    width: 100%;
+  }
+
+  .codebasket-toggle-sidebar {
+    display: block;
+  }
+}
+
+.codebasket-viewport {
+  background: #ffffff;
+  overflow: scroll;
+
+  &.full {
+    @extend %full-box;
+
+    > .codebasket-navbar {
+      width: calc(100% - #{6 * ($header-height - 2)});
+      margin-left: $header-height - 2;
+    }
+  }
+
+  &.inactive {
+    display: none;
+    visibility: hidden;
+  }
+
+  &.vertical {
+    @extend %basic-box;
+    bottom: 0;
+    height: 100%;
+    width: 50%;
+
+    &.left {
+      left: 0;
+      right: 50%;
+      border-right: 1px solid $border-color;
+    }
+
+    &.right {
+      left: 50%;
+      right: 0;
+    }
+  }
+
+  &.horizontal {
+    @extend %basic-box;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    &.top {
+      bottom: 50%;
+      height: 50%;
+    }
+
+    &.bottom {
+      top: calc(50%);
+      height: calc(50%);
+    }
+  }
+
+  &.active {
+    z-index: 1;
+  }
+
+  .codebasket-navbar {
+    border-left: 0;
+  }
+
+  > iframe {
+    @extend %full-box;
+  }
+
+  .codebasket-tabpage {
+    @extend %full-box;
+    background: #ffffff;
+    overflow: scroll;
+    top: $header-height - 1px;
+    height: calc(100% - #{$header-height} + 1px);
+    z-index: 0;
+
+    &.active {
+      z-index: 1;
+    }
+
+    > * {
+      @extend %full-box;
+    }
+  }
+}
+
+.codebasket-aside-content {
+  right: 0;
+  top: calc(#{$header-height} - 1px);
+  bottom: 0;
+  padding: 20px;
+  width: calc(#{$sidebar-width} * 1.5);
+  box-shadow: 0 2px 4px $border-color;
+  border-radius: 5px 0 0 5px;
+  background: #ffffff;
+  overflow: auto;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity .3s ease-in-out;
+
+  &.opened {
+    opacity: 1;
+    z-index: 10;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.codebasket-browser-navigation {
+  @extend %box-reset;
+  overflow: hidden;
+  border-bottom: 1px solid $border-color;
+
+  > * {
+    display: block;
+    float: left;
+    @extend %menu-item;
+  }
+
+  > button {
+    width: $header-height - 2px;
+    background: $light-background;
+    border: 0;
+  }
+
+  > input[type="url"] {
+    width: calc(100% - 33px);
+    padding: 0 5px;
+    height: $header-height - 2px;
+    cursor: inherit;
+  }
+}
+
+.codebasket-browser > iframe {
+  width: 100%;
+  height: calc(100% - #{$header-height - 2px});
+}

@@ -1,0 +1,37 @@
+// Colors
+
+$alink: rgba(123,123,123,1);
+$ahover: rgba(12,12,12,1);
+
+$border-color: rgba(200,200,200,1);
+$background: rgb(200, 200, 200);
+$light-background: rgba(245,245,245,1);
+
+$blue: rgb(58, 174, 221);
+$blue-hover: rgb(101, 192, 229);
+
+$blue-light: rgb(145, 210, 236);
+$blue-light-hover: rgb(167, 219, 240);
+
+$blue-dark: rgb(30,131,173);
+$blue-dark-hover: rgb(34,148,194);
+
+$red: rgb(209, 76, 66);
+$red-hover: rgb(243, 59, 55);
+
+$green: rgb(140, 176, 37);
+$green-hover: rgb(155, 208, 5);
+
+$yellow: rgb(255, 187, 0);
+$yellow-hover: rgb(255, 201, 51);
+
+$purple: rgb(129, 43, 214);
+$purple-hover: rgb(154, 86, 272);
+
+// Measurements
+
+$sidebar-width: 280px;
+$content-width: calc(100% - #{$sidebar-width});
+$header-height: 35px;
+$content-height: calc(100% - 65px);
+$footer-height: 30px;

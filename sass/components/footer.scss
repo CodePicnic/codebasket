@@ -1,0 +1,64 @@
+.codebasket-footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: $footer-height;
+  background: $light-background;
+  border-top: 1px solid $border-color;
+  line-height: 1;
+
+  > * {
+    @extend %box-reset;
+    display: block;
+    float: left;
+    height: $footer-height;
+    font-size: 12px;
+  }
+
+  > span {
+    padding: 8px 20px;
+    color: #999999;
+  }
+
+  .codebasket-brand {
+    width: $sidebar-width;
+    padding: 5px;
+    text-align: center;
+    border-right: 1px solid $border-color;
+
+    img {
+      margin: auto;
+      max-width: 200px;
+      height: $footer-height - 10px;
+    }
+  }
+
+  .codebasket-dropdown {
+    > span {
+      display: block;
+      padding: 8px 20px;
+      color: #999999;
+    }
+
+    > .codebasket-dropdown-list {
+      display: none;
+      position: absolute;
+      bottom: 30px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background: $light-background;
+      border: solid 1px $border-color;
+      z-index: 10;
+
+      > li {
+        padding: 8px;
+      }
+
+      &.opened {
+        display: block;
+      }
+    }
+  }
+}

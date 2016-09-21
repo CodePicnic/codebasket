@@ -36,7 +36,7 @@ describe('Creating a CodeBasket', function() {
         icon: 'icon-refresh',
         action: function() {}
       }],
-      toolbarOptions = [{
+      actions = [{
         title: 'Full Screen View',
         icon: 'fa-expand',
         href: '#'
@@ -56,13 +56,13 @@ describe('Creating a CodeBasket', function() {
         title: 'CodePen',
         name: 'CodePen',
         isActive: true,
-        pane: 'bottom'
+        pane: 'secondary'
       },
       {
         location: 'https://www.youtube.com/embed/3qI-XExjyC4',
         title: 'YouTube',
         name: 'YouTube',
-        pane: 'bottom'
+        pane: 'secondary'
       },
       {
         type: 'file',
@@ -108,9 +108,6 @@ describe('Creating a CodeBasket', function() {
   expect.spyOn(spies, 'onReady').andCallThrough();
   expect.spyOn(spies, 'onTabSelected').andCallThrough();
 
-  window.addEventListener('codebasket:ready', spies.onReady, true);
-  window.addEventListener('codebasket:tabselected', spies.onTabSelected);
-
   it('should throw an error if element is not defined', function() {
     expect(function() {
       CodeBasket.create({});
@@ -122,6 +119,9 @@ describe('Creating a CodeBasket', function() {
       element: '#codebasket-test',
       brand: brand
     });
+
+    codeBasket.on('ready', spies.onReady);
+    codeBasket.on('tabselected', spies.onTabSelected);
 
     codeBasket.render();
 
@@ -137,21 +137,21 @@ describe('Creating a CodeBasket', function() {
 
     codeBasket.render();
 
-    expect(codeBasket.element.querySelectorAll('.console-options > *').length).toEqual(options.length);
+    expect(codeBasket.element.querySelectorAll('.codebasket-options-list > *').length).toEqual(options.length);
   });
 
   it('should create tabs', function() {
     codeBasket = CodeBasket.create({
       element: '#codebasket-test',
       items: items,
-      toolbarOptions: toolbarOptions,
+      actions: actions,
       options: options,
       brand: brand
     });
 
     codeBasket.render();
 
-    expect(codeBasket.element.querySelectorAll('.console-tabs .console-tab').length).toEqual(codeBasket.items.filter(function(item) { return item.isVisible === true }).length);
+    expect(codeBasket.element.querySelectorAll('.codebasket-navbar .navbar-tab').length).toEqual(codeBasket.items.filter(function(item) { return item.isVisible === true }).length);
   });
 
   it('should create a sidebar buttons list', function() {
@@ -159,14 +159,14 @@ describe('Creating a CodeBasket', function() {
       element: '#codebasket-test',
       items: items,
       sidebarActions: sidebarActions,
-      toolbarOptions: toolbarOptions,
+      actions: actions,
       options: options,
       brand: brand
     });
 
     codeBasket.render();
 
-    expect(codeBasket.element.querySelectorAll('.console-sidebar-actions > *').length).toEqual(sidebarActions.length);
+    expect(codeBasket.element.querySelectorAll('.codebasket-sidebar > .codebasket-navbar > *').length).toEqual(sidebarActions.length);
   });
 
   it ('should support custom events', function() {
@@ -174,7 +174,7 @@ describe('Creating a CodeBasket', function() {
       element: '#codebasket-test',
       items: items,
       sidebarActions: sidebarActions,
-      toolbarOptions: toolbarOptions,
+      actions: actions,
       options: options,
       brand: brand,
       permanentStatus: 'Register now to save your changes'
@@ -196,7 +196,7 @@ describe('Creating a CodeBasket', function() {
 
     expect(spies.onReady).toHaveBeenCalled();
 
-    var secondTab = codeBasket.element.querySelector('.console-tab:nth-child(2) span.console-tab-text'),
+    var secondTab = codeBasket.element.querySelector('.navbar-tab:nth-child(2) span.navbar-tab-title'),
         clickEvent = document.createEvent('MouseEvent');
 
     clickEvent.initMouseEvent('click', true, true, window, null, 0, 0, 0, 0, false, false, false, false, 0, null);
