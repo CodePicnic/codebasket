@@ -37,8 +37,8 @@ describe('Creating a CodeBasket', function() {
         action: function() {}
       }],
       actions = [{
-        title: 'Full Screen View',
-        icon: 'fa-expand',
+        title: 'Run',
+        icon: 'icon-play',
         href: '#'
       },{
         title: 'Browser',
@@ -51,6 +51,32 @@ describe('Creating a CodeBasket', function() {
         },
         isVisible: true
       }],
+      sidebarItems = {
+        "index.js": {
+          name: "index.js",
+          path: "index.js",
+          type: "text/plain",
+          size: 2049
+        },
+        "index.scss": {
+          name: "index.scss",
+          path: "index.scss",
+          type: "text/plain",
+          size: 1024
+        },
+        "index.css": {
+          name: "index.css",
+          path: "index.css",
+          type: "text/plain",
+          size: 1024
+        },
+        "index.html": {
+          name: "index.html",
+          path: "index.html",
+          type: "text/plain",
+          size: 1024
+        }
+      },
       items = [{
         location: 'http://codepen.io/philipwalton/embed/LEbQON/?height=268&theme-id=0&default-tab=result',
         title: 'CodePen',
@@ -62,7 +88,7 @@ describe('Creating a CodeBasket', function() {
         location: 'https://www.youtube.com/embed/3qI-XExjyC4',
         title: 'YouTube',
         name: 'YouTube',
-        pane: 'secondary'
+        pane: 'main'
       },
       {
         type: 'file',
@@ -121,7 +147,6 @@ describe('Creating a CodeBasket', function() {
     });
 
     codeBasket.on('ready', spies.onReady);
-    codeBasket.on('tabselected', spies.onTabSelected);
 
     codeBasket.render();
 
@@ -159,6 +184,7 @@ describe('Creating a CodeBasket', function() {
       element: '#codebasket-test',
       items: items,
       sidebarActions: sidebarActions,
+      sidebarItems: sidebarItems,
       actions: actions,
       options: options,
       brand: brand
@@ -174,6 +200,7 @@ describe('Creating a CodeBasket', function() {
       element: '#codebasket-test',
       items: items,
       sidebarActions: sidebarActions,
+      sidebarItems: sidebarItems,
       actions: actions,
       options: options,
       brand: brand,
@@ -191,6 +218,8 @@ describe('Creating a CodeBasket', function() {
       color: 'blue',
       name: 'User'
     };
+
+    codeBasket.on('tabselected', spies.onTabSelected);
 
     codeBasket.render();
 

@@ -528,6 +528,16 @@
 .codebasket-viewport {
   background: #ffffff;
   overflow: scroll; }
+  .codebasket-viewport.empty:before {
+    content: "Create or open a file from the sidebar";
+    position: absolute;
+    top: calc(50% - 40px);
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 20px;
+    color: #ababab;
+    text-align: center; }
   .codebasket-viewport.full > .codebasket-navbar {
     width: calc(100% - 198px);
     margin-left: 33px; }
@@ -564,9 +574,9 @@
     overflow: scroll;
     top: 34px;
     height: calc(100% - 35px + 1px);
-    z-index: 0; }
+    display: none; }
     .codebasket-viewport .codebasket-tabpage.active {
-      z-index: 1; }
+      display: block; }
 
 .codebasket-aside-content {
   right: 0;

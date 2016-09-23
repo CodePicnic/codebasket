@@ -19,6 +19,18 @@
   background: #ffffff;
   overflow: scroll;
 
+  &.empty:before {
+    content: "Create or open a file from the sidebar";
+    position: absolute;
+    top: calc(50% - 40px);
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 20px;
+    color: #ababab;
+    text-align: center;
+  }
+
   &.full {
     @extend %full-box;
 
@@ -86,10 +98,10 @@
     overflow: scroll;
     top: $header-height - 1px;
     height: calc(100% - #{$header-height} + 1px);
-    z-index: 0;
+    display: none;
 
     &.active {
-      z-index: 1;
+      display: block;
     }
 
     > * {
