@@ -296,6 +296,14 @@
 .codebasket-aside-content {
   z-index: 10; }
 
+.codebasket-options-list > li {
+  cursor: pointer; }
+  .codebasket-options-list > li.active:before {
+    content: "●";
+    color: #91d2ec;
+    position: absolute;
+    left: 4px; }
+
 .codebasket-sidebar {
   top: 0px;
   left: -280px;

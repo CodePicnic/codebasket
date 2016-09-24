@@ -106,6 +106,19 @@
   z-index: 10;
 }
 
+.codebasket-options-list {
+  & > li {
+    cursor: pointer;
+
+    &.active:before {
+      content: "●";
+      color: $blue-light;
+      position: absolute;
+      left: 4px;
+    }
+  }
+}
+
 @import 'components/sidebar';
 @import 'components/navbar';
 @import 'components/content';

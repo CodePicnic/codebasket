@@ -202,25 +202,48 @@ var React = require('react'),
 
 Content = React.createClass({displayName: "Content",
   mixins: [renderMixin],
-  // getInitialState: function() {},
+  getInitialState: function() {
+    return { isOptionsListVisible: false, isAsideVisible: false };
+  },
   getDefaultProps: function() {
     return { splitMode: null };
   },
   componentDidMount: function() {},
+  toggleSidebar: function() {
+    var instance = this.props.instance;
+
+    if (instance.view) {
+      instance.view.setState({ isSidebarVisible: !instance.view.state.isSidebarVisible });
+    }
+  },
+  toggleOptionsList: function() {
+    this.setState({ isOptionsListVisible: !this.state.isOptionsListVisible });
+  },
+  toggleAside: function() {
+    this.setState({ isAsideVisible: !this.state.isAsideVisible });
+  },
   render: function contentRender() {
     var instance = this.props.instance,
         items = filter(instance.items, function(item) { return item.isVisible; }),
         primaryViewportClassIfSplitted = this.props.splitMode === 'horizontal' ? 'horizontal top' : 'vertical left',
         secondaryViewportClassIfSplitted = this.props.splitMode === 'horizontal' ? 'horizontal bottom' : 'vertical right',
         primaryViewportClasses = this.props.splitMode ? primaryViewportClassIfSplitted : ' full',
-        secondaryViewportClasses = this.props.splitMode ? secondaryViewportClassIfSplitted : ' inactive';
+        secondaryViewportClasses = this.props.splitMode ? secondaryViewportClassIfSplitted : ' inactive',
+        sidebarTogglerClass = this.props.isFull ? 'icon-show-sidebar' : 'icon-hide-sidebar',
+        optionsListClass = this.state.isOptionsListVisible ? 'opened' : '',
+        asideClass = this.state.isAsideVisible ? 'opened' : '',
+        contentClasses = this.props.isFull ? ' full' : '';
 
     return (
-      React.createElement("section", {className: "codebasket-content"}, 
-        this.renderNavButton({ icon: 'icon-hide-sidebar codebasket-toggle-sidebar' }), 
-        React.createElement("nav", {className: "codebasket-navbar codebasket-navbar-global"}, instance.actions.map(this.renderNavButton)), 
-        React.createElement("nav", {className: "codebasket-options-list"}, instance.options.map(this.renderOption)), 
-        React.createElement("aside", {className: "codebasket-aside-content"}, 
+      React.createElement("section", {className: 'codebasket-content' + contentClasses}, 
+        this.renderNavButton({ icon: sidebarTogglerClass + ' codebasket-toggle-sidebar', action: this.toggleSidebar }), 
+        React.createElement("nav", {className: "codebasket-navbar codebasket-navbar-global"}, 
+          instance.actions.map(this.renderNavButton), 
+          this.renderNavButton({ icon: 'icon-cog', action: this.toggleOptionsList }), 
+          this.renderNavButton({ icon: 'icon-info', action: this.toggleAside })
+        ), 
+        React.createElement("nav", {className: 'codebasket-options-list' + ' ' + optionsListClass}, instance.options.map(this.renderOption)), 
+        React.createElement("aside", {className: 'codebasket-aside-content' + ' ' + asideClass}, 
           React.createElement("p", null, 
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
           )
@@ -288,11 +311,10 @@ CodeBasketView = React.createClass({displayName: "CodeBasketView",
   },
   render: function() {
     var instance = this.props.instance;
-
     return (
       React.createElement("section", {className: "codebasket-main"}, 
         React.createElement(Sidebar, {isVisible: this.state.isSidebarVisible, actions: instance.sidebarActions, instance: instance}), 
-        React.createElement(Content, {splitMode: this.state.splitMode, actions: instance.actions, instance: instance}), 
+        React.createElement(Content, {isFull: !this.state.isSidebarVisible, splitMode: this.state.splitMode, actions: instance.actions, instance: instance}), 
         React.createElement(Footer, {brand: instance.brand, permanentStatus: instance.permanentStatus, status: instance.status})
       )
     );
@@ -359,9 +381,9 @@ module.exports = {
   },
   renderOption: function renderOption(item, index) {
     return (
-      React.createElement("span", {key: index}, 
+      React.createElement("span", {key: index, onClick: item.action}, 
         React.createElement("i", {className: 'icon ' + item.icon}), 
-        item.text
+        item.title
       )
     );
   }
@@ -389,7 +411,7 @@ Sidebar = React.createClass({displayName: "Sidebar",
   mixins: [renderMixin, sidebarMixin],
   // getInitialState: function() {},
   getDefaultProps: function() {
-    return { isSidebarVisible: true, isLoading: false, sidebarActions: [] };
+    return { isVisible: true, isLoading: false };
   },
   componentDidMount: function() {},
   onClickFile: function(item) {
@@ -489,7 +511,7 @@ Sidebar = React.createClass({displayName: "Sidebar",
         terminals = filter(instance.items, function(item) { return item.isVisible && item.type === 'terminal'; }),
         loadingSidebarClass = this.props.isLoading ? 'loading' : '',
         emptySidebarClass = size(instance.sidebarItems) === 0 ? 'empty' : '',
-        visibleSidebarClass = this.props.isSidebarVisible ? 'visible' : '',
+        visibleSidebarClass = this.props.isVisible ? 'visible' : '',
         parentClasses = loadingSidebarClass + ' ' + emptySidebarClass + ' ' + visibleSidebarClass;
 
     return (
@@ -623,7 +645,9 @@ Viewport = React.createClass({displayName: "Viewport",
     return (
       React.createElement("ul", {className: 'codebasket-options-list ' + extraTabsClasses, ref: "extraTabsList"}, 
         items.map(function(item, index) {
-          return React.createElement("li", {key: index, onClick: this.onClickTab.bind(this, item, index)}, item.name);
+          var tabClasses = item.isActive ? 'active' : '';
+
+          return React.createElement("li", {className: tabClasses, key: index, onClick: this.onClickTab.bind(this, item, index)}, item.name);
         }, this)
       )
     );
