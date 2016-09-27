@@ -30,6 +30,8 @@
     color: #999999;
   }
 
+  &.loading {}
+
   .codebasket-navbar {
     border-left: 0;
     border-right: 0;
@@ -44,14 +46,23 @@
     overflow: scroll;
     font-size: 14px;
     padding: 15px 2px;
+
+    > .codebasket-items-list {
+      margin-bottom: 20px;
+    }
   }
 }
 
 .codebasket-items-list {
   @extend %box-reset;
   width: 100%;
-  margin-bottom: 20px;
   line-height: 1.8em;
+  transition: background-color .3s ease-in-out;
+
+  &.dragover {
+    cursor: copy;
+    background: $blue-light-hover;
+  }
 
   .codebasket-list-title {
     font-weight: 900;
@@ -120,9 +131,8 @@
 
   .codebasket-item-actions {
     position: absolute;
-    top: 50%;
+    top: 0;
     right: 5px;
-    transform: translateY(-50%);
     opacity: 0;
     transition: opacity .2s ease-in-out;
     cursor: pointer;
@@ -196,6 +206,7 @@
 
   .codebasket-item-folder {
     padding-right: 0px;
+    transition: background-color .3s ease-in-out;
 
     &:after {
       @extend %font-awesome;
@@ -204,9 +215,8 @@
       color: #aaa;
     }
 
-    .codebasket-item-name {
-      position: relative;
-      display: block;
+    &.active {
+      background: #eee;
     }
 
     &.opened {
@@ -222,6 +232,16 @@
       &:after {
         content: '\f07b';
       }
+    }
+
+    &.dragover {
+      cursor: copy;
+      background: $blue-light-hover;
+    }
+
+    .codebasket-item-name {
+      position: relative;
+      display: block;
     }
   }
 }

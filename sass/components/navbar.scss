@@ -10,7 +10,13 @@
     top: 0;
     right: 0;
     width: auto;
-    z-index: 1;
+    z-index: 2;
+    border-left: 0;
+
+    .navbar-button {
+      border-left: 1px solid $border-color;
+      border-right: 0;
+    }
   }
 
   > .navbar-tab {
@@ -58,10 +64,6 @@
 
   .navbar-button {
     width: $header-height - 2px;
-
-    &:last-child {
-      border-right: 0;
-    }
 
     &:before {
       @extend %font-awesome;

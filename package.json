@@ -2,7 +2,7 @@
   "name": "codebasket",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "test": "gulp test",
     "copybuild": "gulp build --copy-js ~/Development/codepicnic/app/assets/javascripts/embedded_console --copy-css ~/Development/codepicnic/app/assets/stylesheets/pages/console-editor/embedded_console"
@@ -40,8 +40,9 @@
   },
   "dependencies": {
     "lodash": "^3.10.1",
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-render-html": "^0.1.6",
     "react-split-pane": "^0.1.22"
   }
 }

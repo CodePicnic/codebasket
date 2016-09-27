@@ -7,7 +7,7 @@ var gulp = require('gulp'),
     mochaPhantomJS = require('gulp-mocha-phantomjs'),
     sass = require('gulp-sass'),
     rename = require('gulp-rename'),
-    files = [ './index.js', './lib/**/*.js' ],
+    files = [ './lib/**/*.js' ],
     buildDir = './build';
 
 gulp.task('lint', function() {
@@ -22,7 +22,7 @@ gulp.task('jscs', function() {
 });
 
 gulp.task('browserify', function() {
-  var browserifyBundler = browserify('./index.js', {
+  var browserifyBundler = browserify('./lib/index.js', {
     debug: false,
     transform: [ 'reactify' ]
   });

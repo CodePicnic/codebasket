@@ -340,11 +340,16 @@
     overflow: scroll;
     font-size: 14px;
     padding: 15px 2px; }
+    .codebasket-sidebar .codebasket-sidebar-content > .codebasket-items-list {
+      margin-bottom: 20px; }
 
 .codebasket-items-list {
   width: 100%;
-  margin-bottom: 20px;
-  line-height: 1.8em; }
+  line-height: 1.8em;
+  transition: background-color .3s ease-in-out; }
+  .codebasket-items-list.dragover {
+    cursor: copy;
+    background: #a7dbf0; }
   .codebasket-items-list .codebasket-list-title {
     font-weight: 900; }
     .codebasket-items-list .codebasket-list-title:hover {
@@ -387,9 +392,8 @@
         font-weight: 100; }
   .codebasket-items-list .codebasket-item-actions {
     position: absolute;
-    top: 50%;
+    top: 0;
     right: 5px;
-    transform: translateY(-50%);
     opacity: 0;
     transition: opacity .2s ease-in-out;
     cursor: pointer;
@@ -420,14 +424,14 @@
   .codebasket-items-list .codebasket-item-file.unsaved:hover:after {
     color: #ffc933; }
   .codebasket-items-list .codebasket-item-folder {
-    padding-right: 0px; }
+    padding-right: 0px;
+    transition: background-color .3s ease-in-out; }
     .codebasket-items-list .codebasket-item-folder:after {
       top: 8px;
       font-size: .7em;
       color: #aaa; }
-    .codebasket-items-list .codebasket-item-folder .codebasket-item-name {
-      position: relative;
-      display: block; }
+    .codebasket-items-list .codebasket-item-folder.active {
+      background: #eee; }
     .codebasket-items-list .codebasket-item-folder.opened:after {
       content: '\f07c'; }
     .codebasket-items-list .codebasket-item-folder.closed {
@@ -435,6 +439,12 @@
       height: 25px; }
       .codebasket-items-list .codebasket-item-folder.closed:after {
         content: '\f07b'; }
+    .codebasket-items-list .codebasket-item-folder.dragover {
+      cursor: copy;
+      background: #a7dbf0; }
+    .codebasket-items-list .codebasket-item-folder .codebasket-item-name {
+      position: relative;
+      display: block; }
 
 .codebasket-navbar {
   width: 100%;
@@ -446,7 +456,11 @@
     top: 0;
     right: 0;
     width: auto;
-    z-index: 1; }
+    z-index: 2;
+    border-left: 0; }
+    .codebasket-navbar.codebasket-navbar-global .navbar-button {
+      border-left: 1px solid #c8c8c8;
+      border-right: 0; }
   .codebasket-navbar > .navbar-tab {
     white-space: nowrap; }
     .codebasket-navbar > .navbar-tab:hover {
@@ -471,8 +485,6 @@
 
 .codebasket-main .navbar-button {
   width: 33px; }
-  .codebasket-main .navbar-button:last-child {
-    border-right: 0; }
   .codebasket-main .navbar-button:before {
     position: absolute;
     left: 50%;

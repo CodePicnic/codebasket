@@ -75,14 +75,55 @@ describe('Creating a CodeBasket', function() {
           path: "index.html",
           type: "text/plain",
           size: 1024
+        },
+        "app": {
+          name: "app",
+          path: "app",
+          type: "application/x-directory",
+          size: 340,
+          files: {
+            "config.rb": {
+              name: "config.rb",
+              path: "app/config.rb",
+              type: "text/plain",
+              size: 1024
+            },
+            "index.rb": {
+              name: "index.rb",
+              path: "app/index.rb",
+              type: "text/plain",
+              size: 1024
+            },
+            "assets": {
+              name: "assets",
+              path: "app/assets",
+              type: "application/x-directory",
+              size: 340,
+              files: {
+                "index.js": {
+                  name: "index.js",
+                  path: "app/assets/index.js",
+                  type: "text/plain",
+                  size: 2049
+                },
+                "index.css": {
+                  name: "index.css",
+                  path: "app/assets/index.css",
+                  type: "text/plain",
+                  size: 1024
+                }
+              }
+            }
+          }
         }
       },
       items = [{
+        type: 'browser',
         location: 'http://codepen.io/philipwalton/embed/LEbQON/?height=268&theme-id=0&default-tab=result',
         title: 'CodePen',
         name: 'CodePen',
         isActive: true,
-        pane: 'secondary'
+        pane: 'main'
       },
       {
         location: 'https://www.youtube.com/embed/3qI-XExjyC4',
@@ -95,28 +136,32 @@ describe('Creating a CodeBasket', function() {
         language: 'js',
         name: 'index.js',
         title: 'index.js',
-        content: 'var content = {};'
+        content: 'var content = {};',
+        isCloseable: true
       },
       {
         type: 'file',
         language: 'sass',
         name: 'index.scss',
         title: 'index.scss',
-        content: '$grey200: #dadada;\nbody { background-color: $grey200; }'
+        content: '$grey200: #dadada;\nbody { background-color: $grey200; }',
+        isCloseable: true
       },
       {
         type: 'file',
         language: 'html',
         name: 'index.html',
         title: 'index.html',
-        content: '<p></p>'
+        content: '<p></p>',
+        isCloseable: true
       },
       {
         type: 'file',
         language: 'css',
         name: 'index.css',
         title: 'index.css',
-        content: 'body { background-color: #dadada; }'
+        content: 'body { background-color: #dadada; }',
+        isCloseable: true
       },
       {
         type: 'browser',
@@ -129,7 +174,8 @@ describe('Creating a CodeBasket', function() {
       brand = {
         href: 'https://codepicnic.com',
         image: 'codepicnic_logo.png'
-      };
+      },
+      info = '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
 
   expect.spyOn(spies, 'onReady').andCallThrough();
   expect.spyOn(spies, 'onTabSelected').andCallThrough();
@@ -204,7 +250,8 @@ describe('Creating a CodeBasket', function() {
       actions: actions,
       options: options,
       brand: brand,
-      permanentStatus: 'Register now to save your changes'
+      permanentStatus: 'Register now to save your changes',
+      info: info
     });
 
     codeBasket.users = [
