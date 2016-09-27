@@ -222,7 +222,7 @@ describe('Creating a CodeBasket', function() {
 
     codeBasket.render();
 
-    expect(codeBasket.element.querySelectorAll('.codebasket-navbar .navbar-tab').length).toEqual(codeBasket.items.filter(function(item) { return item.isVisible === true }).length);
+    expect(codeBasket.element.querySelector('.codebasket-viewport').querySelectorAll('.codebasket-navbar .navbar-tab, .codebasket-navbar .codebasket-options-list > li').length).toEqual(codeBasket.items.filter(function(item) { return item.isVisible === true && item.pane !== 'secondary'; }).length);
   });
 
   it('should create a sidebar buttons list', function() {
