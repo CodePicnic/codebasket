@@ -28,6 +28,7 @@
 
     > * {
       display: inline-block;
+      vertical-align: middle;
     }
 
     > .navbar-tab-title {
@@ -60,13 +61,25 @@
 .codebasket-main {
   .navbar-button, .navbar-tab {
     @extend %menu-item;
+
+    .icon-close,
+    &.icon-arrow-down:before {
+      font-size: 10px;
+    }
+    .icon-close {
+      color: #ccc;
+      &:hover {
+        color: $red;
+      }
+    }
+
   }
 
   .navbar-button {
     width: $header-height - 2px;
 
     &:before {
-      @extend %font-awesome;
+      font-family: 'codebasket';
       position: absolute;
       left: 50%;
       top: 50%;
@@ -116,7 +129,7 @@
 .codebasket-options-list {
   right: $header-height;
   top: calc(#{$header-height} - 1px);
-  padding: 10px;
+  padding: 1px;
   width: calc(#{$sidebar-width} / 2);
   box-shadow: 0 2px 4px $border-color;
   border-radius: 5px 0 5px 5px;
@@ -130,8 +143,23 @@
     z-index: 10;
   }
 
-  > * {
+  li {
     display: block;
-    padding: 5px;
+    color: #666;
+    padding: 10px;
+    .icon {
+      display: inline-block;
+      vertical-align: middle;
+      width: 20px;
+      font-size: 12px;
+      color: #999;
+    }
+    &:hover {
+      background: #eee;
+      color: #888;
+      .icon{
+        color: $blue
+      }
+    }
   }
 }

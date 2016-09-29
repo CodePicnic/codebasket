@@ -12,7 +12,7 @@ describe('Creating a CodeBasket', function() {
   var spies = { onReady: onReady, onTabSelected: onTabSelected };
   var options = [{
         title: 'Edit',
-        icon: 'fa-pencil',
+        icon: 'icon-option-configure',
         href: '#'
       },
       {

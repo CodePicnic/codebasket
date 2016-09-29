@@ -70,8 +70,8 @@
   cursor: pointer;
 }
 
-%font-awesome {
-  font: normal normal normal 14px/1 FontAwesome;
+%icon-basket {
+  font-family: 'codebasket';
 }
 
 .codebasket-main {
@@ -109,7 +109,6 @@
 .codebasket-options-list {
   & > li {
     cursor: pointer;
-
     &.active:before {
       content: "●";
       color: $blue-light;

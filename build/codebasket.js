@@ -518,8 +518,8 @@ module.exports = {
   renderFileOrFolderActions: function(item) {
     return (
       React.createElement("nav", {className: "codebasket-item-actions"}, 
-        React.createElement("i", {className: "fa fa-edit", onClick: this.onClickEditFileOrFolder.bind(this, item)}), 
-        React.createElement("i", {className: "fa fa-trash-o", onClick: this.onClickRemoveFileOrFolder.bind(this, item)})
+        React.createElement("span", {className: "icon edit", title: "Edit", onClick: this.onClickEditFileOrFolder.bind(this, item)}, "C"), 
+        React.createElement("span", {className: "icon delete", title: "Delete", onClick: this.onClickRemoveFileOrFolder.bind(this, item)}, "G")
       )
     );
   }
@@ -628,13 +628,11 @@ Sidebar = React.createClass({displayName: "Sidebar",
         React.createElement("li", {className: "codebasket-list-title"}, 
           "Files", 
           React.createElement("nav", {className: "codebasket-item-actions"}, 
-            React.createElement("span", null, "Collapse all")
+            React.createElement("span", {class: "text"}, "Collapse all")
           )
         ), 
-        React.createElement("li", null, 
-          React.createElement("nav", {className: "codebasket-search"}, 
-            React.createElement("input", {type: "search", name: "search", placeholder: "Search"})
-          )
+        React.createElement("li", {className: "codebasket-search"}, 
+          React.createElement("input", {type: "search", name: "search", placeholder: "Search"})
         ), 
         sortBy(items, this.sortByName).map(this.renderFileOrFolder, this)
       )
@@ -761,7 +759,7 @@ Viewport = React.createClass({displayName: "Viewport",
 
     this.extraTabsTogglerReference = {
       ref: 'extraTabsToggler',
-      icon: 'icon-arrow-down toggle-extra-tabs',
+      icon: 'icon-more toggle-extra-tabs',
       action:  this.toggleExtraTabs
     };
 
