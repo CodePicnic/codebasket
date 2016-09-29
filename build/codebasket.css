@@ -638,6 +638,9 @@
   width: 100%;
   height: calc(100% - 33px); }
 
+.codebasket-editor * {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace; }
+
 .codebasket-footer {
   position: absolute;
   bottom: 0px;

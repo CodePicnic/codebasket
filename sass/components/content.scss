@@ -164,3 +164,7 @@
   width: 100%;
   height: calc(100% - #{$header-height - 2px});
 }
+
+.codebasket-editor * {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+}
