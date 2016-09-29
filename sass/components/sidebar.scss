@@ -1,3 +1,5 @@
+@import 'typography';
+
 .codebasket-sidebar {
   top: 0px;
   left: - $sidebar-width;
@@ -10,9 +12,9 @@
   }
 
   &.empty:before {
-    font-family: "codepicnic";
+    font-family: "codebasket";
     font-size: 40px;
-    content: "\e928";
+    content: "A";
     position: absolute;
     top: calc(50% - 40px);
     text-align: center;
@@ -22,6 +24,8 @@
   }
 
   &.empty:after {
+    font-size: 1em;
+    font-weight: 100;
     content: "Create your files and folders or drop them here from your local machine";
     position: absolute;
     top: 50%;
@@ -66,7 +70,7 @@
 
   .codebasket-list-title {
     font-weight: 900;
-
+    padding: 0 5px;
     &:hover {
       background: none;
     }
@@ -101,17 +105,18 @@
       cursor: pointer;
     }
 
-    .codebasket-search {
+    &.codebasket-search {
       @extend %box-reset;
       display: block;
       margin-bottom: 15px;
+      padding: 0 5px;
 
       &:before {
-        @extend %font-awesome;
-        content: '\f002';
+        font-family: 'codebasket';
+        content: 'J';
         position: absolute;
-        top: 7px;
-        left: 7px;
+        top: 2px;
+        left: 12px;
         z-index: 1;
         color: #ccc;
       }
@@ -136,7 +141,34 @@
     opacity: 0;
     transition: opacity .2s ease-in-out;
     cursor: pointer;
-    font-size: 14px;
+    span {
+      font-size: .8em;
+    }
+    .icon {
+      font-family: 'codebasket';
+      font-size: .8em;
+      margin-left: 5  px;
+      border-radius: 3px;
+      padding: 3px;
+      width: 12px;
+      display: inline-block;
+      text-align: center;
+      &.delete {
+        color: $red;
+        &:hover {
+          background: $red-hover;
+        }
+      }
+      &.edit {
+        color: $blue;
+        &:hover {
+          background: $blue-hover;
+        }
+      }
+      &:hover {
+        color: white;
+      }
+    }
   }
 
   .codebasket-item-terminal {
@@ -209,9 +241,8 @@
     transition: background-color .3s ease-in-out;
 
     &:after {
-      @extend %font-awesome;
-      top: 8px;
-      font-size: .7em;
+      font-family: 'codebasket';
+      font-size: .6em;
       color: #aaa;
     }
 
@@ -221,7 +252,7 @@
 
     &.opened {
       &:after {
-        content: '\f07c';
+        content: 'b';
       }
     }
 
@@ -230,7 +261,7 @@
       height: 25px;
 
       &:after {
-        content: '\f07b';
+        content: 'a';
       }
     }
 

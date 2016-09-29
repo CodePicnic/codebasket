@@ -1,14 +1,15 @@
 @charset "UTF-8";
 @font-face {
-  font-family: 'codepicnic';
-  src: url("fonts/codepicnic.eot?xilzpx");
-  src: url("fonts/codepicnic.eot?xilzpx#iefix") format("embedded-opentype"), url("fonts/codepicnic.ttf?xilzpx") format("truetype"), url("fonts/codepicnic.woff?xilzpx") format("woff"), url("fonts/codepicnic.svg?xilzpx#codepicnic") format("svg");
+  font-family: 'codebasket';
+  src: url("fonts/codebasket.eot");
+  src: url("fonts/codebasket.eot?#iefix") format("embedded-opentype"), url("fonts/codebasket.ttf") format("truetype"), url("fonts/codebasket.woff") format("woff"), url("fonts/codebasket.woff2") format("woff2");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+  font-size: 1em; }
 
 .icon {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'codepicnic' !important;
+  font-family: 'codebasket' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -20,213 +21,111 @@
   -moz-osx-font-smoothing: grayscale; }
 
 .icon:before {
-  font-family: 'codepicnic' !important; }
+  font-family: 'codebasket' !important; }
 
 .icon-private:before {
-  content: "\e93f"; }
+  content: "P"; }
 
 .icon-public:before {
-  content: "\e940"; }
+  content: "O"; }
 
 .icon-sign-up:before {
-  content: "\e941"; }
+  content: "U"; }
 
-.icon-streaming:before {
-  content: "\e942"; }
+.icon-more:before {
+  content: "N"; }
 
 .icon-sign-in:before {
-  content: "\e93d"; }
+  content: "V"; }
 
 .icon-sign-out:before {
-  content: "\e93e"; }
+  content: "W"; }
 
 .icon-save:before {
-  content: "\e93c"; }
+  content: "S"; }
 
 .icon-arrow-down:before {
-  content: "\e938"; }
+  content: "n"; }
 
 .icon-arrow-up:before {
-  content: "\e939"; }
+  content: "o"; }
 
 .icon-compress:before {
-  content: "\e93a"; }
+  content: "l"; }
 
 .icon-expand:before {
-  content: "\e93b"; }
+  content: "m"; }
 
 .icon-delete:before {
-  content: "\e935"; }
+  content: "G"; }
 
 .icon-edit:before {
-  content: "\e936"; }
+  content: "E"; }
 
 .icon-back:before {
-  content: "\e937"; }
-
-.icon-wallet:before {
-  content: "\e934"; }
+  content: "p"; }
 
 .icon-hide-sidebar:before {
-  content: "\e92b"; }
+  content: "M"; }
 
 .icon-show-sidebar:before {
-  content: "\e930"; }
+  content: "L"; }
 
 .icon-option-download:before {
-  content: "\e925"; }
+  content: "e"; }
 
 .icon-option-fork:before {
-  content: "\e926"; }
+  content: "g"; }
 
 .icon-option-github:before {
-  content: "\e927"; }
-
-.icon-placeholder-download:before {
-  content: "\e928"; }
+  content: "h"; }
 
 .icon-play:before {
-  content: "\e929"; }
+  content: "q"; }
 
 .icon-refresh:before {
-  content: "\e92a"; }
+  content: "R"; }
 
 .icon-info:before {
-  content: "\e92c"; }
+  content: "I"; }
 
 .icon-new-file:before {
-  content: "\e92d"; }
+  content: "A"; }
 
 .icon-new-folder:before {
-  content: "\e92e"; }
+  content: "F"; }
 
 .icon-option-configure:before {
-  content: "\e92f"; }
+  content: "d"; }
 
 .icon-cog:before {
-  content: "\e931"; }
-
-.icon-close-2:before {
-  content: "\e932"; }
-
-.icon-codepicnic-logo:before {
-  content: "\e933"; }
+  content: "C"; }
 
 .icon-add:before {
-  content: "\e923"; }
+  content: "H"; }
 
 .icon-browser:before {
-  content: "\e924"; }
-
-.icon-codepicnic:before {
-  content: "\e921"; }
-
-.icon-help:before {
-  content: "\e922"; }
-
-.icon-placeholder-flavor:before {
-  content: "\e920"; }
-
-.icon-placeholder-search:before {
-  content: "\e91f"; }
+  content: "B"; }
 
 .icon-forks:before {
-  content: "\e91d"; }
-
-.icon-stats:before {
-  content: "\e91e"; }
+  content: "g"; }
 
 .icon-settings:before {
-  content: "\e91a"; }
-
-.icon-card:before {
-  content: "\e918"; }
-
-.icon-profile:before {
-  content: "\e919"; }
-
-.icon-dashboard:before {
-  content: "\e917"; }
-
-.icon-typewriter:before {
-  content: "\e916"; }
-
-.icon-docs:before {
-  content: "\e915"; }
-
-.icon-menu:before {
-  content: "\e914"; }
-
-.icon-multidevice:before {
-  content: "\e913"; }
-
-.icon-personalize:before {
-  content: "\e91b"; }
-
-.icon-embed:before {
-  content: "\e91c"; }
-
-.icon-coffee:before {
-  content: "\e911"; }
-
-.icon-module:before {
-  content: "\e912"; }
-
-.icon-placeholder-github:before {
-  content: "\e90d"; }
-
-.icon-placeholder-paste:before {
-  content: "\e90e"; }
-
-.icon-placeholder-settings:before {
-  content: "\e90f"; }
+  content: "d"; }
 
 .icon-close:before {
-  content: "\e910"; }
-
-.icon-placeholder-email:before {
-  content: "\e90b"; }
-
-.icon-placeholder-password:before {
-  content: "\e90c"; }
-
-.icon-circle-facebook:before {
-  content: "\e908"; }
-
-.icon-circle-github:before {
-  content: "\e909"; }
-
-.icon-circle-twitter:before {
-  content: "\e90a"; }
-
-.icon-email:before {
-  content: "\e907"; }
-
-.icon-console:before {
-  content: "\e900"; }
-
-.icon-contact:before {
-  content: "\e901"; }
+  content: "x"; }
 
 .icon-file:before {
-  content: "\e902"; }
-
-.icon-github:before {
-  content: "\e903"; }
-
-.icon-people:before {
-  content: "\e904"; }
+  content: "f"; }
 
 .icon-share:before {
-  content: "\e905"; }
-
-.icon-time:before {
-  content: "\e906"; }
+  content: "X"; }
 
 .codebasket-navbar, .codebasket-main .navbar-button, .codebasket-main .navbar-tab, .codebasket-browser-navigation > *, .codebasket-main, .codebasket-sidebar,
 .codebasket-content,
 .codebasket-footer, .codebasket-options-list,
-.codebasket-aside-content, .codebasket-items-list, .codebasket-items-list > li, .codebasket-items-list > li .codebasket-item-name, .codebasket-items-list > li .codebasket-search, .codebasket-items-list > li .codebasket-search input, .codebasket-browser-navigation, .codebasket-footer > * {
+.codebasket-aside-content, .codebasket-items-list, .codebasket-items-list > li, .codebasket-items-list > li .codebasket-item-name, .codebasket-items-list > li.codebasket-search, .codebasket-items-list > li.codebasket-search input, .codebasket-browser-navigation, .codebasket-footer > * {
   position: relative;
   box-sizing: border-box;
   margin: 0;
@@ -269,9 +168,6 @@
   font-size: 14px;
   cursor: pointer; }
 
-.codebasket-items-list > li .codebasket-search:before, .codebasket-items-list .codebasket-item-folder:after, .codebasket-main .navbar-button:before {
-  font: normal normal normal 14px/1 FontAwesome; }
-
 .codebasket-main {
   display: block;
   position: relative;
@@ -304,6 +200,129 @@
     position: absolute;
     left: 4px; }
 
+@font-face {
+  font-family: 'codebasket';
+  src: url("fonts/codebasket.eot");
+  src: url("fonts/codebasket.eot?#iefix") format("embedded-opentype"), url("fonts/codebasket.ttf") format("truetype"), url("fonts/codebasket.woff") format("woff"), url("fonts/codebasket.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1em; }
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'codebasket' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon:before {
+  font-family: 'codebasket' !important; }
+
+.icon-private:before {
+  content: "P"; }
+
+.icon-public:before {
+  content: "O"; }
+
+.icon-sign-up:before {
+  content: "U"; }
+
+.icon-more:before {
+  content: "N"; }
+
+.icon-sign-in:before {
+  content: "V"; }
+
+.icon-sign-out:before {
+  content: "W"; }
+
+.icon-save:before {
+  content: "S"; }
+
+.icon-arrow-down:before {
+  content: "n"; }
+
+.icon-arrow-up:before {
+  content: "o"; }
+
+.icon-compress:before {
+  content: "l"; }
+
+.icon-expand:before {
+  content: "m"; }
+
+.icon-delete:before {
+  content: "G"; }
+
+.icon-edit:before {
+  content: "E"; }
+
+.icon-back:before {
+  content: "p"; }
+
+.icon-hide-sidebar:before {
+  content: "M"; }
+
+.icon-show-sidebar:before {
+  content: "L"; }
+
+.icon-option-download:before {
+  content: "e"; }
+
+.icon-option-fork:before {
+  content: "g"; }
+
+.icon-option-github:before {
+  content: "h"; }
+
+.icon-play:before {
+  content: "q"; }
+
+.icon-refresh:before {
+  content: "R"; }
+
+.icon-info:before {
+  content: "I"; }
+
+.icon-new-file:before {
+  content: "A"; }
+
+.icon-new-folder:before {
+  content: "F"; }
+
+.icon-option-configure:before {
+  content: "d"; }
+
+.icon-cog:before {
+  content: "C"; }
+
+.icon-add:before {
+  content: "H"; }
+
+.icon-browser:before {
+  content: "B"; }
+
+.icon-forks:before {
+  content: "g"; }
+
+.icon-settings:before {
+  content: "d"; }
+
+.icon-close:before {
+  content: "x"; }
+
+.icon-file:before {
+  content: "f"; }
+
+.icon-share:before {
+  content: "X"; }
+
 .codebasket-sidebar {
   top: 0px;
   left: -280px;
@@ -313,9 +332,9 @@
   .codebasket-sidebar.visible {
     left: 0; }
   .codebasket-sidebar.empty:before {
-    font-family: "codepicnic";
+    font-family: "codebasket";
     font-size: 40px;
-    content: "\e928";
+    content: "A";
     position: absolute;
     top: calc(50% - 40px);
     text-align: center;
@@ -323,6 +342,8 @@
     color: #e6e6e6;
     width: 100%; }
   .codebasket-sidebar.empty:after {
+    font-size: 1em;
+    font-weight: 100;
     content: "Create your files and folders or drop them here from your local machine";
     position: absolute;
     top: 50%;
@@ -351,7 +372,8 @@
     cursor: copy;
     background: #a7dbf0; }
   .codebasket-items-list .codebasket-list-title {
-    font-weight: 900; }
+    font-weight: 900;
+    padding: 0 5px; }
     .codebasket-items-list .codebasket-list-title:hover {
       background: none; }
   .codebasket-items-list > li {
@@ -372,17 +394,19 @@
       color: #444;
       font-weight: 100;
       cursor: pointer; }
-    .codebasket-items-list > li .codebasket-search {
+    .codebasket-items-list > li.codebasket-search {
       display: block;
-      margin-bottom: 15px; }
-      .codebasket-items-list > li .codebasket-search:before {
-        content: '\f002';
+      margin-bottom: 15px;
+      padding: 0 5px; }
+      .codebasket-items-list > li.codebasket-search:before {
+        font-family: 'codebasket';
+        content: 'J';
         position: absolute;
-        top: 7px;
-        left: 7px;
+        top: 2px;
+        left: 12px;
         z-index: 1;
         color: #ccc; }
-      .codebasket-items-list > li .codebasket-search input {
+      .codebasket-items-list > li.codebasket-search input {
         display: block;
         border-radius: 5px;
         padding: 5px 5px 5px 27px;
@@ -396,8 +420,28 @@
     right: 5px;
     opacity: 0;
     transition: opacity .2s ease-in-out;
-    cursor: pointer;
-    font-size: 14px; }
+    cursor: pointer; }
+    .codebasket-items-list .codebasket-item-actions span {
+      font-size: .8em; }
+    .codebasket-items-list .codebasket-item-actions .icon {
+      font-family: 'codebasket';
+      font-size: .8em;
+      margin-left: 5  px;
+      border-radius: 3px;
+      padding: 3px;
+      width: 12px;
+      display: inline-block;
+      text-align: center; }
+      .codebasket-items-list .codebasket-item-actions .icon.delete {
+        color: #d14c42; }
+        .codebasket-items-list .codebasket-item-actions .icon.delete:hover {
+          background: #f33b37; }
+      .codebasket-items-list .codebasket-item-actions .icon.edit {
+        color: #3aaedd; }
+        .codebasket-items-list .codebasket-item-actions .icon.edit:hover {
+          background: #65c0e5; }
+      .codebasket-items-list .codebasket-item-actions .icon:hover {
+        color: white; }
   .codebasket-items-list .codebasket-item-terminal:after {
     content: '■';
     color: #ccc;
@@ -427,18 +471,18 @@
     padding-right: 0px;
     transition: background-color .3s ease-in-out; }
     .codebasket-items-list .codebasket-item-folder:after {
-      top: 8px;
-      font-size: .7em;
+      font-family: 'codebasket';
+      font-size: .6em;
       color: #aaa; }
     .codebasket-items-list .codebasket-item-folder.active {
       background: #eee; }
     .codebasket-items-list .codebasket-item-folder.opened:after {
-      content: '\f07c'; }
+      content: 'b'; }
     .codebasket-items-list .codebasket-item-folder.closed {
       overflow: hidden;
       height: 25px; }
       .codebasket-items-list .codebasket-item-folder.closed:after {
-        content: '\f07b'; }
+        content: 'a'; }
     .codebasket-items-list .codebasket-item-folder.dragover {
       cursor: copy;
       background: #a7dbf0; }
@@ -466,7 +510,8 @@
     .codebasket-navbar > .navbar-tab:hover {
       background: #eee; }
     .codebasket-navbar > .navbar-tab > * {
-      display: inline-block; }
+      display: inline-block;
+      vertical-align: middle; }
     .codebasket-navbar > .navbar-tab > .navbar-tab-title {
       padding: 10px;
       font-size: 12px;
@@ -483,9 +528,18 @@
   .codebasket-navbar .codebasket-options-list {
     font-size: 14px; }
 
+.codebasket-main .navbar-button .icon-close, .codebasket-main .navbar-button.icon-arrow-down:before, .codebasket-main .navbar-tab .icon-close, .codebasket-main .navbar-tab.icon-arrow-down:before {
+  font-size: 10px; }
+
+.codebasket-main .navbar-button .icon-close, .codebasket-main .navbar-tab .icon-close {
+  color: #ccc; }
+  .codebasket-main .navbar-button .icon-close:hover, .codebasket-main .navbar-tab .icon-close:hover {
+    color: #d14c42; }
+
 .codebasket-main .navbar-button {
   width: 33px; }
   .codebasket-main .navbar-button:before {
+    font-family: 'codebasket';
     position: absolute;
     left: 50%;
     top: 50%;
@@ -518,7 +572,7 @@
 .codebasket-options-list {
   right: 35px;
   top: calc(35px - 1px);
-  padding: 10px;
+  padding: 1px;
   width: calc(280px / 2);
   box-shadow: 0 2px 4px #c8c8c8;
   border-radius: 5px 0 5px 5px;
@@ -529,9 +583,21 @@
   .codebasket-options-list.opened {
     opacity: 1;
     z-index: 10; }
-  .codebasket-options-list > * {
+  .codebasket-options-list li {
     display: block;
-    padding: 5px; }
+    color: #666;
+    padding: 10px; }
+    .codebasket-options-list li .icon {
+      display: inline-block;
+      vertical-align: middle;
+      width: 20px;
+      font-size: 12px;
+      color: #999; }
+    .codebasket-options-list li:hover {
+      background: #eee;
+      color: #888; }
+      .codebasket-options-list li:hover .icon {
+        color: #3aaedd; }
 
 .codebasket-content {
   left: 280px;
