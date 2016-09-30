@@ -127,7 +127,7 @@
 }
 
 .codebasket-options-list {
-  right: $header-height;
+  right: $header-height - 2;
   top: calc(#{$header-height} - 1px);
   padding: 1px;
   width: calc(#{$sidebar-width} / 2);

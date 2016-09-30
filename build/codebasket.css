@@ -7,7 +7,7 @@
   font-style: normal;
   font-size: 1em; }
 
-.icon {
+.codebasket-main .icon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'codebasket' !important;
   speak: none;
@@ -20,106 +20,106 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon:before {
+.codebasket-main .icon:before {
   font-family: 'codebasket' !important; }
 
-.icon-private:before {
+.codebasket-main .icon-private:before {
   content: "P"; }
 
-.icon-public:before {
+.codebasket-main .icon-public:before {
   content: "O"; }
 
-.icon-sign-up:before {
+.codebasket-main .icon-sign-up:before {
   content: "U"; }
 
-.icon-more:before {
+.codebasket-main .icon-more:before {
   content: "N"; }
 
-.icon-sign-in:before {
+.codebasket-main .icon-sign-in:before {
   content: "V"; }
 
-.icon-sign-out:before {
+.codebasket-main .icon-sign-out:before {
   content: "W"; }
 
-.icon-save:before {
+.codebasket-main .icon-save:before {
   content: "S"; }
 
-.icon-arrow-down:before {
+.codebasket-main .icon-arrow-down:before {
   content: "n"; }
 
-.icon-arrow-up:before {
+.codebasket-main .icon-arrow-up:before {
   content: "o"; }
 
-.icon-compress:before {
+.codebasket-main .icon-compress:before {
   content: "l"; }
 
-.icon-expand:before {
+.codebasket-main .icon-expand:before {
   content: "m"; }
 
-.icon-delete:before {
+.codebasket-main .icon-delete:before {
   content: "G"; }
 
-.icon-edit:before {
+.codebasket-main .icon-edit:before {
   content: "E"; }
 
-.icon-back:before {
+.codebasket-main .icon-back:before {
   content: "p"; }
 
-.icon-hide-sidebar:before {
+.codebasket-main .icon-hide-sidebar:before {
   content: "M"; }
 
-.icon-show-sidebar:before {
+.codebasket-main .icon-show-sidebar:before {
   content: "L"; }
 
-.icon-option-download:before {
+.codebasket-main .icon-option-download:before {
   content: "e"; }
 
-.icon-option-fork:before {
+.codebasket-main .icon-option-fork:before {
   content: "g"; }
 
-.icon-option-github:before {
+.codebasket-main .icon-option-github:before {
   content: "h"; }
 
-.icon-play:before {
+.codebasket-main .icon-play:before {
   content: "q"; }
 
-.icon-refresh:before {
+.codebasket-main .icon-refresh:before {
   content: "R"; }
 
-.icon-info:before {
+.codebasket-main .icon-info:before {
   content: "I"; }
 
-.icon-new-file:before {
+.codebasket-main .icon-new-file:before {
   content: "A"; }
 
-.icon-new-folder:before {
+.codebasket-main .icon-new-folder:before {
   content: "F"; }
 
-.icon-option-configure:before {
+.codebasket-main .icon-option-configure:before {
   content: "d"; }
 
-.icon-cog:before {
+.codebasket-main .icon-cog:before {
   content: "C"; }
 
-.icon-add:before {
+.codebasket-main .icon-add:before {
   content: "H"; }
 
-.icon-browser:before {
+.codebasket-main .icon-browser:before {
   content: "B"; }
 
-.icon-forks:before {
+.codebasket-main .icon-forks:before {
   content: "g"; }
 
-.icon-settings:before {
+.codebasket-main .icon-settings:before {
   content: "d"; }
 
-.icon-close:before {
+.codebasket-main .icon-close:before {
   content: "x"; }
 
-.icon-file:before {
+.codebasket-main .icon-file:before {
   content: "f"; }
 
-.icon-share:before {
+.codebasket-main .icon-share:before {
   content: "X"; }
 
 .codebasket-navbar, .codebasket-main .navbar-button, .codebasket-main .navbar-tab, .codebasket-browser-navigation > *, .codebasket-main, .codebasket-sidebar,
@@ -199,129 +199,6 @@
     color: #91d2ec;
     position: absolute;
     left: 4px; }
-
-@font-face {
-  font-family: 'codebasket';
-  src: url("fonts/codebasket.eot");
-  src: url("fonts/codebasket.eot?#iefix") format("embedded-opentype"), url("fonts/codebasket.ttf") format("truetype"), url("fonts/codebasket.woff") format("woff"), url("fonts/codebasket.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-  font-size: 1em; }
-
-.icon {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'codebasket' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-
-.icon:before {
-  font-family: 'codebasket' !important; }
-
-.icon-private:before {
-  content: "P"; }
-
-.icon-public:before {
-  content: "O"; }
-
-.icon-sign-up:before {
-  content: "U"; }
-
-.icon-more:before {
-  content: "N"; }
-
-.icon-sign-in:before {
-  content: "V"; }
-
-.icon-sign-out:before {
-  content: "W"; }
-
-.icon-save:before {
-  content: "S"; }
-
-.icon-arrow-down:before {
-  content: "n"; }
-
-.icon-arrow-up:before {
-  content: "o"; }
-
-.icon-compress:before {
-  content: "l"; }
-
-.icon-expand:before {
-  content: "m"; }
-
-.icon-delete:before {
-  content: "G"; }
-
-.icon-edit:before {
-  content: "E"; }
-
-.icon-back:before {
-  content: "p"; }
-
-.icon-hide-sidebar:before {
-  content: "M"; }
-
-.icon-show-sidebar:before {
-  content: "L"; }
-
-.icon-option-download:before {
-  content: "e"; }
-
-.icon-option-fork:before {
-  content: "g"; }
-
-.icon-option-github:before {
-  content: "h"; }
-
-.icon-play:before {
-  content: "q"; }
-
-.icon-refresh:before {
-  content: "R"; }
-
-.icon-info:before {
-  content: "I"; }
-
-.icon-new-file:before {
-  content: "A"; }
-
-.icon-new-folder:before {
-  content: "F"; }
-
-.icon-option-configure:before {
-  content: "d"; }
-
-.icon-cog:before {
-  content: "C"; }
-
-.icon-add:before {
-  content: "H"; }
-
-.icon-browser:before {
-  content: "B"; }
-
-.icon-forks:before {
-  content: "g"; }
-
-.icon-settings:before {
-  content: "d"; }
-
-.icon-close:before {
-  content: "x"; }
-
-.icon-file:before {
-  content: "f"; }
-
-.icon-share:before {
-  content: "X"; }
 
 .codebasket-sidebar {
   top: 0px;
@@ -570,7 +447,7 @@
     border-right: 1px solid #c8c8c8; }
 
 .codebasket-options-list {
-  right: 35px;
+  right: 33px;
   top: calc(35px - 1px);
   padding: 1px;
   width: calc(280px / 2);

@@ -417,6 +417,12 @@ module.exports = {
   isItemAFolder: function(item) {
     return item.type.match('directory');
   },
+  getFolderPath: function(path) {
+    var parts = path.split('/');
+    parts.pop();
+
+    return parts ? parts.join('/') : '';
+  },
   fileClassName: function(item) {
     var instanceItem = this.props.instance.findFile(item.path),
         openedFileClass = (instanceItem && instanceItem.isVisible) ? 'opened' : '',
@@ -566,6 +572,8 @@ Sidebar = React.createClass({displayName: "Sidebar",
 
     global.dispatchEvent(openFileEvent);
 
+    instance.selectedSidebarItem = instance.getSidebarItem(this.getFolderPath(item.path));
+
     if (instanceItem && !isItemExecutable) {
       instance.selectItem(instanceItem);
       this.setState({ selectedItem: item });
@@ -594,6 +602,7 @@ Sidebar = React.createClass({displayName: "Sidebar",
       previouslySelectedInstanceItem.isActive = false;
     }
 
+    instance.selectedSidebarItem = item;
     this.setState({ selectedItem: item });
   },
   renderItemsList: function(items, title) {
@@ -628,7 +637,7 @@ Sidebar = React.createClass({displayName: "Sidebar",
         React.createElement("li", {className: "codebasket-list-title"}, 
           "Files", 
           React.createElement("nav", {className: "codebasket-item-actions"}, 
-            React.createElement("span", {class: "text"}, "Collapse all")
+            React.createElement("span", {className: "text"}, "Collapse all")
           )
         ), 
         React.createElement("li", {className: "codebasket-search"}, 
@@ -946,7 +955,9 @@ module.exports = {
     cs: 'csharp',
     vb: 'vbscript',
     txt: 'text',
-    exs: 'elixir'
+    exs: 'elixir',
+    keep: 'text',
+    ignore: 'text'
   }
 };
 
@@ -1313,17 +1324,36 @@ function disableEditMode(item) {
   this.render();
 }
 
+function getSidebarItem(path) {
+  var sidebarItems = this.sidebarItems,
+      parts = path.split('/');
+
+  if (path) {
+    for (var i = 0; i < parts.length - 1; i++) {
+      sidebarItems = sidebarItems[parts[i]].files;
+    }
+
+    var parentPath = parts.pop();
+
+    sidebarItems = sidebarItems[parentPath];
+  }
+
+  return sidebarItems;
+}
+
 function addSidebarItems(newSidebarItems, rootPath) {
   var sidebarItems = this.sidebarItems;
 
   if (rootPath) {
     rootPath.split('/').forEach(function(path) {
-      sidebarItems = sidebarItems[path].files;
+      if (sidebarItems[path]) {
+        sidebarItems = sidebarItems[path].files;
+      }
     });
   }
 
   forEach(newSidebarItems, function(fileInfo, fileName) {
-    if (type.match('directory')) {
+    if (fileInfo.type.match('directory')) {
       fileInfo.files = {};
       fileInfo.isCollapsed = true;
     }
@@ -1337,7 +1367,7 @@ function addSidebarItems(newSidebarItems, rootPath) {
 function addFileToSidebar(fileName, fullName, rootPath) {
   var newSidebarItem = {};
 
-  newSidebarItem[folderName] = {
+  newSidebarItem[fileName] = {
     name: fileName,
     path: fullName,
     type: 'text/plain'
@@ -1387,7 +1417,7 @@ function removeItemFromSidebar(path) {
 }
 
 function getCurrentPath() {
-  return this.view.sidebar.state.currentPath;
+  return this.selectedSidebarItem ? this.selectedSidebarItem.path : '';
 }
 
 function readFiles(files, path, callback) {
@@ -1496,7 +1526,6 @@ module.exports = {
   selectItem: selectItem,
   renameItem: renameItem,
   removeItem: removeItem,
-  getCurrentEditor: getCurrentEditor,
   moveItemToPane: moveItemToPane,
   enableEditMode: enableEditMode,
   disableEditMode: disableEditMode,
@@ -1506,6 +1535,8 @@ module.exports = {
   findInSidebar: findInSidebar,
   removeItemFromSidebar: removeItemFromSidebar,
   getCurrentPath: getCurrentPath,
+  getCurrentEditor: getCurrentEditor,
+  getSidebarItem: getSidebarItem,
   readFiles: readFiles,
   render: render,
   setStatus: setStatus,

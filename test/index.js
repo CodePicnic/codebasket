@@ -192,7 +192,8 @@ describe('Creating a CodeBasket', function() {
       brand: brand
     });
 
-    codeBasket.on('ready', spies.onReady);
+    window.addEventListener('codebasket:ready', spies.onReady, true);
+    window.addEventListener('codebasket:tabselected', spies.onTabSelected);
 
     codeBasket.render();
 
@@ -265,8 +266,6 @@ describe('Creating a CodeBasket', function() {
       color: 'blue',
       name: 'User'
     };
-
-    codeBasket.on('tabselected', spies.onTabSelected);
 
     codeBasket.render();
 
