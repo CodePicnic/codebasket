@@ -302,11 +302,11 @@
       font-size: .8em; }
     .codebasket-items-list .codebasket-item-actions .icon {
       font-family: 'codebasket';
-      font-size: .8em;
-      margin-left: 5  px;
+      font-size: 0.8em;
+      margin-left: 5px;
       border-radius: 3px;
       padding: 3px;
-      width: 12px;
+      min-width: 12px;
       display: inline-block;
       text-align: center; }
       .codebasket-items-list .codebasket-item-actions .icon.delete {
@@ -325,6 +325,12 @@
     top: -1px; }
   .codebasket-items-list .codebasket-item-terminal:hover:after {
     color: #999; }
+  .codebasket-items-list .codebasket-item-terminal.active {
+    background: #eee; }
+    .codebasket-items-list .codebasket-item-terminal.active:after {
+      color: #1e83ad; }
+    .codebasket-items-list .codebasket-item-terminal.active:hover:after {
+      color: #2294c2; }
   .codebasket-items-list .codebasket-item-file:after {
     content: '●';
     color: #ccc; }
@@ -628,3 +634,16 @@
       padding: 8px; }
     .codebasket-footer .codebasket-dropdown > .codebasket-dropdown-list.opened {
       display: block; }
+  .codebasket-footer .codebasket-progress {
+    display: none;
+    width: 30%;
+    max-width: 200px;
+    height: 29px;
+    line-height: 29px;
+    vertical-align: middle;
+    border: none;
+    float: right;
+    margin-top: 0;
+    margin-right: 5px; }
+    .codebasket-footer .codebasket-progress.visible {
+      display: inline-block; }

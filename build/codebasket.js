@@ -216,7 +216,8 @@ Footer = React.createClass({displayName: "Footer",
         ), 
         React.createElement("span", null, this.props.permanentStatus), 
         React.createElement("span", null, this.props.status), 
-        usersList
+        usersList, 
+        React.createElement("progress", {className: 'codebasket-progress' + (this.props.isProgressBarVisible ? ' visible' : ''), max: "100"})
       )
     );
   }
@@ -263,7 +264,7 @@ CodeBasketView = React.createClass({displayName: "CodeBasketView",
       React.createElement("section", {className: "codebasket-main"}, 
         React.createElement(Sidebar, {isVisible: this.state.isSidebarVisible, selectedItem: selectedItem, actions: instance.sidebarActions, instance: instance}), 
         React.createElement(Content, {isFull: !this.state.isSidebarVisible, splitMode: this.state.splitMode, actions: instance.actions, instance: instance}), 
-        React.createElement(Footer, {brand: instance.brand, permanentStatus: instance.permanentStatus, status: instance.status})
+        React.createElement(Footer, {brand: instance.brand, permanentStatus: instance.permanentStatus, status: instance.status, isProgressBarVisible: this.state.isProgressBarVisible})
       )
     );
   }
@@ -389,11 +390,11 @@ var React = require('react');
 
 module.exports = {
   renderNavButton: function renderNavButton(item, index) {
-    return React.createElement("span", {ref: item.ref, className: 'navbar-button icon ' + item.icon, key: index, onClick: item.action});
+    return React.createElement("span", {ref: item.ref, title: item.title, className: 'navbar-button icon ' + item.icon, key: index, onClick: item.action});
   },
   renderOption: function renderOption(item, index) {
     return (
-      React.createElement("li", {key: index, onClick: item.action}, 
+      React.createElement("li", {key: index, onClick: item.action, title: item.title}, 
         React.createElement("i", {className: 'icon ' + item.icon}), 
         item.title
       )
@@ -485,77 +486,10 @@ module.exports = {
       global.dispatchEvent(dropFilesEvent);
     });
   },
-  onClickEditFileOrFolder: function(item, event) {
+  onClickItem: function(item) {
     var instance = this.props.instance;
 
-    if (this.isItemAFile(item)) {
-      var instanceItem = instance.findFile(item.path),
-          oldName = instanceItem.name,
-          newName = prompt('Enter the new name', instanceItem.name);
-
-      if (instanceItem && newName && newName !== '') {
-        instance.renameItem(instanceItem, newName);
-
-        var renameItemEvent = global.document.createEvent('CustomEvent');
-        renameItemEvent.initCustomEvent('codebasket:renameitem', true, true, {
-          codeBasket: instance,
-          item: instanceItem,
-          oldName: oldName,
-          newName: newName
-        });
-
-        global.dispatchEvent(renameItemEvent);
-      }
-    }
-    else {}
-  },
-  onClickRemoveFileOrFolder: function(item, event) {
-    var instance = this.props.instance;
-
-    var removeItemEvent = global.document.createEvent('CustomEvent');
-    removeItemEvent.initCustomEvent('codebasket:removeentry', true, true, {
-      codeBasket: instance,
-      fileName: item.name,
-      fileInfo: item
-    });
-
-    global.dispatchEvent(removeItemEvent);
-  },
-  renderFileOrFolderActions: function(item) {
-    return (
-      React.createElement("nav", {className: "codebasket-item-actions"}, 
-        React.createElement("span", {className: "icon edit", title: "Edit", onClick: this.onClickEditFileOrFolder.bind(this, item)}, "C"), 
-        React.createElement("span", {className: "icon delete", title: "Delete", onClick: this.onClickRemoveFileOrFolder.bind(this, item)}, "G")
-      )
-    );
-  }
-};
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"react":318}],10:[function(require,module,exports){
-(function (global){
-'use strict';
-
-var React = require('react'),
-    map = require('lodash/collection/map'),
-    filter = require('lodash/collection/filter'),
-    find = require('lodash/collection/find'),
-    sortBy = require('lodash/collection/sortBy'),
-    size = require('lodash/collection/size'),
-    renderMixin = require('./mixins/render_mixin'),
-    sidebarMixin = require('./mixins/sidebar_mixin'),
-    Sidebar;
-
-Sidebar = React.createClass({displayName: "Sidebar",
-  mixins: [renderMixin, sidebarMixin],
-  getInitialState: function() {
-    return { selectedItem: this.props.selectedItem };
-  },
-  getDefaultProps: function() {
-    return { isVisible: true, isLoading: false };
-  },
-  componentWillReceiveProps: function(nextProps) {
-    this.setState({ selectedItem: nextProps.selectedItem });
+    instance.selectItem(item);
   },
   onClickFile: function(item) {
     var instance = this.props.instance,
@@ -605,6 +539,101 @@ Sidebar = React.createClass({displayName: "Sidebar",
     instance.selectedSidebarItem = item;
     this.setState({ selectedItem: item });
   },
+  onClickCloseItem: function(item) {
+    var instance = this.props.instance,
+        visibleItems = filter(instance.items, function(item) { return item.isVisible; }),
+        index = visibleItems.indexOf(item);
+
+    item.isVisible = false;
+
+    if (visibleItems.length > 0 && visibleItems[index - 1]) {
+      instance.selectItem(visibleItems[index - 1]);
+    }
+
+    var closeItemEvent = global.document.createEvent('CustomEvent');
+    closeItemEvent.initCustomEvent('codebasket:closeitem', true, true, {
+      codeBasket: instance,
+      item: item
+    });
+
+    global.dispatchEvent(closeItemEvent);
+  },
+  onClickEditFileOrFolder: function(item, event) {
+    var instance = this.props.instance;
+
+    if (this.isItemAFile(item)) {
+      var instanceItem = instance.findFile(item.path),
+          oldName,
+          newName;
+
+      oldName = instanceItem.name;
+      newName = prompt('Enter the new name', instanceItem.name);
+
+      if (instanceItem && newName && newName !== '') {
+        instance.renameItem(instanceItem, newName);
+
+        var renameItemEvent = global.document.createEvent('CustomEvent');
+        renameItemEvent.initCustomEvent('codebasket:renameitem', true, true, {
+          codeBasket: instance,
+          item: instanceItem,
+          oldName: oldName,
+          newName: newName
+        });
+
+        global.dispatchEvent(renameItemEvent);
+      }
+    }
+  },
+  onClickRemoveFileOrFolder: function(item, event) {
+    var instance = this.props.instance;
+
+    var removeItemEvent = global.document.createEvent('CustomEvent');
+    removeItemEvent.initCustomEvent('codebasket:removeentry', true, true, {
+      codeBasket: instance,
+      fileName: item.name,
+      fileInfo: item
+    });
+
+    global.dispatchEvent(removeItemEvent);
+  },
+  renderFileOrFolderActions: function(item) {
+    var instance = this.props.instance,
+        editButton = (this.isItemAFile(item) && instance.findFile(item.path)) ? React.createElement("span", {className: "icon edit", title: "Edit", onClick: this.onClickEditFileOrFolder.bind(this, item)}, "C") : undefined;
+
+    return (
+      React.createElement("nav", {className: "codebasket-item-actions"}, 
+        editButton, 
+        React.createElement("span", {className: "icon delete", title: "Delete", onClick: this.onClickRemoveFileOrFolder.bind(this, item)}, "G")
+      )
+    );
+  }
+};
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"react":318}],10:[function(require,module,exports){
+'use strict';
+
+var React = require('react'),
+    map = require('lodash/collection/map'),
+    filter = require('lodash/collection/filter'),
+    find = require('lodash/collection/find'),
+    sortBy = require('lodash/collection/sortBy'),
+    size = require('lodash/collection/size'),
+    renderMixin = require('./mixins/render_mixin'),
+    sidebarMixin = require('./mixins/sidebar_mixin'),
+    Sidebar;
+
+Sidebar = React.createClass({displayName: "Sidebar",
+  mixins: [renderMixin, sidebarMixin],
+  getInitialState: function() {
+    return { selectedItem: this.props.selectedItem };
+  },
+  getDefaultProps: function() {
+    return { isVisible: true, isLoading: false };
+  },
+  componentWillReceiveProps: function(nextProps) {
+    this.setState({ selectedItem: nextProps.selectedItem });
+  },
   renderItemsList: function(items, title) {
     if (items.length === 0) {
       return undefined;
@@ -614,20 +643,24 @@ Sidebar = React.createClass({displayName: "Sidebar",
       React.createElement("ul", {className: "codebasket-items-list"}, 
         React.createElement("li", {className: "codebasket-list-title"}, title), 
         items.map(function(item, index) {
+          var itemClass = item.isActive ? 'active' : '',
+              closeButton = item.isCloseable ? React.createElement("i", {className: "fa fa-close", onClick: this.onClickCloseItem.bind(this, item)}) : undefined;
+
           return (
-            React.createElement("li", {className: "codebasket-item-terminal", key: index}, 
-              React.createElement("span", {className: "codebasket-item-name"}, item.name), 
+            React.createElement("li", {className: 'codebasket-item-terminal ' + itemClass, key: index}, 
+              React.createElement("span", {className: "codebasket-item-name", onClick: this.onClickItem.bind(this, item)}, item.name), 
               React.createElement("nav", {className: "codebasket-item-actions"}, 
-                React.createElement("i", {className: "fa fa-close"})
+                closeButton
               )
             )
           );
-        })
+        }, this)
       )
     );
   },
   renderFilesList: function(items) {
     var dragSidebarClass = ((this.state.dragState === 'dragover' && this.state.dragPath === '') ? 'dragover' : '');
+
     return (
       React.createElement("ul", {className: 'codebasket-items-list ' + dragSidebarClass, 
         onDragEnter: this.onDragEnter.bind(this, ''), 
@@ -704,7 +737,6 @@ Sidebar = React.createClass({displayName: "Sidebar",
 
 module.exports = Sidebar;
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./mixins/render_mixin":8,"./mixins/sidebar_mixin":9,"lodash/collection/filter":56,"lodash/collection/find":57,"lodash/collection/map":60,"lodash/collection/size":61,"lodash/collection/sortBy":63,"react":318}],11:[function(require,module,exports){
 'use strict';
 
@@ -831,7 +863,7 @@ Viewport = React.createClass({displayName: "Viewport",
       instance.selectItem(visibleItems[index - 1]);
     }
 
-    // this.render();
+    this.render();
     var closeItemEvent = global.document.createEvent('CustomEvent');
     closeItemEvent.initCustomEvent('codebasket:closeitem', true, true, {
       codeBasket: instance,
@@ -891,7 +923,7 @@ Viewport = React.createClass({displayName: "Viewport",
   },
   render: function viewportRender() {
     var instance = this.props.instance,
-        itemsInNavbar = this.props.items.slice(0, 10),
+        itemsInNavbar = this.props.items.slice(0, 5),
         itemsOutOfNavbar = difference(this.props.items, itemsInNavbar),
         extraTabsToggler = itemsOutOfNavbar.length > 0 ? this.renderNavButton(this.extraTabsTogglerReference) : undefined,
         extraTabsList = itemsOutOfNavbar.length > 0 ? this.renderExtraTabs(itemsOutOfNavbar) : undefined,

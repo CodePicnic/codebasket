@@ -61,4 +61,21 @@
       }
     }
   }
+
+  .codebasket-progress {
+    display: none;
+    width: 30%;
+    max-width: 200px;
+    height: 29px;
+    line-height: 29px;
+    vertical-align: middle;
+    border: none;
+    float: right;
+    margin-top: 0;
+    margin-right: 5px;
+
+    &.visible {
+      display: inline-block;
+    }
+  }
 }

@@ -139,16 +139,18 @@
     opacity: 0;
     transition: opacity .2s ease-in-out;
     cursor: pointer;
+
     span {
       font-size: .8em;
     }
+
     .icon {
       font-family: 'codebasket';
-      font-size: .8em;
-      margin-left: 5  px;
+      font-size: 0.8em;
+      margin-left: 5px;
       border-radius: 3px;
       padding: 3px;
-      width: 12px;
+      min-width: 12px;
       display: inline-block;
       text-align: center;
       &.delete {
@@ -179,6 +181,20 @@
     &:hover {
       &:after {
         color: #999;
+      }
+    }
+
+    &.active {
+      background: #eee;
+
+      &:after {
+        color: $blue-dark;
+      }
+
+      &:hover {
+        &:after {
+          color: $blue-dark-hover;
+        }
       }
     }
   }
