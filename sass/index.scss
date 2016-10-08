@@ -109,6 +109,8 @@
 .codebasket-options-list {
   & > li {
     cursor: pointer;
+    padding-left: 14px;
+
     &.active:before {
       content: "●";
       color: $blue-light;

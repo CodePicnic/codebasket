@@ -193,7 +193,8 @@
   z-index: 10; }
 
 .codebasket-options-list > li {
-  cursor: pointer; }
+  cursor: pointer;
+  padding-left: 14px; }
   .codebasket-options-list > li.active:before {
     content: "●";
     color: #91d2ec;
@@ -399,7 +400,10 @@
       padding: 10px;
       font-size: 12px;
       font-weight: 100;
-      color: #999; }
+      color: #999999;
+      max-width: 115px;
+      overflow: hidden;
+      text-overflow: ellipsis; }
     .codebasket-navbar > .navbar-tab > .navbar-tab-close {
       margin-right: 10px; }
     .codebasket-navbar > .navbar-tab.active {

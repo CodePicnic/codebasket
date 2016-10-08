@@ -35,7 +35,10 @@
       padding: 10px;
       font-size: 12px;
       font-weight: 100;
-      color: #999;
+      color: #999999;
+      max-width: 115px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     > .navbar-tab-close {
@@ -66,6 +69,7 @@
     &.icon-arrow-down:before {
       font-size: 10px;
     }
+
     .icon-close {
       color: #ccc;
       &:hover {
