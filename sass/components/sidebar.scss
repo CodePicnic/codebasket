@@ -32,7 +32,19 @@
     color: #999999;
   }
 
-  &.loading {}
+  &.loading:before {
+    display: block;
+    font-family: "codebasket";
+    font-size: 40px;
+    content: "s";
+    position: absolute;
+    top: calc(45%);
+    left: calc(45%);
+    text-align: center;
+    padding: 0;
+    color: #e6e6e6;
+    animation: codebasket-spin 1s linear infinite;
+  }
 
   .codebasket-navbar {
     border-left: 0;
@@ -288,5 +300,11 @@
       position: relative;
       display: block;
     }
+  }
+}
+
+@keyframes codebasket-spin { 
+  100% { 
+    transform: rotate(360deg); 
   }
 }

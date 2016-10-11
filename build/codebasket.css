@@ -228,6 +228,18 @@
     text-align: center;
     padding: 20px;
     color: #999999; }
+  .codebasket-sidebar.loading:before {
+    display: block;
+    font-family: "codebasket";
+    font-size: 40px;
+    content: "s";
+    position: absolute;
+    top: calc(45%);
+    left: calc(45%);
+    text-align: center;
+    padding: 0;
+    color: #e6e6e6;
+    animation: codebasket-spin 1s linear infinite; }
   .codebasket-sidebar .codebasket-navbar {
     border-left: 0;
     border-right: 0; }
@@ -373,6 +385,10 @@
     .codebasket-items-list .codebasket-item-folder .codebasket-item-name {
       position: relative;
       display: block; }
+
+@keyframes codebasket-spin {
+  100% {
+    transform: rotate(360deg); } }
 
 .codebasket-navbar {
   width: 100%;
