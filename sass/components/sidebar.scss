@@ -43,6 +43,7 @@
     text-align: center;
     padding: 0;
     color: #e6e6e6;
+    width: auto;
     animation: codebasket-spin 1s linear infinite;
   }
 
@@ -303,8 +304,8 @@
   }
 }
 
-@keyframes codebasket-spin { 
-  100% { 
-    transform: rotate(360deg); 
+@keyframes codebasket-spin {
+  100% {
+    transform: rotate(360deg);
   }
 }
