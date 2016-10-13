@@ -151,6 +151,32 @@
     display: block;
     color: #666;
     padding: 10px;
+    cursor: pointer;
+    padding-left: 15px;
+
+    &.active:before {
+      content: "●";
+      color: $blue-light;
+      position: absolute;
+      left: 4px;
+    }
+
+    &:hover {
+      background: #eee;
+      color: #888;
+
+      .icon{
+        color: $blue;
+      }
+    }
+
+    .navbar-tab-title {
+      display: inline-block;
+      width: 90%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     .icon {
       display: inline-block;
       vertical-align: middle;
@@ -158,12 +184,10 @@
       font-size: 12px;
       color: #999;
     }
-    &:hover {
-      background: #eee;
-      color: #888;
-      .icon{
-        color: $blue
-      }
+
+    .navbar-tab-close {
+      float: right;
+      width: auto;
     }
   }
 }

@@ -192,15 +192,6 @@
 .codebasket-aside-content {
   z-index: 10; }
 
-.codebasket-options-list > li {
-  cursor: pointer;
-  padding-left: 14px; }
-  .codebasket-options-list > li.active:before {
-    content: "●";
-    color: #91d2ec;
-    position: absolute;
-    left: 4px; }
-
 .codebasket-sidebar {
   top: 0px;
   left: -280px;
@@ -490,18 +481,33 @@
   .codebasket-options-list li {
     display: block;
     color: #666;
-    padding: 10px; }
+    padding: 10px;
+    cursor: pointer;
+    padding-left: 15px; }
+    .codebasket-options-list li.active:before {
+      content: "●";
+      color: #91d2ec;
+      position: absolute;
+      left: 4px; }
+    .codebasket-options-list li:hover {
+      background: #eee;
+      color: #888; }
+      .codebasket-options-list li:hover .icon {
+        color: #3aaedd; }
+    .codebasket-options-list li .navbar-tab-title {
+      display: inline-block;
+      width: 90%;
+      overflow: hidden;
+      text-overflow: ellipsis; }
     .codebasket-options-list li .icon {
       display: inline-block;
       vertical-align: middle;
       width: 20px;
       font-size: 12px;
       color: #999; }
-    .codebasket-options-list li:hover {
-      background: #eee;
-      color: #888; }
-      .codebasket-options-list li:hover .icon {
-        color: #3aaedd; }
+    .codebasket-options-list li .navbar-tab-close {
+      float: right;
+      width: auto; }
 
 .codebasket-content {
   left: 280px;
