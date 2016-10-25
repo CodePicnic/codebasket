@@ -4,6 +4,8 @@
   width: $sidebar-width;
   border-right: 1px solid $border-color;
   transition: left .3s ease-in-out;
+  background: white;
+  z-index: 10;
 
   &.visible {
     left: 0;

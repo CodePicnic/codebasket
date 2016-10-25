@@ -197,7 +197,9 @@
   left: -280px;
   width: 280px;
   border-right: 1px solid #c8c8c8;
-  transition: left .3s ease-in-out; }
+  transition: left .3s ease-in-out;
+  background: white;
+  z-index: 10; }
   .codebasket-sidebar.visible {
     left: 0; }
   .codebasket-sidebar.empty:before {
@@ -674,3 +676,20 @@
     margin-right: 5px; }
     .codebasket-footer .codebasket-progress.visible {
       display: inline-block; }
+
+@media screen and (max-width: 768px) {
+  .codebasket-content {
+    left: 0px;
+    width: 100%; }
+  .codebasket-sidebar {
+    width: 200px; }
+  .codebasket-toggle-sidebar {
+    transition: left .3s ease-in-out;
+    z-index: 9 !important; }
+  .icon-show-sidebar {
+    position: absolute;
+    left: 0px; }
+  .icon-hide-sidebar {
+    position: absolute;
+    left: 200px;
+    box-shadow: 0 0 5px #000; } }
