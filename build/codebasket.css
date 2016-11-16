@@ -476,10 +476,12 @@
   background: #ffffff;
   overflow: auto;
   opacity: 0;
-  z-index: -1; }
+  z-index: -1;
+  visibility: collapse; }
   .codebasket-options-list.opened {
     opacity: 1;
-    z-index: 10; }
+    z-index: 10;
+    visibility: visible; }
   .codebasket-options-list li {
     display: block;
     color: #666;

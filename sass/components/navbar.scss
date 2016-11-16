@@ -141,10 +141,12 @@
   overflow: auto;
   opacity: 0;
   z-index: -1;
+  visibility: collapse;
 
   &.opened {
     opacity: 1;
     z-index: 10;
+    visibility: visible;
   }
 
   li {
