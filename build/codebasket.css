@@ -678,6 +678,11 @@
       display: inline-block; }
 
 @media screen and (max-width: 768px) {
+  @keyframes pulse {
+    0% {
+      color: #ccc; }
+    100% {
+      color: #666; } }
   .codebasket-content {
     left: 0px;
     width: 100%; }
@@ -689,6 +694,8 @@
   .icon-show-sidebar {
     position: absolute;
     left: 0px; }
+    .icon-show-sidebar:before {
+      animation: pulse 1s ease-in-out infinite alternate; }
   .icon-hide-sidebar {
     position: absolute;
     left: 200px;
