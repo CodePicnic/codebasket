@@ -17,7 +17,7 @@
 
 .codebasket-viewport {
   background: #ffffff;
-  overflow: scroll;
+  overflow: auto;
 
   &.empty:before {
     content: "Create or open a file from the sidebar";
@@ -97,7 +97,7 @@
     background: #ffffff;
     overflow: scroll;
     top: $header-height - 1px;
-    height: calc(100% - #{$header-height} + 1px);
+    height: calc(100% - #{$header-height - 1px});
     display: none;
 
     &.active {
@@ -147,13 +147,13 @@
   }
 
   > button {
-    width: $header-height - 2px;
+    width: $header-height - 3px;
     background: $light-background;
     border: 0;
   }
 
   > input[type="url"] {
-    width: calc(100% - 33px);
+    width: calc(100% - 32px);
     padding: 0 5px;
     height: $header-height - 2px;
     cursor: inherit;
@@ -161,8 +161,9 @@
 }
 
 .codebasket-browser > iframe {
+  display: block;
   width: 100%;
-  height: calc(100% - #{$header-height - 2px});
+  height: calc(100% - #{$header-height - 1px});
 }
 
 .codebasket-editor * {

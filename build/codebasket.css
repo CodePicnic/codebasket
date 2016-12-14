@@ -498,6 +498,9 @@
       color: #888; }
       .codebasket-options-list li:hover .icon {
         color: #3aaedd; }
+    .codebasket-options-list li a {
+      color: inherit;
+      text-decoration: none; }
     .codebasket-options-list li .navbar-tab-title {
       display: inline-block;
       width: 90%;
@@ -527,7 +530,7 @@
 
 .codebasket-viewport {
   background: #ffffff;
-  overflow: scroll; }
+  overflow: auto; }
   .codebasket-viewport.empty:before {
     content: "Create or open a file from the sidebar";
     position: absolute;
@@ -573,7 +576,7 @@
     background: #ffffff;
     overflow: scroll;
     top: 34px;
-    height: calc(100% - 35px + 1px);
+    height: calc(100% - 34px);
     display: none; }
     .codebasket-viewport .codebasket-tabpage.active {
       display: block; }
@@ -605,18 +608,19 @@
     display: block;
     float: left; }
   .codebasket-browser-navigation > button {
-    width: 33px;
+    width: 32px;
     background: whitesmoke;
     border: 0; }
   .codebasket-browser-navigation > input[type="url"] {
-    width: calc(100% - 33px);
+    width: calc(100% - 32px);
     padding: 0 5px;
     height: 33px;
     cursor: inherit; }
 
 .codebasket-browser > iframe {
+  display: block;
   width: 100%;
-  height: calc(100% - 33px); }
+  height: calc(100% - 34px); }
 
 .codebasket-editor * {
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace; }
