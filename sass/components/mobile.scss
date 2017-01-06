@@ -1,3 +1,47 @@
+
+@media screen and (max-height: 768px) and (max-width: 1024px) {
+  $touchSize: 48px;
+  // FINDER and NAVBAR
+  .codebasket-navbar {
+    height: $touchSize;
+  }
+  .codebasket-main .navbar-button,
+  .codebasket-main .navbar-button.codebasket-toggle-sidebar{
+    width: $touchSize;
+    height: $touchSize - 1;
+    font-size: 18px;
+  }
+  .codebasket-main .navbar-button.codebasket-toggle-sidebar {
+    height: $touchSize;
+  }
+  // CONTENT and TABS
+  .codebasket-sidebar .codebasket-sidebar-content,
+  .codebasket-viewport .codebasket-tabpage {
+    top: $touchSize;
+  }
+  .codebasket-viewport .codebasket-tabpage {
+    height: calc( 100% - #{$touchSize} );
+  }
+  // MODAL CONTENT
+  .codebasket-aside-content, 
+  .codebasket-options-list{
+    top: $touchSize - 1;
+  }
+  // TABS
+  .codebasket-viewport.full > .codebasket-navbar {
+    margin-left: $touchSize - 1;
+    // This is the Info Nav width + the Toggle Button Width - 1px
+    // because fucking border-box-model borders
+    width: calc(100% - 240px); 
+  }
+  .codebasket-navbar > .navbar-tab {
+    height: $touchSize;
+  }
+  .codebasket-navbar > .navbar-tab > .navbar-tab-title {
+    padding: 19px 10px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .codebasket-sidebar {
     width: 200px;

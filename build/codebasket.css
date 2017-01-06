@@ -683,6 +683,32 @@
     .codebasket-footer .codebasket-progress.visible {
       display: inline-block; }
 
+@media screen and (max-height: 768px) and (max-width: 1024px) {
+  .codebasket-navbar {
+    height: 48px; }
+  .codebasket-main .navbar-button,
+  .codebasket-main .navbar-button.codebasket-toggle-sidebar {
+    width: 48px;
+    height: 47px;
+    font-size: 18px; }
+  .codebasket-main .navbar-button.codebasket-toggle-sidebar {
+    height: 48px; }
+  .codebasket-sidebar .codebasket-sidebar-content,
+  .codebasket-viewport .codebasket-tabpage {
+    top: 48px; }
+  .codebasket-viewport .codebasket-tabpage {
+    height: calc( 100% - 48px); }
+  .codebasket-aside-content,
+  .codebasket-options-list {
+    top: 47px; }
+  .codebasket-viewport.full > .codebasket-navbar {
+    margin-left: 47px;
+    width: calc(100% - 240px); }
+  .codebasket-navbar > .navbar-tab {
+    height: 48px; }
+  .codebasket-navbar > .navbar-tab > .navbar-tab-title {
+    padding: 19px 10px; } }
+
 @media screen and (max-width: 768px) {
   .codebasket-sidebar {
     width: 200px; }
