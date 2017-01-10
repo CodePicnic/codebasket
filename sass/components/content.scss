@@ -35,7 +35,6 @@
     @extend %full-box;
 
     > .codebasket-navbar {
-      width: calc(100% - #{6 * ($header-height - 2)});
       margin-left: $header-height - 2;
     }
   }

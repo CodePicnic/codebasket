@@ -542,7 +542,6 @@
     color: #ababab;
     text-align: center; }
   .codebasket-viewport.full > .codebasket-navbar {
-    width: calc(100% - 198px);
     margin-left: 33px; }
   .codebasket-viewport.inactive {
     display: none;
@@ -702,8 +701,7 @@
   .codebasket-options-list {
     top: 47px; }
   .codebasket-viewport.full > .codebasket-navbar {
-    margin-left: 47px;
-    width: calc(100% - 240px); }
+    margin-left: 47px; }
   .codebasket-navbar > .navbar-tab {
     height: 48px; }
   .codebasket-navbar > .navbar-tab > .navbar-tab-title {

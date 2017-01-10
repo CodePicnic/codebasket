@@ -909,6 +909,7 @@ Viewport = React.createClass({displayName: "Viewport",
     var addButtonWidth = this.props.instance.addButton ? 35 : 0,
         tabsContainerWidth = this.refs.navbar.clientWidth - addButtonWidth,
         tabWidth = 100;
+        // tabWidth = 300;
 
     return Math.floor(tabsContainerWidth / tabWidth);
   },
@@ -1034,7 +1035,7 @@ Viewport = React.createClass({displayName: "Viewport",
 
     return (
       React.createElement("article", {className: 'codebasket-viewport ' + this.props.viewportClasses.trim() + ' ' + viewportEmptyClass}, 
-        React.createElement("nav", {ref: "navbar", className: "codebasket-navbar", style: { width: 'calc(100% - ' + ((instance.actions.length + 2 + Number(!!instance.info)) * 33) + 'px)'}}, 
+        React.createElement("nav", {ref: "navbar", className: "codebasket-navbar", style: { width: 'calc(100% - ' + ((instance.actions.length + 2 + Number(!!instance.info)) * 48 - 2) + 'px)'}}, 
           itemsInNavbar.map(this.renderTab), 
           extraTabsToggler, 
           addButton, 
@@ -1050,6 +1051,8 @@ Viewport = React.createClass({displayName: "Viewport",
 });
 
 module.exports = Viewport;
+
+// <nav ref="navbar" className="codebasket-navbar" style={{ width: 'calc(100% - ' + ((instance.actions.length + 2 + Number(!!instance.info)) * 33) + 'px)' }}>
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./browser":1,"./code_editor":2,"./mixins/render_mixin":8,"./terminal":11,"lodash/array/difference":53,"lodash/collection/filter":56,"lodash/collection/find":57,"lodash/collection/map":60,"lodash/function/throttle":67,"react":322}],14:[function(require,module,exports){

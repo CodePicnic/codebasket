@@ -30,9 +30,6 @@
   // TABS
   .codebasket-viewport.full > .codebasket-navbar {
     margin-left: $touchSize - 1;
-    // This is the Info Nav width + the Toggle Button Width - 1px
-    // because fucking border-box-model borders
-    width: calc(100% - 240px); 
   }
   .codebasket-navbar > .navbar-tab {
     height: $touchSize;
