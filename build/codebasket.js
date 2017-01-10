@@ -861,6 +861,7 @@ var React = require('react'),
     Browser = require('./browser'),
     CodeEditor = require('./code_editor'),
     Terminal = require('./terminal'),
+    mediaQueryBreakpoint = 'screen and (max-height: 768px) and (max-width: 1024px)',
     Viewport;
 
 Viewport = React.createClass({displayName: "Viewport",
@@ -924,7 +925,7 @@ Viewport = React.createClass({displayName: "Viewport",
   calculateNavBarWidthExcess: function() {
     var instance = this.props.instance;
 
-    if (global.matchMedia && global.matchMedia('screen and (max-height: 768px) and (max-width: 1024px)').matches) {
+    if (global.matchMedia && global.matchMedia(mediaQueryBreakpoint).matches) {
       return ((instance.actions.length + 2 + Number(!!instance.info)) * 48 - 2);
     }
     else {
@@ -1030,28 +1031,54 @@ Viewport = React.createClass({displayName: "Viewport",
       )
     );
   },
-  render: function viewportRender() {
+  renderMobileNavBar: function renderMobileNavBar() {
+    var instance = this.props.instance,
+        visibleItems = filter(this.props.items, function(item) { return item.isVisible; }),
+        navBarWidthExcess = this.calculateNavBarWidthExcess();
+
+    return (
+      React.createElement("nav", {ref: "navbar", className: "codebasket-navbar", style: { width: 'calc(100% - ' + navBarWidthExcess + 'px)'}}, 
+        React.createElement("select", null, visibleItems.map(function(item) { return React.createElement("option", null, item.name); }))
+      )
+    );
+  },
+  renderDesktopNavBar: function renderDesktopNavBar() {
     var instance = this.props.instance,
         visibleItems = filter(this.props.items, function(item) { return item.isVisible; }),
         itemsInNavbar = visibleItems.slice(0, this.state.maxVisibleItems),
         itemsOutOfNavbar = difference(visibleItems, itemsInNavbar),
         extraTabsToggler = itemsOutOfNavbar.length > 0 ? this.renderNavButton(this.extraTabsTogglerReference) : undefined,
         extraTabsList = itemsOutOfNavbar.length > 0 ? this.renderExtraTabs(itemsOutOfNavbar) : undefined,
-        activeItem = find(this.props.items, function(item) { return item.isActive; }),
-        isActiveItemAFile = activeItem && (activeItem.type === 'file'),
-        viewportEmptyClass = (this.props.items.length === 0 || !activeItem) ? 'empty' : '',
         addButton = (instance.addButton ? this.renderNavButton(instance.addButton) : undefined),
-        codeEditorClasses = isActiveItemAFile ? 'active' : '',
         navBarWidthExcess = this.calculateNavBarWidthExcess();
 
     return (
+      React.createElement("nav", {ref: "navbar", className: "codebasket-navbar", style: { width: 'calc(100% - ' + navBarWidthExcess + 'px)'}}, 
+        itemsInNavbar.map(this.renderTab), 
+        extraTabsToggler, 
+        addButton, 
+        extraTabsList
+      )
+    );
+  },
+  renderNavBar: function renderNavBar() {
+    if (global.matchMedia && global.matchMedia(mediaQueryBreakpoint).matches) {
+      return this.renderMobileNavBar();
+    }
+    else {
+      return this.renderDesktopNavBar();
+    }
+  },
+  render: function viewportRender() {
+    var instance = this.props.instance,
+        activeItem = find(this.props.items, function(item) { return item.isActive; }),
+        isActiveItemAFile = activeItem && (activeItem.type === 'file'),
+        viewportEmptyClass = (this.props.items.length === 0 || !activeItem) ? 'empty' : '',
+        codeEditorClasses = isActiveItemAFile ? 'active' : '';
+
+    return (
       React.createElement("article", {className: 'codebasket-viewport ' + this.props.viewportClasses.trim() + ' ' + viewportEmptyClass}, 
-        React.createElement("nav", {ref: "navbar", className: "codebasket-navbar", style: { width: 'calc(100% - ' + navBarWidthExcess + 'px)'}}, 
-          itemsInNavbar.map(this.renderTab), 
-          extraTabsToggler, 
-          addButton, 
-          extraTabsList
-        ), 
+        this.renderNavBar(), 
         React.createElement("div", {className: 'codebasket-tabpage ' + codeEditorClasses}, 
           React.createElement(CodeEditor, {ref: "editor", instance: instance, isActive: isActiveItemAFile})
         ), 
