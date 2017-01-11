@@ -76,9 +76,8 @@
     height: 47px;
     overflow: hidden;
     transition: height .3s ease-in-out;
-    &:before {
-      content: 'n';
-      font-family: 'codebasket';
+
+    .navbar-tab-toggler {
       position: absolute;
       z-index: 10;
       padding: 15px;
@@ -87,6 +86,10 @@
       font-size: 15px;
       color: black;
       cursor: pointer;
+    }
+    .navbar-tab-toggler:before {
+      content: 'n';
+      font-family: 'codebasket';
     }
     &.opened{
       height: 260px;

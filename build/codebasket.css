@@ -440,9 +440,7 @@
     height: 47px;
     overflow: hidden;
     transition: height .3s ease-in-out; }
-    .codebasket-navbar.touch .navbar-touch:before {
-      content: 'n';
-      font-family: 'codebasket';
+    .codebasket-navbar.touch .navbar-touch .navbar-tab-toggler {
       position: absolute;
       z-index: 10;
       padding: 15px;
@@ -451,6 +449,9 @@
       font-size: 15px;
       color: black;
       cursor: pointer; }
+    .codebasket-navbar.touch .navbar-touch .navbar-tab-toggler:before {
+      content: 'n';
+      font-family: 'codebasket'; }
     .codebasket-navbar.touch .navbar-touch.opened {
       height: 260px;
       overflow-y: scroll; }
