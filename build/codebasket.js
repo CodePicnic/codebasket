@@ -1038,7 +1038,7 @@ Viewport = React.createClass({displayName: "Viewport",
 
     return (
       React.createElement("nav", {ref: "navbar", className: "codebasket-navbar touch", style: { width: 'calc(100% - ' + navBarWidthExcess + 'px)'}}, 
-        React.createElement("ul", {className: "navbar-touch"}, 
+        React.createElement("ul", {className: "navbar-touch opened"}, 
            visibleItems.map(function(item) { return(
             React.createElement("li", {className: "navbar-tab"}, 
               React.createElement("i", {className: "icon icon-close navbar-tab-close"}), 

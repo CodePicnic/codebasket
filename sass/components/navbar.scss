@@ -70,8 +70,36 @@
     width: 100%;
     list-style: none;
     background: #f5f5f5;
+    border-right: 1px solid #ccc;
     border-left: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
+    height: 47px;
+    overflow: hidden;
+    transition: height .3s ease-in-out;
+    &:before {
+      content: 'n';
+      font-family: 'codebasket';
+      position: absolute;
+      z-index: 10;
+      padding: 15px;
+      top: 0;
+      right: 0;
+      font-size: 15px;
+      color: black;
+      cursor: pointer;
+    }
+    &.opened{
+      height: 260px;
+      overflow-y: scroll;
+      &:before {
+        content: 'o';
+      }
+    }
+    .navbar-tab{
+      width: calc( 100% - 48px );
+      border-right: 0;
+      border-bottom: 1px solid white;
+    }
     .navbar-tab-title {
       display: inline-block;
       padding: 19px 10px;
