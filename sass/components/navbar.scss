@@ -19,7 +19,7 @@
     }
   }
 
-  > .navbar-tab {
+  .navbar-tab {
     white-space: nowrap;
 
     &:hover {
@@ -31,7 +31,7 @@
       vertical-align: middle;
     }
 
-    > .navbar-tab-title {
+    .navbar-tab-title {
       padding: 10px;
       font-size: 12px;
       font-weight: 100;
@@ -41,15 +41,16 @@
       text-overflow: ellipsis;
     }
 
-    > .navbar-tab-close {
+    .navbar-tab-close {
       margin-right: 10px;
+      transform: translateY(-2px);
     }
 
     &.active {
       box-shadow: 0 0 2px white;
       border-bottom: 3px solid $blue-light;
 
-      > .navbar-tab-title {
+      .navbar-tab-title {
         color: #666;
         font-weight: 400;
       }
@@ -59,6 +60,30 @@
   .codebasket-options-list {
     font-size: 14px;
   }
+
+  &.touch .navbar-touch {
+    margin: 0;
+    padding: 0;
+    display: block;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    list-style: none;
+    background: #f5f5f5;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    .navbar-tab-title {
+      display: inline-block;
+      padding: 19px 10px;
+      width: 100%;
+    }
+    .navbar-tab-close {
+      display: inline-block;
+      margin: 0;
+      padding: 15px;
+    }
+  }
+
 }
 
 .codebasket-main {

@@ -28,14 +28,12 @@
     top: $touchSize - 1;
   }
   // TABS
-  .codebasket-viewport.full > .codebasket-navbar {
+  .codebasket-viewport.full .codebasket-navbar {
     margin-left: $touchSize - 1;
   }
-  .codebasket-navbar > .navbar-tab {
+  .codebasket-navbar .navbar-tab,
+  .codebasket-navbar .navbar-touch .navbar-tab {
     height: $touchSize;
-  }
-  .codebasket-navbar > .navbar-tab > .navbar-tab-title {
-    padding: 19px 10px;
   }
 }
 
