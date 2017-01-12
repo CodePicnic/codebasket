@@ -97,7 +97,8 @@
       border-radius: 0 0 5px 5px;
       &.opened{
         top: 48px;
-        height: 260px;
+        height: auto;
+        max-height: 280px;
         overflow-y: scroll;
       }
       .navbar-tab{

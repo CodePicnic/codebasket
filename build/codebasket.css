@@ -467,7 +467,8 @@
     border-radius: 0 0 5px 5px; }
     .codebasket-navbar.touch .navbar-touch.opened {
       top: 48px;
-      height: 260px;
+      height: auto;
+      max-height: 280px;
       overflow-y: scroll; }
     .codebasket-navbar.touch .navbar-touch .navbar-tab {
       width: 100%;
