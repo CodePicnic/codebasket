@@ -2,7 +2,7 @@
 @media screen and (max-height: 768px) and (max-width: 1024px) {
   $touchSize: 48px;
   // FINDER and NAVBAR
-  .codebasket-navbar {
+  .codebasket-navbar{
     height: $touchSize;
   }
   .codebasket-main .navbar-button,
@@ -29,7 +29,7 @@
   }
   // TABS
   .codebasket-viewport.full .codebasket-navbar {
-    margin-left: $touchSize - 1;
+    margin-left: $touchSize;
   }
   .codebasket-navbar .navbar-tab,
   .codebasket-navbar .navbar-touch .navbar-tab {
