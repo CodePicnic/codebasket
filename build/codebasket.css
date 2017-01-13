@@ -286,7 +286,8 @@
       cursor: pointer;
       text-overflow: ellipsis;
       overflow: hidden;
-      max-width: 200px; }
+      max-width: 200px;
+      white-space: pre; }
     .codebasket-items-list > li.codebasket-search {
       display: block;
       margin-bottom: 15px;
@@ -415,7 +416,8 @@
     color: #999999;
     max-width: 115px;
     overflow: hidden;
-    text-overflow: ellipsis; }
+    text-overflow: ellipsis;
+    white-space: pre; }
   .codebasket-navbar .navbar-tab-close {
     margin-right: 10px;
     transform: translateY(-2px); }
@@ -484,7 +486,8 @@
     display: block;
     padding: 19px 10px;
     max-width: calc( 100% - 70px);
-    text-overflow: ellipsis; }
+    text-overflow: ellipsis;
+    white-space: pre; }
   .codebasket-navbar.touch .nabvar-placeholder .navbar-tab-close,
   .codebasket-navbar.touch .navbar-touch .navbar-tab-close {
     display: inline-block;
@@ -800,6 +803,8 @@
     padding: 6px;
     font-size: 14px; }
   .codebasket-items-list li::after {
+    top: 5px; }
+  .codebasket-items-list li.codebasket-item-terminal::after {
     top: 5px; }
   .codebasket-items-list .codebasket-item-folder .codebasket-item-actions,
   .codebasket-items-list .codebasket-item-file .codebasket-item-actions {

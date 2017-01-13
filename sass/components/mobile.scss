@@ -43,6 +43,9 @@
     li::after {
       top: 5px;
     }
+    li.codebasket-item-terminal::after {
+      top: 5px;
+    }
     .codebasket-item-folder .codebasket-item-actions, 
     .codebasket-item-file .codebasket-item-actions {
       padding: 5px 0;
