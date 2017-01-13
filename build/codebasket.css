@@ -281,7 +281,10 @@
       padding: 0 5px;
       color: #444;
       font-weight: 100;
-      cursor: pointer; }
+      cursor: pointer;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 200px; }
     .codebasket-items-list > li.codebasket-search {
       display: block;
       margin-bottom: 15px;
@@ -790,7 +793,40 @@
     margin-left: 48px; }
   .codebasket-navbar .navbar-tab,
   .codebasket-navbar .navbar-touch .navbar-tab {
-    height: 48px; } }
+    height: 48px; }
+  .codebasket-items-list li .codebasket-item-name {
+    padding: 6px;
+    font-size: 14px; }
+  .codebasket-items-list li::after {
+    top: 5px; }
+  .codebasket-items-list .codebasket-item-folder .codebasket-item-actions,
+  .codebasket-items-list .codebasket-item-file .codebasket-item-actions {
+    padding: 5px 0;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 3px 0 0 3px;
+    right: 0px;
+    opacity: 0.1; }
+    .codebasket-items-list .codebasket-item-folder .codebasket-item-actions .icon,
+    .codebasket-items-list .codebasket-item-file .codebasket-item-actions .icon {
+      padding: 6px 8px;
+      font-size: 15px;
+      color: white; }
+      .codebasket-items-list .codebasket-item-folder .codebasket-item-actions .icon.edit,
+      .codebasket-items-list .codebasket-item-file .codebasket-item-actions .icon.edit {
+        background: #65c0e5; }
+      .codebasket-items-list .codebasket-item-folder .codebasket-item-actions .icon.delete,
+      .codebasket-items-list .codebasket-item-file .codebasket-item-actions .icon.delete {
+        background: #f33b37; }
+  .codebasket-items-list .codebasket-list-title {
+    padding: 5px; }
+    .codebasket-items-list .codebasket-list-title .codebasket-item-actions {
+      opacity: 1;
+      padding: 0; }
+      .codebasket-items-list .codebasket-list-title .codebasket-item-actions span {
+        padding: 5px;
+        display: block; }
+  .codebasket-items-list .codebasket-item-folder.closed {
+    height: 36px; } }
 
 @media screen and (max-width: 768px) {
   .codebasket-sidebar {

@@ -116,6 +116,9 @@
       color: #444;
       font-weight: 100;
       cursor: pointer;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 200px;
     }
 
     &.codebasket-search {

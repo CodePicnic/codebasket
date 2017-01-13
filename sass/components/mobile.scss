@@ -35,6 +35,48 @@
   .codebasket-navbar .navbar-touch .navbar-tab {
     height: $touchSize;
   }
+  .codebasket-items-list {
+    li .codebasket-item-name {
+      padding: 6px;
+      font-size: 14px;
+    }    
+    li::after {
+      top: 5px;
+    }
+    .codebasket-item-folder .codebasket-item-actions, 
+    .codebasket-item-file .codebasket-item-actions {
+      padding: 5px 0;
+      background: rgba(255,255,255,0.8);
+      border-radius: 3px 0 0 3px;
+      right: 0px;
+      opacity: 0.1;
+      .icon {
+        padding: 6px 8px;
+        font-size: 15px;
+        color: white;
+        &.edit {
+          background: #65c0e5;
+        }
+        &.delete {
+          background: #f33b37;
+        }
+      }
+    }
+    .codebasket-list-title {
+      padding: 5px;
+      .codebasket-item-actions{
+        opacity: 1;
+        padding: 0;
+        span {
+          padding: 5px;
+          display: block;
+        }
+      }
+    }
+    .codebasket-item-folder.closed {
+      height: 36px;
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {

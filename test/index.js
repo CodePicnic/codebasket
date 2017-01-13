@@ -64,15 +64,15 @@ describe('Creating a CodeBasket', function() {
           type: "text/plain",
           size: 1024
         },
-        "index.css": {
-          name: "index.css",
-          path: "index.css",
+        "opened_file_with_a_really_long_long_name_omg_why_so_long.css": {
+          name: "opened_file_with_a_really_long_long_name_omg_why_so_long.css",
+          path: "opened_file_with_a_really_long_long_name_omg_why_so_long.css",
           type: "text/plain",
           size: 1024
         },
-        "index.html": {
-          name: "index.html",
-          path: "index.html",
+        "listed_file_with_a_really_long_long_name_omg_why_so_long.html": {
+          name: "listed_file_with_a_really_long_long_name_omg_why_so_long.html",
+          path: "listed_file_with_a_really_long_long_name_omg_why_so_long.html",
           type: "text/plain",
           size: 1024
         },
@@ -158,8 +158,8 @@ describe('Creating a CodeBasket', function() {
       {
         type: 'file',
         language: 'css',
-        name: 'index.css',
-        title: 'index.css',
+        name: 'opened_file_with_a_really_long_long_name_omg_why_so_long.css',
+        title: 'opened_file_with_a_really_long_long_name_omg_why_so_long.css',
         content: 'body { background-color: #dadada; }',
         isCloseable: true
       },
