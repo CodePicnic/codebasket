@@ -112,10 +112,14 @@
     .navbar-touch {
       .navbar-tab-title {
         display: block;
-        padding: 19px 10px;
-        max-width: calc( 100% - 70px);
+        padding: 19px 5px;
+        max-width: calc( 100% - 80px);
         text-overflow: ellipsis;
         white-space: pre;
+        &.fixed {
+          padding: 19px 15px;
+          max-width: calc( 100% - 50px);
+        }
       }
       .navbar-tab-close {
         display: inline-block;
