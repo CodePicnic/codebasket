@@ -106,9 +106,9 @@
     left: 0px;
     width: 100%;
   }
-  .codebasket-toggle-sidebar {
+  .codebasket-main .navbar-button.codebasket-toggle-sidebar{
     transition: left .3s ease-in-out;
-    z-index: 9!important;
+    z-index: 19;
   }
   .icon-show-sidebar {
     position: absolute;

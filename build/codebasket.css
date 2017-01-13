@@ -203,7 +203,7 @@
   border-right: 1px solid #c8c8c8;
   transition: left .3s ease-in-out;
   background: white;
-  z-index: 10; }
+  z-index: 20; }
   .codebasket-sidebar.visible {
     left: 0; }
   .codebasket-sidebar.empty:before {
@@ -850,9 +850,9 @@
   .codebasket-content {
     left: 0px;
     width: 100%; }
-  .codebasket-toggle-sidebar {
+  .codebasket-main .navbar-button.codebasket-toggle-sidebar {
     transition: left .3s ease-in-out;
-    z-index: 9 !important; }
+    z-index: 19; }
   .icon-show-sidebar {
     position: absolute;
     left: 0px; }
