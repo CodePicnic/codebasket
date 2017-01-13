@@ -112,7 +112,7 @@
       .navbar-tab-title {
         display: block;
         padding: 19px 10px;
-        max-width: inherit;
+        max-width: calc( 100% - 70px);
         text-overflow: ellipsis;
       }
       .navbar-tab-close {

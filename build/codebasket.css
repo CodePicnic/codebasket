@@ -483,7 +483,7 @@
   .codebasket-navbar.touch .navbar-touch .navbar-tab-title {
     display: block;
     padding: 19px 10px;
-    max-width: inherit;
+    max-width: calc( 100% - 70px);
     text-overflow: ellipsis; }
   .codebasket-navbar.touch .nabvar-placeholder .navbar-tab-close,
   .codebasket-navbar.touch .navbar-touch .navbar-tab-close {
@@ -804,8 +804,6 @@
   .codebasket-items-list .codebasket-item-folder .codebasket-item-actions,
   .codebasket-items-list .codebasket-item-file .codebasket-item-actions {
     padding: 5px 0;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 3px 0 0 3px;
     right: 0px;
     opacity: 0.1; }
     .codebasket-items-list .codebasket-item-folder .codebasket-item-actions .icon,
@@ -837,7 +835,9 @@
     left: 200px;
     width: calc(100% - 200px); }
   .codebasket-footer .codebasket-brand {
-    width: 200px; } }
+    width: 200px; }
+  .codebasket-items-list li .codebasket-item-name {
+    max-width: 120px; } }
 
 @media screen and (max-width: 480px) {
   @keyframes pulse {
