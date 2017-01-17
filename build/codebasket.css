@@ -252,7 +252,8 @@
     .codebasket-sidebar .codebasket-sidebar-content > .codebasket-items-list {
       margin-bottom: 20px; }
       .codebasket-sidebar .codebasket-sidebar-content > .codebasket-items-list:last-child {
-        margin-bottom: 0; }
+        margin-bottom: 0;
+        min-height: 50vh; }
 
 .codebasket-items-list {
   width: 100%;
