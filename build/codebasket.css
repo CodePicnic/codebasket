@@ -276,7 +276,7 @@
     cursor: copy;
     z-index: 10;
     background: #a7dbf0; }
-    .codebasket-items-list.dragover:after {
+    .codebasket-items-list.dragover:before {
       font-family: "codebasket";
       font-size: 40px;
       content: "A";
@@ -287,6 +287,8 @@
       padding: 0;
       color: rgba(255, 255, 255, 0.5);
       width: 100%; }
+    .codebasket-items-list.dragover:after {
+      display: none; }
   .codebasket-items-list .codebasket-list-title {
     font-weight: 900;
     padding: 0 5px; }

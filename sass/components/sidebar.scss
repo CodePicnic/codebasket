@@ -100,7 +100,7 @@
     cursor: copy;
     z-index: 10;
     background: $blue-light-hover;
-    &:after {
+    &:before {
       font-family: "codebasket";
       font-size: 40px;
       content: "A";
@@ -111,6 +111,9 @@
       padding: 0;
       color: rgba(255,255,255,.5);
       width: 100%;
+    }
+    &:after {
+      display: none;
     }
   }
 
