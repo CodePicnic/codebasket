@@ -101,19 +101,10 @@
     z-index: 10;
     background: $blue-light-hover;
     &:before {
-      font-family: "codebasket";
-      font-size: 40px;
-      content: "A";
-      position: absolute;
-      z-index: 100;
-      top: calc(50% - 40px);
-      text-align: center;
-      padding: 0;
-      color: rgba(255,255,255,.5);
-      width: 100%;
+      color: white;
     }
     &:after {
-      display: none;
+      color: white;
     }
   }
 

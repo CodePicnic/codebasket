@@ -277,18 +277,9 @@
     z-index: 10;
     background: #a7dbf0; }
     .codebasket-items-list.dragover:before {
-      font-family: "codebasket";
-      font-size: 40px;
-      content: "A";
-      position: absolute;
-      z-index: 100;
-      top: calc(50% - 40px);
-      text-align: center;
-      padding: 0;
-      color: rgba(255, 255, 255, 0.5);
-      width: 100%; }
+      color: white; }
     .codebasket-items-list.dragover:after {
-      display: none; }
+      color: white; }
   .codebasket-items-list .codebasket-list-title {
     font-weight: 900;
     padding: 0 5px; }
