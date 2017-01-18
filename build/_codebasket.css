@@ -207,16 +207,6 @@
   .codebasket-sidebar.visible {
     left: 0; }
   .codebasket-sidebar.loading:before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 34px;
-    left: 0;
-    right: 1px;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.9);
-    z-index: 10; }
-  .codebasket-sidebar.loading:after {
     display: block;
     font-family: "codebasket";
     font-size: 40px;
@@ -228,8 +218,7 @@
     padding: 0;
     color: #e6e6e6;
     width: auto;
-    animation: codebasket-spin 1s linear infinite;
-    z-index: 11; }
+    animation: codebasket-spin 1s linear infinite; }
   .codebasket-sidebar .codebasket-navbar {
     border-left: 0;
     border-right: 0; }
@@ -863,9 +852,7 @@
   .codebasket-items-list .codebasket-item-folder.closed {
     height: 36px; }
   .codebasket-sidebar.empty .codebasket-items-list.files {
-    min-height: 30vh; }
-  .codebasket-sidebar.loading::before {
-    top: 48px; } }
+    min-height: 30vh; } }
 
 @media screen and (max-width: 768px) {
   .codebasket-sidebar {
