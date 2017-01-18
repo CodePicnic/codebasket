@@ -11,29 +11,6 @@
     left: 0;
   }
 
-  &.empty:before {
-    font-family: "codebasket";
-    font-size: 40px;
-    content: "A";
-    position: absolute;
-    top: calc(50% - 40px);
-    text-align: center;
-    padding: 0;
-    color: #e6e6e6;
-    width: 100%;
-  }
-
-  &.empty:after {
-    font-size: 1em;
-    font-weight: 100;
-    content: "Create your files and folders or drop them here from your local machine";
-    position: absolute;
-    top: 50%;
-    text-align: center;
-    padding: 20px;
-    color: #999999;
-  }
-
   &.loading:before {
     display: block;
     font-family: "codebasket";
@@ -54,6 +31,34 @@
     border-right: 0;
   }
 
+  &.empty {
+    .files {
+      height: 200px;
+    }
+    .files:before {
+      font-family: "codebasket";
+      font-size: 40px;
+      content: "A";
+      position: absolute;
+      top: 50px;
+      text-align: center;
+      padding: 0;
+      color: #eee;
+      width: 100%;
+    }
+    .files:after {
+      font-size: 1.1em;
+      font-weight: 100;
+      line-height: 1.2em;
+      content: "Create your files and folders or drop them here from your local machine";
+      position: absolute;
+      top: 80px;
+      text-align: center;
+      padding: 20px;
+      color: #ccc;
+    }
+  }
+
   .codebasket-sidebar-content {
     @extend %basic-box;
     left: 0;
@@ -68,7 +73,6 @@
       margin-bottom: 20px;
       &:last-child {
         margin-bottom: 0;
-        min-height: 50vh;
       }
     }
   }
@@ -82,7 +86,20 @@
 
   &.dragover {
     cursor: copy;
+    z-index: 10;
     background: $blue-light-hover;
+    &:after {
+      font-family: "codebasket";
+      font-size: 40px;
+      content: "A";
+      position: absolute;
+      z-index: 100;
+      top: calc(50% - 40px);
+      text-align: center;
+      padding: 0;
+      color: rgba(255,255,255,.5);
+      width: 100%;
+    }
   }
 
   .codebasket-list-title {

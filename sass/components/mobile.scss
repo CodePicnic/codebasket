@@ -78,6 +78,9 @@
       height: 36px;
     }
   }
+  .codebasket-sidebar.empty .codebasket-items-list.files {
+    min-height: 30vh;
+  }
 }
 
 @media screen and (max-width: 768px) {

@@ -206,25 +206,6 @@
   z-index: 20; }
   .codebasket-sidebar.visible {
     left: 0; }
-  .codebasket-sidebar.empty:before {
-    font-family: "codebasket";
-    font-size: 40px;
-    content: "A";
-    position: absolute;
-    top: calc(50% - 40px);
-    text-align: center;
-    padding: 0;
-    color: #e6e6e6;
-    width: 100%; }
-  .codebasket-sidebar.empty:after {
-    font-size: 1em;
-    font-weight: 100;
-    content: "Create your files and folders or drop them here from your local machine";
-    position: absolute;
-    top: 50%;
-    text-align: center;
-    padding: 20px;
-    color: #999999; }
   .codebasket-sidebar.loading:before {
     display: block;
     font-family: "codebasket";
@@ -241,6 +222,28 @@
   .codebasket-sidebar .codebasket-navbar {
     border-left: 0;
     border-right: 0; }
+  .codebasket-sidebar.empty .files {
+    height: 200px; }
+  .codebasket-sidebar.empty .files:before {
+    font-family: "codebasket";
+    font-size: 40px;
+    content: "A";
+    position: absolute;
+    top: 50px;
+    text-align: center;
+    padding: 0;
+    color: #eee;
+    width: 100%; }
+  .codebasket-sidebar.empty .files:after {
+    font-size: 1.1em;
+    font-weight: 100;
+    line-height: 1.2em;
+    content: "Create your files and folders or drop them here from your local machine";
+    position: absolute;
+    top: 80px;
+    text-align: center;
+    padding: 20px;
+    color: #ccc; }
   .codebasket-sidebar .codebasket-sidebar-content {
     left: 0;
     top: 35px;
@@ -252,8 +255,7 @@
     .codebasket-sidebar .codebasket-sidebar-content > .codebasket-items-list {
       margin-bottom: 20px; }
       .codebasket-sidebar .codebasket-sidebar-content > .codebasket-items-list:last-child {
-        margin-bottom: 0;
-        min-height: 50vh; }
+        margin-bottom: 0; }
 
 .codebasket-items-list {
   width: 100%;
@@ -261,7 +263,19 @@
   transition: background-color .3s ease-in-out; }
   .codebasket-items-list.dragover {
     cursor: copy;
+    z-index: 10;
     background: #a7dbf0; }
+    .codebasket-items-list.dragover:after {
+      font-family: "codebasket";
+      font-size: 40px;
+      content: "A";
+      position: absolute;
+      z-index: 100;
+      top: calc(50% - 40px);
+      text-align: center;
+      padding: 0;
+      color: rgba(255, 255, 255, 0.5);
+      width: 100%; }
   .codebasket-items-list .codebasket-list-title {
     font-weight: 900;
     padding: 0 5px; }
@@ -836,7 +850,9 @@
         padding: 5px;
         display: block; }
   .codebasket-items-list .codebasket-item-folder.closed {
-    height: 36px; } }
+    height: 36px; }
+  .codebasket-sidebar.empty .codebasket-items-list.files {
+    min-height: 30vh; } }
 
 @media screen and (max-width: 768px) {
   .codebasket-sidebar {
