@@ -43,6 +43,7 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-render-html": "^0.1.6",
-    "react-split-pane": "^0.1.22"
+    "react-split-pane": "^0.1.22",
+    "xss-filters": "^1.2.7"
   }
 }
