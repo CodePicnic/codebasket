@@ -65,6 +65,9 @@
   .icon-delete:before {
     content: "G";
   }
+  .icon-delete-hover:before {
+    content: "h";
+  }
   .icon-edit:before {
     content: "E";
   }
@@ -83,8 +86,14 @@
   .icon-option-fork:before {
     content: "g";
   }
+  .icon-option-twitter:before {
+    content: "1";
+  }
+  .icon-option-facebook:before {
+    content: "2";
+  }
   .icon-option-github:before {
-    content: "h";
+    content: "3";
   }
   .icon-play:before {
     content: "q";
@@ -127,5 +136,23 @@
   }
   .icon-share:before {
     content: "X";
+  }
+  .icon-left:before {
+    content: "<";
+  }
+  .icon-right:before {
+    content: ">";
+  }
+  .icon-check:before {
+    content: "y";
+  }
+  .icon-close-big:before {
+    content: "X";
+  }
+  .icon-share:before {
+    content: "j";
+  }
+  .icon-external:before {
+    content: "i";
   }
 }
