@@ -70,6 +70,15 @@
   cursor: pointer;
 }
 
+%icon-container {
+  font-family: 'codebasket';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
 %icon-basket {
   font-family: 'codebasket';
 }
@@ -109,5 +118,6 @@
 @import 'components/sidebar';
 @import 'components/navbar';
 @import 'components/content';
+@import 'components/browser';
 @import 'components/footer';
 @import 'components/mobile';

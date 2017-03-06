@@ -134,37 +134,6 @@
   }
 }
 
-.codebasket-browser-navigation {
-  @extend %box-reset;
-  overflow: hidden;
-  border-bottom: 1px solid $border-color;
-
-  > * {
-    display: block;
-    float: left;
-    @extend %menu-item;
-  }
-
-  > button {
-    width: $header-height - 3px;
-    background: $light-background;
-    border: 0;
-  }
-
-  > input[type="url"] {
-    width: calc(100% - 32px);
-    padding: 0 5px;
-    height: $header-height - 2px;
-    cursor: inherit;
-  }
-}
-
-.codebasket-browser > iframe {
-  display: block;
-  width: 100%;
-  height: calc(100% - #{$header-height - 1px});
-}
-
 .codebasket-editor * {
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
 }

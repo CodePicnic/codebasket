@@ -59,7 +59,7 @@
   }
 
   &.touch {
-    .nabvar-placeholder {
+    .navbar-placeholder {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -108,7 +108,7 @@
         border-top: 1px solid white;
       }
     }
-    .nabvar-placeholder, 
+    .navbar-placeholder,
     .navbar-touch {
       .navbar-tab-title {
         display: block;
@@ -151,11 +151,11 @@
 }
 
 .codebasket-main {
-
-  .navbar-button, 
+  .navbar-button,
   .navbar-tab,
-  .nabvar-placeholder{
+  .navbar-placeholder{
     @extend %menu-item;
+
     .icon-close,
     &.icon-arrow-down:before {
       font-size: 10px;
@@ -173,12 +173,7 @@
     width: $header-height - 2px;
 
     &:before {
-      font-family: 'codebasket';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 0;
+      @extend %icon-container;
       color: #ccc;
     }
 

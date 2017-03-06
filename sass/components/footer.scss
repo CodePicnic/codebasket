@@ -60,6 +60,16 @@
         display: block;
       }
     }
+
+    .codebasket-color-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      vertical-align: middle;
+      border-radius: 16px;
+      background-color: $border-color;
+      margin-right: 8px;
+    }
   }
 
   .codebasket-progress {
