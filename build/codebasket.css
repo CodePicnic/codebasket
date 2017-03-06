@@ -59,6 +59,9 @@
 .codebasket-main .icon-delete:before {
   content: "G"; }
 
+.codebasket-main .icon-delete-hover:before {
+  content: "h"; }
+
 .codebasket-main .icon-edit:before {
   content: "E"; }
 
@@ -77,8 +80,14 @@
 .codebasket-main .icon-option-fork:before {
   content: "g"; }
 
+.codebasket-main .icon-option-twitter:before {
+  content: "1"; }
+
+.codebasket-main .icon-option-facebook:before {
+  content: "2"; }
+
 .codebasket-main .icon-option-github:before {
-  content: "h"; }
+  content: "3"; }
 
 .codebasket-main .icon-play:before {
   content: "q"; }
@@ -121,6 +130,24 @@
 
 .codebasket-main .icon-share:before {
   content: "X"; }
+
+.codebasket-main .icon-left:before {
+  content: "<"; }
+
+.codebasket-main .icon-right:before {
+  content: ">"; }
+
+.codebasket-main .icon-check:before {
+  content: "y"; }
+
+.codebasket-main .icon-close-big:before {
+  content: "X"; }
+
+.codebasket-main .icon-share:before {
+  content: "j"; }
+
+.codebasket-main .icon-external:before {
+  content: "i"; }
 
 .codebasket-navbar, .codebasket-main .navbar-button,
 .codebasket-main .navbar-tab,
@@ -742,6 +769,9 @@
   .codebasket-browser-navigation > a {
     width: 32px;
     background: whitesmoke; }
+    .codebasket-browser-navigation > button:before,
+    .codebasket-browser-navigation > a:before {
+      color: #000000; }
   .codebasket-browser-navigation > input[type="url"] {
     width: calc(100% - 64px);
     padding: 0 5px;
