@@ -291,6 +291,13 @@
     text-align: center;
     padding: 20px;
     color: #ccc; }
+  .codebasket-sidebar.empty .files.dragover {
+    cursor: copy;
+    z-index: 10;
+    background: #a7dbf0; }
+  .codebasket-sidebar.empty .files.dragover:after,
+  .codebasket-sidebar.empty .files.dragover:before {
+    color: white; }
   .codebasket-sidebar .codebasket-sidebar-content {
     left: 0;
     top: 35px;
@@ -313,14 +320,6 @@
   width: 100%;
   line-height: 1.8em;
   transition: background-color .3s ease-in-out; }
-  .codebasket-items-list.dragover, .codebasket-items-list.dragover.empty {
-    cursor: copy;
-    z-index: 10;
-    background: #a7dbf0; }
-    .codebasket-items-list.dragover:before, .codebasket-items-list.dragover.empty:before {
-      color: white; }
-    .codebasket-items-list.dragover:after, .codebasket-items-list.dragover.empty:after {
-      color: white; }
   .codebasket-items-list .codebasket-list-title {
     font-weight: 900;
     padding: 0 5px; }
@@ -905,10 +904,6 @@
         display: block; }
   .codebasket-items-list .codebasket-item-folder.closed {
     height: 36px; }
-  .codebasket-sidebar.empty .codebasket-items-list.files {
-    min-height: 30vh; }
-  .codebasket-sidebar.empty {
-    min-height: 200px; }
   .codebasket-sidebar.loading::before {
     top: 48px; } }
 
