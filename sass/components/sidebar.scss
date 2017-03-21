@@ -45,7 +45,7 @@
 
   &.empty {
     .files {
-      height: 200px;
+      min-height: calc(100% - 170px)
     }
     .files:before {
       font-family: "codebasket";
@@ -102,7 +102,8 @@
   line-height: 1.8em;
   transition: background-color .3s ease-in-out;
 
-  &.dragover {
+  &.dragover,
+  &.dragover.empty {
     cursor: copy;
     z-index: 10;
     background: $blue-light-hover;

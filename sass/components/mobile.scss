@@ -81,6 +81,9 @@
   .codebasket-sidebar.empty .codebasket-items-list.files {
     min-height: 30vh;
   }
+  .codebasket-sidebar.empty {
+    min-height: 200px;
+  }
   .codebasket-sidebar.loading::before {
     top: $touchSize;
   }
